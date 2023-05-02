@@ -1,0 +1,265 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-4 p-0">
+        <h1 class="view-h1 pt-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Salary Component">Salary
+            Component Master</h1>
+    </div>
+    <div class="col-md-4 text-start d-flex">
+        <div class="search-border d-flex  br-5 w-100">
+            <img src="./assets/icons/search.svg" alt="" class="bg-search ps-3" height="35px" width="35px">
+            <input [formControl]="searchText" class="form-control form-control-lg w-100 py-2" type="search"
+                placeholder="Search...">
+        </div>
+    </div>
+    <div *ngIf="permission.add_salary_component" class="col-md-4 d-flex justify-content-end align-items-center pb-2">
+        <span class="">
+            <a class="add-button px-4" uk-toggle="target: #add-salary-comp" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Salary Component</span>
+            </a>
+        </span>
+    </div>
+    <!-- <div class="border-2pxblue"></div> -->
+</div>
+<div class="row px-5">
+    <ul class="uk-tab salary ms-0" data-uk-tab="{connect:'#salary-comp'}" uk-switcher="animation:uk-animation-fade">
+        <li class="uk-active">
+            <a class="" href="#earnings" (click)="preparepayloade(1)">Earnings</a>
+        </li>
+        <li>
+            <a href="#deductions" (click)="preparepayloade(2)">Deductions</a>
+        </li>
+        <li>
+            <a href="#reimbursements" (click)="preparepayloade(3)">Reimbursements</a>
+        </li>
+    </ul>
+    <app-loader *ngIf="loader"></app-loader>
+    <ul class="uk-flex-center uk-switcher uk-margin" id="salary-comp">
+        <li class="uk-active">
+            <div class="view-table px-4 py-3" *ngIf="salaryCompData.length > 0 && !loader">
+                <table class="data-table table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Component Name</th>
+                            <th scope="col">Component Code</th>
+                            <th scope="col">Ledger</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let component of salaryCompData | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count  };let i = index">
+                            <td>{{component?.salary_component_name}}</td>
+                            <td>{{component?.salary_component_code}}</td>
+                            <td>{{component?.ledger}}</td>
+                            <td class="cursor-pointer table-options">
+                                <button class="w-100 bg-white border-0"
+                                    *ngIf="permission.edit_salary_component || permission.delete_salary_component">
+                                    <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                </button>
+                                <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li class="" *ngIf="permission.edit_salary_component">
+                                            <a class="uk-dropdown-close justify-content-center"
+                                                (click)="openEdit(component)">Edit</a>
+                                        </li>
+                                        <li class="" *ngIf="permission.delete_salary_component">
+                                            <a (click)="deleteManage(component)"
+                                                class="uk-dropdown-close justify-content-center">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row mt-4 mb-1">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>
+                <ng-select [clearable]="false" class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select><pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+            <div class="no-data" *ngIf="salaryCompData.length == 0 && !loader">
+                <div class="text-center">
+                    <div class="text-center">
+                        <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+                    </div>
+                    <h3 class="">No Data Yet...</h3>
+                    <span>Be the first one to add</span>
+                </div>
+            </div>
+        </li>
+        <li class="">
+            <div class="view-table px-4 py-3" *ngIf="salaryCompData.length > 0 && !loader">
+                <table class="data-table table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Component Name</th>
+                            <th scope="col">Component Code</th>
+                            <th scope="col">Ledger</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let component of salaryCompData | paginate: { itemsPerPage: limit2, currentPage: currentPage, totalItems: count  };let i = index">
+                            <td>{{component?.salary_component_name}}</td>
+                            <td>{{component?.salary_component_code}}</td>
+                            <td>{{component?.ledger}}</td>
+                            <td class="cursor-pointer table-options">
+                                <button *ngIf="permission.edit_salary_component || permission.delete_salary_component"
+                                    class="w-100 bg-white border-0">
+                                    <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                </button>
+                                <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li class="" *ngIf="permission.edit_salary_component">
+                                            <a (click)="openEdit(component)"
+                                                class="uk-dropdown-close justify-content-center">Edit</a>
+                                        </li>
+                                        <li class="" *ngIf="permission.delete_salary_component">
+                                            <a (click)="deleteManage(component)"
+                                                class="uk-dropdown-close justify-content-center">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row mt-4 mb-1">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <pagination-controls (pageChange)="onPageChange2($event)"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+            <div class="no-data" *ngIf="salaryCompData.length == 0 && !loader">
+                <div class="text-center">
+                    <div class="text-center">
+                        <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+                    </div>
+                    <h3 class="">No Data Yet...</h3>
+                    <span>Be the first one to add</span>
+                </div>
+            </div>
+        </li>
+        <li class="">
+            <div class="view-table px-4 py-3" *ngIf="salaryCompData.length > 0 && !loader">
+                <table class="data-table table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Component Name</th>
+                            <th scope="col">Component Code</th>
+                            <th scope="col">Ledger</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let component of salaryCompData | paginate: { itemsPerPage: limit3, currentPage: currentPage, totalItems: count  };let i = index">
+                            <td>{{component?.salary_component_name}}</td>
+                            <td>{{component?.salary_component_code}}</td>
+                            <td>{{component?.ledger}}</td>
+                            <td class="cursor-pointer table-options">
+                                <button *ngIf="permission.edit_salary_component || permission.delete_salary_component"
+                                    class="w-100 bg-white border-0">
+                                    <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                </button>
+                                <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li class="" *ngIf="permission.edit_salary_component">
+                                            <a (click)="openEdit(component)"
+                                                class="uk-dropdown-close justify-content-center">Edit</a>
+                                        </li>
+                                        <li class="" *ngIf="permission.delete_salary_component">
+                                            <a (click)="deleteManage(component)"
+                                                class="uk-dropdown-close justify-content-center">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row mt-4 mb-1">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <pagination-controls (pageChange)="onPageChange3($event)"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+            <div class="no-data" *ngIf="salaryCompData.length == 0 && !loader">
+                <div class="text-center">
+                    <div class="text-center">
+                        <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+                    </div>
+                    <h3 class="">No Data Yet...</h3>
+                    <span>Be the first one to add</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<!-- <div class="row mx-4">
+    <div class="view-table px-4 py-3" *ngIf="salaryCompData.length > 0 && !loader">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Salary Component</th>
+                    <th scope="col">Code</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let salaryComp of salaryCompData | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count  };let i = index">
+                    <td (click)="openEdit(salaryComp)">{{salaryComp.salary_component_name}}</td>
+                    <td (click)="openEdit(salaryComp)">{{salaryComp.salary_component_code}}</td>
+                    <td class="cursor-pointer table-options">
+                        <button class="w-100 bg-white border-0">
+                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                        </button>
+                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                            <ul class="uk-nav uk-dropdown-nav">
+                                <li *ngIf="permission.edit_salary_component" class="">
+                                    <a class="uk-dropdown-close justify-content-center"
+                                        (click)="openEdit(salaryComp)">Edit</a>
+                                </li>
+                                <li *ngIf="permission.delete_salary_component" class="">
+                                    <a class="uk-dropdown-close justify-content-center"
+                                        (click)="deleteManage(salaryComp)">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-end align-items-center">
+                <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>
+                <ng-select class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select><pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+    <div class="no-data" *ngIf="salaryCompData.length == 0 && !loader">
+        <div class="text-center">
+            <div class="text-center">
+                <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+            </div>
+            <h3 class="">No Data Yet...</h3>
+            <span>Be the first one to add</span>
+        </div>
+    </div>
+    <app-loader *ngIf="loader"></app-loader>
+</div> -->
+<app-add-salary-comp [isEdit]="isEdit"></app-add-salary-comp>

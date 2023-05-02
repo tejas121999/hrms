@@ -1,0 +1,87 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6">
+        <h1>Employee Type</h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center">
+        <span class="me-5">
+            <a class="add-button" routerLink="/masters/add-employment-type">
+                <img class="icon-display mb-1" src="./assets/icons/add.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Employee Type</span>
+            </a>
+        </span>
+        <span class="me-3">
+            <a href="" class="add-button" uk-button>
+                <img class="icon-display mb-1" src="./assets/icons/filter.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Filter</span>
+            </a>
+            <div uk-dropdown="mode: click" class="col-auto text-center">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <h5 class="m-0 fw-bold">Filters By</h5>
+                    <div class="py-2">
+                        <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                            <option selected>Assigned To</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                        <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                            <option selected>Created By</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                        <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                            <option selected>Tags</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                    </div>
+                    <div class="d-grid px-3">
+                        <a href="" class="add-button mb-3">Apply Filter</a>
+                        <a href="" class="clear-button">Clear Filter</a>
+                    </div>
+                </ul>
+            </div>
+        </span>
+    </div>
+</div>
+<div class="row mx-4">
+    <div class="bg-white shadow-sm rounded-3 px-4 py-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Employment Type</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pratiksha</td>
+                    <td>Full-time</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/edit.svg" alt=""></a>
+                        <a href="" class="ms-4"><img src="./assets/icons/delete.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tejas</td>
+                    <td>Intern</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/edit.svg" alt=""></a>
+                        <a href="" class="ms-4"><img src="./assets/icons/delete.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kavita</td>
+                    <td>Part-time</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/edit.svg" alt=""></a>
+                        <a href="" class="ms-4"><img src="./assets/icons/delete.svg" alt=""></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- <div class="col-md-12 text-end">
+        <pagination-controls  previousLabel="Prev" nextLabel="Next"></pagination-controls>
+    </div> -->

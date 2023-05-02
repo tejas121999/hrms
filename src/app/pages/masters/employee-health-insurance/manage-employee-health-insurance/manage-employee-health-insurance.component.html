@@ -1,0 +1,79 @@
+<div class="row py-3 px-2">
+    <div class="col-md-12">
+        <div class="d-flex py-4">
+            <div class="col-md-6 d-flex">
+                <input class="form-control w-50" type="search" placeholder="Search">
+                <img src="./assets/icons/search1.svg" alt="" class="border-bottom-blue">
+            </div>
+            <div class="col-md-6 d-flex">
+                <span class="col-md-6 text-end">
+                    <a class="add-button" uk-toggle="target: #add-employee-insurance">
+                        <img class="icon-display mb-1" src="./assets/icons/add.svg" height="10px" width="10px">
+                        <span class="add-btn ms-2">Add Employee Health Insurance</span>
+                    </a>
+                </span>
+                <span class="col-md-6 text-end">
+                    <a href="" class="filter-btn fw-bold" uk-button>
+                        <span class="me-2">Filters By</span>
+                        <img class="icon-display mb-1" src="./assets/icons/arrow-dropdown.svg" height="15px"
+                            width="15px">
+                    </a>
+                    <div uk-dropdown="mode: click" class="col-auto text-center">
+                        <ul class="uk-nav uk-dropdown-nav">
+                            <h5 class="m-0 fw-bold">Filters By</h5>
+                                <div class="py-2">
+                                    <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                                        <option selected>Assigned To</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                    </select>
+                                    <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                                        <option selected>Created By</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                    </select>
+                                    <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                                        <option selected>Tags</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                    </select>
+                                </div>
+                            <div class="d-grid px-3">
+                                <a href="" class="add-button mb-3">Apply Filter</a>
+                                <a href="" class="clear-button">Clear Filter</a>
+                            </div>
+                        </ul>
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="px-4 mt-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Health Insurance Name</th>
+                        <th scope="col">Insurance Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Health Insurance</td>
+                        <td>INS 001</td>
+                    </tr>
+                    <tr>
+                        <td>Health Insurance</td>
+                        <td>INS 002</td>
+                    </tr>
+                    <tr>
+                        <td>Health Insurance</td>
+                        <td>INS 003</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12 text-end">
+            <pagination-controls  previousLabel="Prev" nextLabel="Next"></pagination-controls>
+        </div>
+    </div>
+</div>
+<app-add-employee-health-insurance></app-add-employee-health-insurance>

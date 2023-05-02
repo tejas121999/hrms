@@ -1,0 +1,358 @@
+<div cdkScrollable id="add-salary-comp" class="uk-modal-container modal-scroll-form modal-popup"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body scrollbar">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="col-md-12 text-center title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Salary Component</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="salaryComponentForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input border-bottom-blue p-1">
+                                        <label for="" class="form-label ps-2">Component Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input class="form-control" formControlName="component_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="salaryComponentForm.get('component_name')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(salaryComponentForm,'component_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input border-bottom-blue p-1">
+                                        <label for="" class="form-label ps-2">Component Code</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input class="form-control" formControlName="component_code">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="salaryComponentForm.get('component_code')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(salaryComponentForm,'component_code')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input border-bottom-blue p-1">
+                                        <label for="" class="form-label ps-2">Ledger</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input class="form-control" formControlName="ledger">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="salaryComponentForm.get('ledger')?.invalid">
+                                        <span class="text-danger">{{getError(salaryComponentForm,'ledger')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4">
+                                    <label for="" class="form-label">Component Type</label>
+                                    <span class="text-danger">*</span>
+                                    <div class="mt-2">
+                                        <label class="pe-5">
+                                            <input class="uk-radio" value="Earnings" type="radio"
+                                                formControlName="component_type" #chkEarning
+                                                (change)="isEarning(chkEarning.checked)">
+                                            Earnings
+                                        </label>
+                                        <label class="pe-5">
+                                            <input class="uk-radio" value="Deduction" type="radio"
+                                                formControlName="component_type"
+                                                (change)="isEarning(chkEarning.checked)">
+                                            Deduction
+                                        </label>
+                                        <label>
+                                            <input class="uk-radio" value="Reimbursements" type="radio"
+                                                formControlName="component_type"
+                                                (change)="isEarning(chkEarning.checked)">
+                                            Reimbursements
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4" *ngIf="!disableEarnings">
+                                    <label for="" class="form-label">Pay Type</label>
+                                    <span class="text-danger">*</span>
+                                    <div class="mt-2">
+                                        <label class="w-50">
+                                            <input class="uk-radio" value="Fixed" type="radio"
+                                                formControlName="pay_type" checked>
+                                            Fixed Pay
+                                            <span class="small-span">(Fixed amount paid at the end of every
+                                                month)</span>
+                                        </label>
+                                        <label class="w-50">
+                                            <input class="uk-radio" value="Variable" type="radio"
+                                                formControlName="pay_type">
+                                            Variable Pay
+                                            <span class="small-span">(Variable amount paid during any payroll)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4" *ngIf="!disableEarnings">
+                                    <label for="" class="form-label">Calculation Type</label>
+                                    <span class="text-danger">*</span>
+                                    <div class="mt-2">
+                                        <label class="pe-5">
+                                            <input class="uk-radio" value="Amount" type="radio"
+                                                formControlName="calculation_type" checked>
+                                            Flat Amount
+                                        </label>
+                                        <label class="">
+                                            <input class="uk-radio" value="Percentage" type="radio"
+                                                formControlName="calculation_type">
+                                            Percentage
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4" *ngIf="!disableEarnings">
+                                    <div class="bg-input border-bottom-blue p-1">
+                                        <label for="" class="form-label ps-2">Enter Value</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input class="form-control" onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " type="number"
+                                                    formControlName="calculate_value">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="!disableEarnings">
+                                    <div class="col-md-12 px-3 mt-5">
+                                        <span class="blue-dot"><i class="fa fa-circle pe-2"
+                                                aria-hidden="true"></i>Configurations</span>
+                                    </div>
+                                    <div class="col-lg-12 px-3 mt-4">
+                                        <div class="form-check">
+                                            <input
+                                                formControlName="make_this_earning_a_part_of_the_employees_salary_structure"
+                                                type="checkbox" class="form-check-input me-2" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Make This Earning a Part
+                                                Of The Employee's Salary Structure</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 px-3 mt-4">
+                                        <div class="form-check">
+                                            <input type="checkbox" formControlName="this_is_a_taxable_earning"
+                                                class="form-check-input me-2" name="taxable" id="exampleCheck1"
+                                                #chkTaxable (change)="isTaxable(chkTaxable.checked)">
+                                            <label class="form-check-label" for="exampleCheck1">This Is a Taxable
+                                                Earning</label>
+                                        </div>
+                                        <p class="small-span ms-4 m-0 ps-2 pt-2">The Income Tax Amount Will Be Divided
+                                            Equally And Deducted Every Month Across The Financial Year.</p>
+                                    </div>
+                                    <div class="col-md-12 px-3 mt-4" *ngIf="!disableTax">
+                                        <label for="" class="form-label">Tax Deduction Preference</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="mt-2 px-4">
+                                            <label class="px-2">
+                                                <input class="uk-radio me-1" formControlName="tax_deduction_preference"
+                                                    value="Equally" type="radio" checked>
+                                                Deduct Tax In Subsequent Payrolls Of The Financial Year
+                                                <p class="small-span ms-4 m-0 ps-1">
+                                                    The Income Tax Amount Will Be Divided Equally And Deducted Every
+                                                    Month
+                                                </p>
+                                            </label>
+                                            <label class="px-2 mt-2">
+                                                <input class="uk-radio me-1" formControlName="tax_deduction_preference"
+                                                    value="Overall" type="radio">
+                                                Deduct Tax In The Same Payroll
+                                                <p class="small-span ms-4 m-0 ps-1">
+                                                    The Entire Income Tax Amount Will Be Deducted When It Is Paid To The
+                                                    Employee.
+                                                </p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 px-3 mt-4">
+                                        <div class="form-check">
+                                            <input type="checkbox" formControlName="calculate_on_pro_rate_basis"
+                                                class="form-check-input me-2" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Calculate On Pro-rate
+                                                Basis</label>
+                                        </div>
+                                        <p class="small-span ms-4 m-0 ps-2 pt-2">Pay will Be Adjusted Based On Employee
+                                            Working Days.</p>
+                                    </div>
+                                    <div class="col-lg-8 px-3 mt-4">
+                                        <div class="form-check">
+                                            <input type="checkbox"
+                                                formControlName="Include_This_As_a_Flexible_Benefit_Plan_Component"
+                                                class="form-check-input me-2" id="exampleCheck1" #chkFBP
+                                                (change)="isFBPComponent(chkFBP.checked)">
+                                            <label class="form-check-label" for="exampleCheck1">Include This As a
+                                                Flexible Benefit Plan Component</label>
+                                        </div>
+                                        <p class="small-span ms-4 m-0 ps-2 pt-2">FBP Allows Your Employees To
+                                            Personalize Their Salary Structure By Choosing How Much They Want To Receive
+                                            Under Each FBP Components. </p>
+                                    </div>
+                                    <div class="col-lg-12 px-5 mt-3" *ngIf="!disableFBP">
+                                        <div class="form-check">
+                                            <input type="checkbox"
+                                                formControlName="Restrict_Employee_From_Overriding_The_FBP_Amount"
+                                                class="form-check-input me-2" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Restrict Employee From
+                                                Overriding The FBP Amount </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 px-3 mt-4">
+                                        <div class="form-check">
+                                            <input type="checkbox" formControlName="Consider_For_EPF_Contribution"
+                                                class="form-check-input me-2" id="exampleCheck1" #chkEnable
+                                                (change)="isContribution(chkEnable.checked)">
+                                            <label class="form-check-label" for="exampleCheck1">Consider For EPF
+                                                Contribution</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 px-3" *ngIf="!disableContribution">
+                                        <div class="px-4 mt-2">
+                                            <label class="px-2 w-100">
+                                                <input class="uk-radio me-1"
+                                                    formControlName="Consider_For_EPF_Contribution_" value="Always"
+                                                    type="radio" checked>
+                                                Always
+                                            </label>
+                                            <label class="px-2 mt-2 w-100">
+                                                <input class="uk-radio me-1"
+                                                    formControlName="Consider_For_EPF_Contribution_" value="Wage"
+                                                    type="radio">
+                                                Only when PF Wage is less than ₹ 15,000
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 px-3 mt-4">
+                                        <div class="form-check">
+                                            <input type="checkbox" formControlName="Consider_For_ESI_Contribution"
+                                                class="form-check-input me-2" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Consider For ESI
+                                                Contribution</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 px-3 mt-4">
+                                        <div class="form-check">
+                                            <input type="checkbox" formControlName="Show_This_Component_In_Payslip"
+                                                class="form-check-input me-2" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Show This Component In
+                                                Payslip</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                        <div class="">
+                            <button [disabled]="disablebtn" *ngIf="!isEdit" class="save-button px-3"
+                                (click)="addSalarycomp()">
+                                <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                    width="15px">
+                                <span class="save-btn ms-2">Save</span>
+                            </button>
+                            <button *ngIf="isEdit" class="save-button px-3" (click)="editSalaryComp()">
+                                <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                    width="15px">
+                                <span class="save-btn ms-2">Update</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- <form action="" [formGroup]="salarycompForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input border-bottom-blue p-1">
+                                        <label for="" class="form-label ps-2">Salary Component</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="salary_component_name"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="salarycompForm.get('salary_component_name')?.invalid">
+                                        <span class="text-danger">{{getError(salarycompForm,'salary_component_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Code</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="10" type="text" class="form-control"
+                                                    formControlName="salary_component_code">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="salarycompForm.get('salary_component_code')?.invalid">
+                                        <span class="text-danger">{{getError(salarycompForm,'salary_component_code')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Ledger</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" class="form-control" formControlName="leager">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="salarycompForm.get('leager')?.invalid">
+                                        <span class="text-danger">{{getError(salarycompForm,'leager')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Description</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea [maxlength]="100" rows="1" class="form-control"
+                                                    formControlName="description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button [disabled]="disablebtn" *ngIf="!isEdit" class="save-button px-3" (click)="addSalarycomp()">
+                                    <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                        width="15px">
+                                    <span class="save-btn ms-2">Save</span>
+                                </button>
+                                <button *ngIf="isEdit" class="save-button px-3" (click)="editSalaryComp()">
+                                    <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                        width="15px">
+                                    <span class="save-btn ms-2">Update</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

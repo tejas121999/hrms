@@ -1,0 +1,61 @@
+.view-h1::before {
+    content: "";
+    display: inline-block;
+    max-width: 20rem;
+    width: 15%;
+    position: relative;
+    border-bottom: 3px solid #0A2472;
+    position: absolute;
+    bottom: -11px;
+    left: 7.5%;
+    transform: translateX(-50%);
+}
+.payrun-card {
+    border-bottom: 3px solid #0A2472;
+    border-left: 3px solid #0A2472;
+    border-radius: 8px;
+    background: white;
+    padding: 20px;
+}
+.payrun-card p,
+span {
+    color: #000;
+}
+
+.payrun-card p {
+    font-weight: 400;
+    font-size: 16px;
+    // margin-bottom: 0;
+}
+
+.payrun-card span {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 33px;
+}
+.payrun-card .color-grey{
+    font-size: 16px !important;
+}
+hr{
+    height: 3px;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+h3 {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    color: #002160;
+}
+@media screen and (max-width:"1280px") {
+    .payrun-card{
+        height: 195px;
+    }
+}
+@media screen and (max-width:"1000px") {
+    .payrun-card{
+        height: auto;
+    }
+}

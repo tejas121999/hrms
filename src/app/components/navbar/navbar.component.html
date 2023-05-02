@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-light box-shadow bg-white p-0">
+    <div class="col-lg-12 row">
+        <div class="w-280">
+            <div class="row justify-content-start align-items-center py-1 logo-box-shadow">
+                <div class="col-md-12 text-center py-3">
+                    <a class="navbar-brand" href="#">
+                        <img src="./assets/images/logo.png" alt="" width="40px" height="40px">
+                        <img src="./assets/images/norscot1.png" alt="" class="ms-2" width="121px" height="30px">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col py-2 d-flex align-items-center" id="navbarSupportedContent">
+            <div class="col-4 text-start d-flex offset-3"></div>
+            <!-- <div class="col-4 text-start d-flex offset-3"  *ngIf="this.userData.isFirst === false">
+                <div *ngIf="!check" class="search-border d-flex border-blue br-5 w-100">
+                    <img src="./assets/icons/search.svg" alt="" class="bg-search ps-3" height="35px" width="35px">
+                    <input class="form-control form-control-lg w-100 py-2" type="search" placeholder="Search...">
+                </div>
+            </div> -->
+            <div class="col-5 pe-5">
+                <div class="d-flex align-items-center justify-content-end">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <!-- <div class="mx-2 mt-1">
+                            <a class="position-relative" href="">
+                                <div class="nav-icon">
+                                    <img src="./assets/icons/shield-icon.svg" alt="" height="50px" width="50px">
+                                </div>
+                                <span class="alerts alerts-green text-success">
+                                    <span class="visually-hidden">New</span>
+                                </span>
+                            </a>
+                        </div> -->
+                        <!-- <div class="me-2 mt-1">
+                            <a class="position-relative" href="">
+                                <div class="nav-icon">
+                                    <img src="./assets/icons/vehicle-icon.svg" alt="" height="50px" width="50px">
+                                </div>
+                                <span class="alerts alerts-purple text-warning">
+                                    <span class="visually-hidden">New</span>
+                                </span>
+                            </a>
+                        </div> -->
+                        <div class="me-2 mt-1">
+                            <a class="position-relative" href="" >
+                                <div class="nav-icon">
+                                    <img src="./assets/icons/logout-icon.svg" alt="" height="50px" width="50px">
+                                </div>
+                                <!-- <span class="alerts alerts-purple text-warning">
+                                    <span class="visually-hidden">New</span>
+                                </span> -->
+                            </a>
+                        </div>
+                        <div class="me-2 mt-1" *ngIf="this.userData.isFirst === false">
+                            <a class="position-relative" routerLink="/setting/setup">
+                                <div class="nav-icon">
+                                    <img src="./assets/icons/setting-icon.svg" alt="" height="50px" width="50px">
+                                </div>
+                                <!-- <span class="alerts alerts-purple text-warning">
+                                    <span class="visually-hidden">New</span>
+                                </span> -->
+                            </a>
+                        </div>
+                        <div class="me-2 mt-1" *ngIf="this.userData.isFirst === false">
+                            <a class="position-relative" href="">
+                                <div class="nav-icon">
+                                    <img src="./assets/icons/notification-icon.svg" alt="" height="50px" width="50px">
+                                </div>
+                                <span class="alerts alerts-red text-danger">
+                                    <span class="visually-hidden">New</span>
+                                </span>
+                            </a>
+                        </div>
+                        <a class="position-relative" routerLink="/setting/profile">
+                            <div class="mx-2 mt-2">
+                                <!-- <img src="./assets/icons/profile.svg" alt="" class="rounded-circle border-2pxblue"> -->
+                                <div class="user-profile text-black">{{userData.first_name.charAt(0).toUpperCase()}}{{userData.last_name.charAt(0).toUpperCase()}}</div>
+                            </div>
+                        </a>
+                        <span class="d-grid" style="margin-top: 14px;">
+                            <label class="user-name text-capitalize" routerLink="/setting/profile" style="font-weight: 300; line-height: 13px;">{{userData.first_name}} {{userData.last_name}}</label>
+                            <label *ngIf="userData?.user_roll_data != null" for=""
+                                class="user-desig">{{userData?.user_roll_data?.roll_name}}</label>
+                            <!-- <label *ngIf="userData?.user_type == 'admin' || userData?.user_type == 'user'" for=""
+                                class="user-desig">{{userData?.user_type}}</label> -->
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,40 @@
+.icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(10, 36, 114, 0.18);
+}
+.icon-wrap img {
+    width: 20px;
+    height: 20px;
+}
+.border-line {
+    border: 1px dashed #000;
+    margin: 15px 0;
+}
+.user-desig {
+    font-weight: 300;
+}
+.form-control {
+    border: 1px solid #6273DD;
+    padding: 10px;
+}
+:host ::ng-deep {
+    .ng-select .ng-dropdown-panel {
+        top: 44px !important;
+    }
+    .ng-select .ng-arrow-wrapper {
+        background-image: url('../../../../../assets/icons/up-arrow.svg') !important;
+        background-repeat: no-repeat !important;
+        background-size: 22px !important;
+        width: 22px !important;
+        background-position: 100% 85% !important;
+        height: 21px !important;
+    }
+    .ng-select span.ng-arrow-wrapper:before {
+        display: none;
+    }
+}
+.form-control::placeholder {
+    color: #B1B1B1 !important;
+}

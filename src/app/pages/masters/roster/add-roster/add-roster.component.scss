@@ -1,0 +1,17 @@
+.field li {
+    padding: 0.7rem 0.2rem;
+    text-align: center;
+  }
+.add-field-line{
+    border-bottom: 2px solid #9BA7F0;
+}
+.table-add-roster > :not(:last-child) > :last-child > *, .table-add-roster tbody tr td, .table-add-roster tbody tr th {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 27px;
+}
+.table-add-roster thead {
+  background: rgba(235, 237, 255, 0.75);
+  border-radius: 4px;
+  border-bottom: none;
+}

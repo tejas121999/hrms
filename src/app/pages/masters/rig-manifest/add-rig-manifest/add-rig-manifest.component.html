@@ -1,0 +1,138 @@
+<div cdkScrollable id="add-rig-manifest" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Rig</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="rigForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label">Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="50" type="text" formControlName="name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="rigForm.get('name')?.invalid">
+                                        <span class="text-danger">{{getError(rigForm,'name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Date</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input readonly [min]="" formControlName="rigmanifest_date" class="form-control"
+                                                    [owlDateTime]="date" [owlDateTimeTrigger]="date">
+                                                <owl-date-time pickerType="calendar" #date></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="date">
+                                                <img src="./assets/icons/calendar.svg" alt="" width="20px" height="20px"
+                                                    class="">
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="rigForm.get('rig_date')?.invalid">
+                                        <span class="text-danger">{{getError(rigForm,'rig_date')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label">Code</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="10" type="text" formControlName="code" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label">Description</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea [maxlength]="100" rows="1" formControlName="description"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Upload</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <!-- <input type="file" class="form-control" (change)="uploadFile($event, 'rig')"
+                                                    formControlName="upload"> -->
+                                                    <input type="file" class="form-control" formControlName="upload">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row g-0 upload-box">
+                                        <label for="" class="form-label">Upload<span
+                                                class="text-danger">*</span></label>
+                                        <div class="col-md-12 text-center">
+                                            <ngx-dropzone (change)="onSelect($event)" class="border-0">
+                                                <ngx-dropzone-label>
+                                                    <div class="col-md-12 upload">
+                                                        <img src="./assets/icons/upload.svg" alt=""><br>
+                                                        <p>Drag & drop to upload file</p>
+                                                    </div>
+                                                </ngx-dropzone-label>
+                                                <ngx-dropzone-preview class="dropzone-preview" *ngFor="let f of files"
+                                                    [removable]="true" (removed)="onRemove(f)">
+                                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})
+                                                    </ngx-dropzone-label>
+                                                </ngx-dropzone-preview>
+                                            </ngx-dropzone>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-center mt-4">
+                            <div class="">
+                                <button [disabled]="buttondisable" class="save-button px-3" *ngIf="!isEdit" (click)="addRig()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                    <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                                    <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                                </button>
+                                <button class="save-button px-3" *ngIf="isEdit" (click)="editRig()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                    <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                    <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

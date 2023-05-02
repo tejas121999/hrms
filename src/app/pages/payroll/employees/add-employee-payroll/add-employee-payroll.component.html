@@ -1,0 +1,248 @@
+<div id="add-employee-payroll" uk-modal class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center col-12 title-border card-title-border">
+                <h1 class="pb-3">Add Employee</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="">
+                <ul id="progressbar" class="d-flex justify-content-center mt-4">
+                    <li [ngClass]="step>=1 ? 'active' : 'inactive'">
+                        <span>Salary Detail</span>
+                    </li>
+                    <li [ngClass]="step==2 ? 'active' : 'inactive'">
+                        <span>Payment Info</span>
+                    </li>
+                </ul>
+                <div class="" *ngIf="step == 1">
+                    <div class="row add justify-content-center pt-3">
+                        <div class="col-md-8 px-5 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">Employee Name</label>
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                        <ng-select [clearable]="false"></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row add justify-content-center">
+                        <div class="col-md-4 ps-5 pe-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">Package Type</label>
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                        <ng-select [clearable]="false"></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-4 ps-3 pe-5">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">Annual CTC (per Year)</label>
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                        <input type="number" onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-border mt-4 pb-3">
+                        <form>
+                            <fieldset class="uk-fieldset pl-4">
+                                <div class="row add px-3">
+                                    <span class="mt-3 px-5 earn"><i class="fa fa-circle" aria-hidden="true"></i>
+                                        Earnings</span>
+                                    <ul
+                                        class="nav nav-tabs add-field mt-3 justify-content-center justify-content-between">
+                                        <li class="">
+                                            <span>Salary Component</span>
+                                        </li>
+                                        <li class="">
+                                            <span>Calculation Type</span>
+                                        </li>
+                                        <li class="">
+                                            <span>Monthly Amount</span>
+                                        </li>
+                                        <li class="">
+                                            <span>Cost To Company</span>
+                                        </li>
+                                    </ul>
+                                    <ul
+                                        class="nav nav-tabs add-field mt-3 justify-content-center justify-content-between">
+                                        <li class="">
+                                            <span>Cost of Company</span>
+                                        </li>
+                                        <li></li>
+                                        <li class="">
+                                            <span>&#8377;00</span>
+                                        </li>
+                                        <li class="">
+                                            <span>&#8377;00</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="px-5 mx-3" *ngIf="step == 2">
+                    <div class="pt-4">
+                        <div class="row border-bottom-blue2">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8 p-3">
+                                <span class="earn">
+                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                    How would you like to pay this employee? *
+                                </span>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                        <div class="row border-bottom-blue2">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8 p-3 d-grid">
+                                <span class="earn">Direct Deposit (Automated Process)</span>
+                                <span>Initiate payment in ****** payroll once the pay run is approved</span>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <span class="color-blue">Configure Now</span>
+                            </div>
+                        </div>
+                        <div class="row border-bottom-blue2">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8 p-3 d-grid">
+                                <a class="d-grid text-dark" data-bs-toggle="collapse" href="#bank-transfer"
+                                    role="button" aria-expanded="false" aria-controls="bank-transfer">
+                                    <span class="earn">Bank Transfer (Manual Process)</span>
+                                    <span>Download bank advice and process the payment through your bank’s
+                                        website</span>
+                                </a>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <span class="bluecheck">
+                                    <span></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="collapse" id="bank-transfer">
+                            <div class="row border-bottom-blue2 pb-4">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
+                                    <div class="row add">
+                                        <div class="col-md-6 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Account Holder Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Bank Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Account No</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Re-enter Account No</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">IFSC Code</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 mt-4">
+                                            <label for="" class="form-label">Account Type</label>
+                                            <span class="text-danger">*</span>
+                                            <div class="">
+                                                <label class="pe-4">
+                                                    <input class="uk-radio" value="current" type="radio" name="current">
+                                                    Current
+                                                </label>
+                                                <label class="pe-4">
+                                                    <input class="uk-radio" value="saving" type="radio" name="saving">
+                                                    Saving
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                        </div>
+                        <div class="row border-bottom-blue2">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8 p-3 d-grid">
+                                <span class="earn">Cheque</span>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <span class="greycheck">
+                                    <span></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 d-flex justify-content-end mt-3 px-4">
+                <div class="py-2 px-4">
+                    <button class="bg-white border-0 text-decoration-underline me-3" (click)="prev()">
+                        <i class="fa fa-chevron-left text-secondary" aria-hidden="true"></i>
+                    </button>
+                    <button class="bg-white border-0 text-decoration-underline me-3" (click)="next()">
+                        <i class="fa fa-chevron-right text-secondary" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="">
+                    <button class="save-button px-3">
+                        <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                        <span class="save-btn ms-2">Save</span>
+                    </button>
+                    <button class="add-button px-3 ms-3">
+                        <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                        <span class="add-btn ms-2">Save As Draft</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div cdkScrollable id="assign-package" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="row px-3">
+            <div class="col-md-12 text-center">
+                <h1 class="pb-3">Assign Package</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="py-3">
+                    <table class="data-table table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Package Name</th>
+                                <th scope="col">Package type</th>
+                                <th scope="col">Yearly Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of package_Data">
+                                <td>
+                                    <input type="radio" name="select" [checked]="data?.packageCheck"
+                                        (click)="getPackageID(data.id)" class="form-check-input">
+                                </td>
+                                <td>{{data.package_name}}</td>
+                                <td>{{data.package_type}}</td>
+                                <td>{{data.annual_ctc}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div class="d-flex justify-content-end align-items-center">
+                        <pagination-controls id="employee_pagination"
+                            (pageChange)="onPageChange($event)"></pagination-controls>
+                    </div> -->
+                    <button class="save-button px-3" (click)="assignPackage()">
+                        Assign
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="no-data" *ngIf="package_Data.length == 0 && !loader">
+            <div class="text-center">
+                <div class="text-center">
+                    <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+                </div>
+                <h3 class="">No Data Yet...</h3>
+                <span>Be the first one to add</span>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loader *ngIf="loader"></app-loader>

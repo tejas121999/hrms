@@ -1,0 +1,111 @@
+<!-- <div class="modal fade" id="add-salary-structure" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content"> -->
+<div id="add-salary-structure" uk-modal class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Salary Structure</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="salarystructForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input border-bottom-blue p-1">
+                                        <label for="" class="form-label ps-2">Salary Structure Name</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="salary_structure_name"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                            *ngIf="salarystructForm.get('salary_structure_name')?.invalid">
+                                            <span
+                                                class="text-danger">{{getError(salarystructForm,'salary_structure_name')}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Salary Component Name</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <!-- <ng-select formControlName="salarycomp_name">
+                                                        <ng-option>Basic Pay</ng-option>
+                                                        <ng-option>House Rent Allowance</ng-option>
+                                                        <ng-option>Professional Tax</ng-option>
+                                                    </ng-select> -->
+                                                <ng-select [clearable]="false" [items]="salaryComponent" bindLabel="salary_component_name"
+                                                    formControlName="salarycomp_name" bindValue="id">
+                                                </ng-select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px"
+                                                    height="25px" class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="salarystructForm.get('salarycomp_name')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(salarystructForm,'salarycomp_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input border-bottom-blue p-1">
+                                        <label for="" class="form-label ps-2">Grade</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <!-- <ng-select formControlName="grade">
+                                                        <ng-option>A</ng-option>
+                                                        <ng-option>B</ng-option>
+                                                        <ng-option>C</ng-option>
+                                                    </ng-select> -->
+                                                <ng-select [clearable]="false" [items]="gradeData" bindLabel="grade_name"
+                                                    formControlName="grade" bindValue="id">
+                                                </ng-select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px"
+                                                    height="25px" class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <!-- <div class="px-3 cancel">
+                                    <button (click)="reset()" class="cancel-button px-3">
+                                        <img class="icon-display mb-1" src="./assets/icons/cancel.svg" height="15px"
+                                            width="15px">
+                                        <span class="cancel-btn ms-2">Cancel</span>
+                                    </button>
+                                </div> -->
+                            <div class="">
+                                <button *ngIf="!isEdit" class="save-button px-3" (click)="addSalarystruct()">
+                                    <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                        width="15px">
+                                    <span class="save-btn ms-2">Save</span>
+                                </button>
+                                <button *ngIf="isEdit" class="save-button px-3" (click)="updateSalaryStructure()">
+                                    <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                        width="15px">
+                                    <span class="save-btn ms-2">Update</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

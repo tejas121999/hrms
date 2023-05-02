@@ -1,0 +1,324 @@
+<section class="bg-white box-shadow px-4 py-3">
+    <!-- <form action=""> -->
+    <fieldset class="uk-fieldset">
+        <div class="row add">
+            <div class="col-md-3 px-3 mt-5">
+                <div class="bg-input p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2 mb-3">Upload DOC</label>
+                    <span class="text-danger">*</span>
+                    <div class="row g-0">
+                        <div class="col-md-11 ps-2">
+                            <ng-select [clearable]="false" [items]="doc" bindLabel="name" [(ngModel)]="selectedDoc">
+                                <!-- <ng-option>PAN Card</ng-option>
+                                <ng-option>Aadhar Card</ng-option>
+                                <ng-option>Passport</ng-option> -->
+                            </ng-select>
+                        </div>
+                        <div class="col-md-1">
+                            <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedDoc == doc[0]" class="mt-3">
+            <form action="">
+                <div class="row add">
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">PAN No</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Name as per PAN</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="upload-box">
+                            <label for="" class="form-label">Upload Pancard</label>
+                            <span class="text-danger">*</span>
+                            <div class="row g-0">
+                                <div class="col-md-12 text-center">
+                                    <a href="">
+                                        <img src="./assets/icons/upload.svg" alt="">
+                                        <p class="text-dark">Drag & drop to upload file</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="selectedDoc == doc[1]" class="mt-3">
+            <form action="">
+                <div class="row add">
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Aadhar No</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Name as per Aadhar</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="upload-box">
+                            <label for="" class="form-label">Upload Aadhar</label>
+                            <span class="text-danger">*</span>
+                            <div class="row g-0">
+                                <div class="col-md-12 text-center">
+                                    <a href="">
+                                        <img src="./assets/icons/upload.svg" alt="">
+                                        <p class="text-dark">Drag & drop to upload file</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="selectedDoc == doc[2]" class="mt-3">
+            <form action="">
+                <div class="row add">
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Passport No</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Date of Issue(Passport)</label>
+                            <span class="text-danger">*</span>
+                            <div class="row g-0">
+                                <div class="col-md-11">
+                                    <input [min]="" formControlName="issue" class="form-control" [owlDateTime]="issue"
+                                        [owlDateTimeTrigger]="issue">
+                                    <owl-date-time pickerType="calendar" #issue></owl-date-time>
+                                </div>
+                                <div class="col-md-1">
+                                    <img src="./assets/icons/calendar.svg" alt="" width="20px" height="20px" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Date of Expiry</label>
+                            <span class="text-danger">*</span>
+                            <div class="row g-0">
+                                <div class="col-md-11">
+                                    <input [min]="" formControlName="expiry" class="form-control" [owlDateTime]="expiry"
+                                        [owlDateTimeTrigger]="expiry">
+                                    <owl-date-time pickerType="calendar" #expiry></owl-date-time>
+                                </div>
+                                <div class="col-md-1">
+                                    <img src="./assets/icons/calendar.svg" alt="" width="20px" height="20px" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Passport Type</label>
+                            <div class="row g-0">
+                                <div class="col-md-11 ps-2">
+                                    <ng-select [clearable]="false">
+                                        <ng-option>1</ng-option>
+                                        <ng-option>2</ng-option>
+                                        <ng-option>3</ng-option>
+                                    </ng-select>
+                                </div>
+                                <div class="col-md-1">
+                                    <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px"
+                                        class="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Place of Issue(Passport)</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Issued By</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Place of Birth</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="upload-box">
+                            <label for="" class="form-label">Upload Passport</label>
+                            <span class="text-danger">*</span>
+                            <div class="row g-0">
+                                <div class="col-md-12 text-center">
+                                    <a href="">
+                                        <img src="./assets/icons/upload.svg" alt="">
+                                        <p class="text-dark">Drag & drop to upload file</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="selectedDoc == doc[3]" class="mt-3">
+            <form action="">
+                <div class="row add">
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">CDC No</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Date of Issue(CDC)</label>
+                            <div class="row g-0">
+                                <div class="col-md-11">
+                                    <input [min]="" formControlName="issuecdc" class="form-control" [owlDateTime]="issuecdc"
+                                        [owlDateTimeTrigger]="issuecdc">
+                                    <owl-date-time pickerType="calendar" #issuecdc></owl-date-time>
+                                </div>
+                                <div class="col-md-1">
+                                    <img src="./assets/icons/calendar.svg" alt="" width="20px" height="20px" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="bg-input p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Date of Expiry(CDC)</label>
+                            <div class="row g-0">
+                                <div class="col-md-11">
+                                    <input [min]="" formControlName="expirycdc" class="form-control" [owlDateTime]="expirycdc"
+                                        [owlDateTimeTrigger]="expirycdc">
+                                    <owl-date-time pickerType="calendar" #expirycdc></owl-date-time>
+                                </div>
+                                <div class="col-md-1">
+                                    <img src="./assets/icons/calendar.svg" alt="" width="20px" height="20px" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-3 mt-5">
+                        <div class="upload-box">
+                            <label for="" class="form-label">Upload Pancard</label>
+                            <span class="text-danger">*</span>
+                            <div class="row g-0">
+                                <div class="col-md-12 text-center">
+                                    <a href="">
+                                        <img src="./assets/icons/upload.svg" alt="">
+                                        <p class="text-dark">Drag & drop to upload file</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </fieldset>
+    <!-- </form> -->
+</section>
+<!-- <div class="document-table">
+    <div class="bg-white box-shadow rounded-3 px-4 py-4">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Employee Type</th>
+                    <th scope="col">Date of Joining</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pratiksha</td>
+                    <td>Tester</td>
+                    <td>QA</td>
+                    <td>Full-time</td>
+                    <td>Date of Joining</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more1.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tejas</td>
+                    <td>Developement</td>
+                    <td>Full Stack Developement</td>
+                    <td>Full-time</td>
+                    <td>Date of Joining</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more1.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kavita</td>
+                    <td>BA</td>
+                    <td>BA</td>
+                    <td>Full-time</td>
+                    <td>Date of Joining</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more1.svg" alt=""></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->

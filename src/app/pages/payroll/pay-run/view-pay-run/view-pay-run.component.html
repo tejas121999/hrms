@@ -1,0 +1,146 @@
+<div class="row pt-4 px-5">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2">Regular Payroll</h1>
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<div class="row px-5 my-4">
+    <div class="col-md-5 px-3 ps-0">
+        <div class="payrun-card">
+            <p>Period : December 2022 | 31 Base Days</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <span>₹91,667.00</span><br>
+                    <span class="color-grey">Payroll Cost</span>
+                </div>
+                <div class="col-md-6">
+                    <span>₹91,067.00</span><br>
+                    <span class="color-grey">Employees Net Pay</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="payrun-card text-center">
+            <p>Pay Date</p>
+            <span>30 Dec 2022</span><br><hr>
+            <p class="mb-0 mt-2">3 Employees</p>
+        </div>
+    </div>
+    <div class="col-md-5 px-3 pe-0">
+        <div class="payrun-card">
+            <span>Tax & Deductions</span><br>
+            <div class="row mt-1">
+                <div class=" col-md-8">
+                    <p class="mb-1">Taxes</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="mb-1">₹600.00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="mb-1">Taxes</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="mb-1">₹600.00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="mb-0">Taxes</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="mb-0">₹600.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h3 class="view-h1 pt-2">Employee Salary</h3>
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+    <div class="search col-md-4 mt-4 p-0">
+        <div class="d-flex border-blue br-5 bg-white">
+            <img src="./assets/icons/search.svg" alt="" class="bg-search ps-3" height="35px" width="35px">
+            <input class="form-control form-control-lg w-100 py-2" type="search" placeholder="Search Employee">
+        </div>
+    </div>
+    <div class="view-table px-4 py-3 mt-4">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Paid Days</th>
+                    <th scope="col">Gross Pay</th>
+                    <th scope="col">Deductions</th>
+                    <th scope="col">Taxes</th>
+                    <th scope="col">Benefits</th>
+                    <th scope="col">Reimbursements</th>
+                    <th scope="col">Net Pay</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Saloni Chikhle</td>
+                    <td>31</td>
+                    <td>&#8377;25,000.00</td>
+                    <td>&#8377;00.00</td>
+                    <td>&#8377;200.00</td>
+                    <td>&#8377;00.00</td>
+                    <td>&#8377;00.00</td>
+                    <td>&#8377;24,800.00</td>
+                    <td class="cursor-pointer table-options">
+                        <button class="w-100 bg-white border-0">
+                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tejas Talkar</td>
+                    <td>31</td>
+                    <td>&#8377;25,000.00</td>
+                    <td>&#8377;00.00</td>
+                    <td>&#8377;200.00</td>
+                    <td>&#8377;00.00</td>
+                    <td>&#8377;00.00</td>
+                    <td>&#8377;24,800.00</td>
+                    <td class="cursor-pointer table-options">
+                        <button class="w-100 bg-white border-0">
+                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Akhilesh Vishwakarma</td>
+                    <td>31</td>
+                    <td>&#8377;25,000.00</td>
+                    <td>&#8377;00.00</td>
+                    <td>&#8377;200.00</td>
+                    <td>&#8377;00.00</td>
+                    <td>&#8377;00.00</td>
+                    <td>&#8377;24,800.00</td>
+                    <td class="cursor-pointer table-options">
+                        <button class="w-100 bg-white border-0">
+                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-center">
+                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span> 
+                <ng-select class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select> -->
+                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

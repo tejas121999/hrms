@@ -1,0 +1,9 @@
+.btn-roaster {
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #022567;
+}
+.btn-roaster:disabled {
+    color: #ddd;
+}

@@ -1,0 +1,147 @@
+<div class="bg-whitesmoke vh-100">
+    <div class="row p-4 m-0 box-shadow bg-white">
+        <div class="col-lg-6">
+            <h2 class="px-3 m-0">Leave Policy Assignment</h2>
+        </div>
+        <div class="col-lg-6">
+            <div class="text-end mx-5">
+                <a href="" class="add-button px-3">Save</a>
+            </div>
+        </div>
+    </div>
+    <div class="row p-4 m-0">
+        <div class="col-md-2">
+            <p>Filter By</p>
+            <div class="mb-3 row">
+                <a class="filter-btn border col-md-6 mx-2" uk-button>
+                    <span class="add-btn">Department</span>
+                    <img class="icon-display pt-2 float-end" src="./assets/icons/updown-caret.svg" height="10px"
+                        width="10px">
+                </a>
+                <div uk-dropdown="mode: click" class="col-auto">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-header">Header</li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <a class="filter-btn border col-md-6 mx-2" uk-button>
+                    <span class="add-btn">Created by</span>
+                    <img class="icon-display pt-2 float-end" src="./assets/icons/updown-caret.svg" height="10px"
+                        width="10px">
+                </a>
+                <div uk-dropdown="mode: click" class="col-auto">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-header">Header</li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <a class="filter-btn border col-md-6 mx-2" uk-button>
+                    <span class="add-btn">Designation</span>
+                    <img class="icon-display pt-2 float-end" src="./assets/icons/updown-caret.svg" height="10px"
+                        width="10px">
+                </a>
+                <div uk-dropdown="mode: click" class="col-auto">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-header">Header</li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <a class="filter-btn border col-md-6 mx-2" uk-button>
+                    <span class="add-btn">Employment Type</span>
+                    <img class="icon-display pt-2 float-end" src="./assets/icons/updown-caret.svg" height="10px"
+                        width="10px">
+                </a>
+                <div uk-dropdown="mode: click" class="col-auto">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-header">Header</li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center mx-3 mt-3">
+                <a class="add-button mt-3 w-80">Apply Filters</a>
+                <a class="clear-button mt-3 w-80">Clear Filters</a>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="container-fluid">
+                <div class="box-shadow bg-white mx-5">
+                    <div class="row p-4">
+                        <div class="col-lg-6 px-5 my-3">
+                            <label for="" class="form-label">Employee</label>
+                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                        </div>
+                        <div class="col-lg-6 px-5 my-3">
+                            <label for="" class="form-label">Assignment Based On</label>
+                            <ng-select [clearable]="false" class="input-bg mt-3">
+                                <ng-option class="p-2">Leave Period</ng-option>
+                                <ng-option class="p-2">Leave Policy</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-lg-6 px-5 my-3">
+                            <label for="" class="form-label">Employee Name</label>
+                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                        </div>
+                        <div class="col-lg-6 px-5 my-3">
+                            <label for="" class="form-label">Leave Period</label>
+                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                        </div>
+                        <div class="col-lg-6 px-5 my-3">
+                            <label for="" class="form-label">Company</label>
+                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                        </div>
+                        <div class="col-lg-6 px-5 my-3">
+                            <label for="" class="form-label">Effective From</label>
+                            <input type="text" class="form-control input-bg border-0" [owlDateTime]="from"
+                                [owlDateTimeTrigger]="from">
+                            <owl-date-time pickerType="calendar" #from></owl-date-time>
+                        </div>
+                        <div class="col-lg-6 px-5 my-3">
+                            <label for="" class="form-label">Leave Policy</label>
+                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                        </div>
+                        <div class="col-lg-6 px-5 my-3">
+                            <label for="" class="form-label">Effective To</label>
+                            <input type="text" class="form-control input-bg border-0" [owlDateTime]="to"
+                                [owlDateTimeTrigger]="to">
+                            <owl-date-time pickerType="calendar" #to></owl-date-time>
+                        </div>
+                        <div class="col-lg-6 px-5 my-3">
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Add unused leaves from pervious allocation</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

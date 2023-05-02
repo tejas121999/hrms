@@ -1,0 +1,37 @@
+.card-border{
+    border-bottom: 3px solid #022567;
+    border-top: 3px solid #022567;
+    border-radius: 10px;
+    border-left: none;
+    border-right: none;
+}
+.card-border-bottom{
+    border-bottom: 5px solid #022567 !important;
+    border: none;
+    border-radius: 15px;
+}
+.leave-card{
+    border: none;
+    background-color: #fff;
+    border-radius: 6px;
+    height: 100%;
+    box-shadow: 4px 4px 4px rgb(155 167 240 / 14%);
+    padding: 10px;
+}
+.red-border{
+    border-left: 5px solid #C1121F;
+    border-bottom: 5px solid #C1121F;
+}
+.green-border{
+    border-left: 5px solid #3EB859;
+    border-bottom: 5px solid #3EB859;
+}
+.blue-border {
+    border-left: 5px solid #032D7C;
+    border-bottom: 5px solid #032D7C;
+}
+.uk-margin .card-border {
+    border-radius: 0;
+    border-top: 0.5px solid #ABB0F1;
+    border-bottom: 0.5px solid #ABB0F1;
+}

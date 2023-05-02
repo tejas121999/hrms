@@ -1,0 +1,355 @@
+<form action="">
+    <section class="bg-white box-shadow px-4 py-3">
+        <fieldset class="uk-fieldset">
+            <div class="row add">
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Languages</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" formControlName="languages">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Date of Birth</label>
+                        <span class="text-danger">*</span>
+                        <div class="row g-0">
+                            <div class="col-md-11">
+                                <input [min]="" formControlName="date_of_birth" class="form-control"
+                                    [owlDateTime]="birth" [owlDateTimeTrigger]="birth">
+                                <owl-date-time pickerType="calendar" #birth></owl-date-time>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/calendar.svg" alt="" width="20px" height="20px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Nationality</label>
+                        <div class="row g-0">
+                            <div class="col-md-11 ps-2">
+                                <ng-select [clearable]="false" formControlName="nationality">
+                                    <ng-option>Indian</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Marital Status</label>
+                        <div class="row g-0">
+                            <div class="col-md-11 ps-2">
+                                <ng-select [clearable]="false" formControlName="marital_status">
+                                    <ng-option>Married</ng-option>
+                                    <ng-option>Never Married</ng-option>
+                                    <ng-option>Divorced</ng-option>
+                                    <ng-option>Seperated</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Gender</label>
+                        <span class="text-danger">*</span>
+                        <div class="row g-0">
+                            <div class="col-md-11 ps-2">
+                                <ng-select formControlName="gender">
+                                    <ng-option>Male</ng-option>
+                                    <ng-option>Female</ng-option>
+                                    <ng-option>Other</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Email</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="email" class="form-control" formControlName="work_email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Blood Group</label>
+                        <div class="row g-0">
+                            <div class="col-md-11 ps-2">
+                                <ng-select [clearable]="false" formControlName="blood_group">
+                                    <ng-option>A+</ng-option>
+                                    <ng-option>A-</ng-option>
+                                    <ng-option>B+</ng-option>
+                                    <ng-option>B-</ng-option>
+                                    <ng-option>AB+</ng-option>
+                                    <ng-option>AB-</ng-option>
+                                    <ng-option>O+</ng-option>
+                                    <ng-option>O-</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Mobile No</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" formControlName="mobile_no">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Highest Qualification</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" formControlName="highest_qualification">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Work Experience</label>
+                        <div class="row g-0">
+                            <div class="col-md-11 ps-2" formControlName="work_experience">
+                                <ng-select [clearable]="false">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </section>
+    <div class="bg-white box-shadow rounded-3 px-4 py-3 mt-4">
+        <fieldset class="uk-fieldset">
+            <div class="row add">
+                <span><b>01</b> Permanent Address</span>
+                <div class="col-md-3 px-3 mt-4">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Permanent Address</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <textarea rows="5" class="form-control" formControlName="permanent_address"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">Country</label>
+                                <div class="row g-0">
+                                    <div class="col-md-11 ps-2">
+                                        <ng-select [clearable]="false" formControlName="country">
+                                            <ng-option>1</ng-option>
+                                            <ng-option>2</ng-option>
+                                            <ng-option>3</ng-option>
+                                        </ng-select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px"
+                                            class="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">State</label>
+                                <div class="row g-0">
+                                    <div class="col-md-11 ps-2">
+                                        <ng-select [clearable]="false" formControlName="state">
+                                            <ng-option>1</ng-option>
+                                            <ng-option>2</ng-option>
+                                            <ng-option>3</ng-option>
+                                        </ng-select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px"
+                                            class="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">District</label>
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" formControlName="district">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">City</label>
+                                <div class="row g-0">
+                                    <div class="col-md-11 ps-2">
+                                        <ng-select [clearable]="false" formControlName="city">
+                                            <ng-option>1</ng-option>
+                                            <ng-option>2</ng-option>
+                                            <ng-option>3</ng-option>
+                                        </ng-select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px"
+                                            class="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">Zip Code</label>
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" formControlName="zipcode">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="bg-white box-shadow rounded-3 px-4 py-3 mt-4">
+        <fieldset class="uk-fieldset">
+            <div class="row">
+                <div class="col-md-6">
+                    <span><b>01</b> Temporary Address</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <input type="checkbox" class="form-check-input me-3" id="exampleCheck1"
+                        formControlName="date_of_joining">
+                    <label class="form-check-label" for="exampleCheck1">Same as Permanent</label>
+                </div>
+            </div>
+            <div class="row add">
+                <div class="col-md-3 px-3 mt-4">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Temporary Address</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <textarea rows="5" class="form-control" formControlName="temporary_address"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">Country</label>
+                                <div class="row g-0">
+                                    <div class="col-md-11 ps-2">
+                                        <ng-select [clearable]="false" formControlName="temp_country">
+                                            <ng-option>1</ng-option>
+                                            <ng-option>2</ng-option>
+                                            <ng-option>3</ng-option>
+                                        </ng-select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px"
+                                            class="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">State</label>
+                                <div class="row g-0">
+                                    <div class="col-md-11 ps-2">
+                                        <ng-select [clearable]="false" formControlName="temp_state">
+                                            <ng-option>1</ng-option>
+                                            <ng-option>2</ng-option>
+                                            <ng-option>3</ng-option>
+                                        </ng-select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px"
+                                            class="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">District</label>
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" formControlName="temp_destrict">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">City</label>
+                                <div class="row g-0">
+                                    <div class="col-md-11 ps-2">
+                                        <ng-select [clearable]="false" formControlName="temp_city">
+                                            <ng-option>1</ng-option>
+                                            <ng-option>2</ng-option>
+                                            <ng-option>3</ng-option>
+                                        </ng-select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px"
+                                            class="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">Zip Code</label>
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" formControlName="temp_zip">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</form>

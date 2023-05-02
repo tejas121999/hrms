@@ -1,0 +1,27 @@
+.view-h1::before{
+    bottom: -12px;
+}
+.con ol li {
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    line-height: 27px !important;
+    color: #000000 !important;
+    margin-top: 20px !important;
+}
+.list-group-numbered>li::before {
+    padding-right: 6px;
+}
+.num input {
+    width: 120px;
+    height: 35px;
+    text-align: center;
+}
+.num ng-select {
+    width: 190px;
+    height: 35px;
+}
+span{
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 5px;
+}

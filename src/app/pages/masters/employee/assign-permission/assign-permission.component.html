@@ -1,0 +1,1185 @@
+<div cdkScrollable id="assign-permission" class="uk-modal-container modal-scroll-form assign-permission-modal modal-popup"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body scrollbar">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="row px-4">
+            <div class="text-center col-12 title-border card-title-border">
+                <h1 class="pb-3">Assign Permission</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <h4 class="text-center m-0 mt-3" style="font-weight: 500;">{{first_name}} {{last_name}}</h4>
+        <ul class="w-50 uk-tab justify-content-center justify-content-between mx-auto mt-4"
+            data-uk-tab="{connect:'#permission'}" uk-switcher="animation:uk-animation-fade">
+            <li class="uk-active">
+                <a class="" href="#master">Master</a>
+            </li>
+            <li class="uk-active">
+                <a class="" href="#attendance">Attendance</a>
+            </li>
+            <li class="uk-active">
+                <a class="" href="#leave">Leave</a>
+            </li>
+            <li class="uk-active">
+                <a class="" href="#payroll">Payroll</a>
+            </li>
+        </ul>
+
+        <!-- Master -->
+        <ul class="uk-flex-center uk-switcher uk-margin" id="permission">
+            <li class="show uk-active">
+                <div class="view-table px-4 py-3 border-bottom-0">
+                    <div class="row border-tr bg-thead">
+                        <div class="col-md-4 pt-2">
+                            <span class="px-2">Screen</span>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row justify-content-center p-2">
+                                <div class="col-md-3 text-center">
+                                    <span>View</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Add</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Edit</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Delete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Orginization -->
+                    <form [formGroup]="orginizationForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Department</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="department" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_department"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_department"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_department"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_department"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_department"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Designation</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="designation"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_designation"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_designation"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_designation"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_designation"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_designation"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Employee</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="employee" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Branch</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="branch" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_branch" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_branch"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_branch"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </fieldset>
+                    </form>
+                    <!-- Leave Request -->
+                    <!-- todo in api -->
+                    <form [formGroup]="leaveRequestForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <!-- leaveRequestForm -->
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Leave Application</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input"
+                                                formControlName="leave_request" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input"
+                                                formControlName="add_leave_request" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input"
+                                                formControlName="edit_leave_request" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input"
+                                                formControlName="delete_leave_request" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- leave_track -->
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Apply Leave</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-start">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input"
+                                                formControlName="leave_track" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_leave_track"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_leave_track"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_leave_track"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <!-- Payroll -->
+
+                    <form [formGroup]="payrollForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Package</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="salary_structure"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_salary_structure"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_salary_structure"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_salary_structure"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_salary_structure"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_salary_structure"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <!-- add employee and processing payroll -->
+                        </fieldset>
+                    </form>
+                    <!-- Manifest -->
+
+                    <form [formGroup]="manifestForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Rig</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="rig" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_rig" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_rig" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_rig" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_rig" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_rig" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Passenger</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="passenger" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_passenger"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_passenger"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_passenger"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_passenger"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_passenger"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Booking</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="booking" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_booking"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_booking"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_booking"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_booking"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_booking"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Roster</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="roster" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_roster" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_roster"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_roster"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_roster"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_roster"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Yearly Roster</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <!--Yearly Roster  -->
+                </div>
+            </li>
+
+            <!-- Attendance -->
+            <li class="">
+                <div class="view-table px-4 py-3 border-bottom-0">
+                    <div class="row border-tr bg-thead">
+                        <div class="col-md-4 pt-2">
+                            <span class="px-2">Screen</span>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row justify-content-center p-2">
+                                <div class="col-md-3 text-center">
+                                    <span>View</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Add</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Edit</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Delete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- attendence -->
+                    <form [formGroup]="attendenceForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Mark Attendence</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="attendence" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Upload Attendence</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                        </fieldset>
+                    </form>
+
+                    <!-- Attendance Setup -->
+                    <form [formGroup]="AttendenceSetupForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Attendence Notification</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="attendance_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_attendance_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_attendance_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_attendance_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_attendance_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_attendance_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Attendance Setting</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-start">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="attendance_setting"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <!-- <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="add_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="edit_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="delete_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <!-- <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="export_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="import_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Always Present Employee</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="always_present_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_always_present_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_always_present_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_always_present_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_always_present_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_always_present_employee"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Late Comming Early Going</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-start">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="late_coming_early_going"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <!-- <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="add_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="edit_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="delete_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <!-- <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="export_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="import_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Over Time Notification</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="overtime_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_overtime_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_overtime_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_overtime_notification"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <!-- <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="export_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="import_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Over Time Configuration</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-start">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="overtime_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <!-- <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="add_overtime_notification"
+                                        class="form-check-input" id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="edit_overtime_notification"
+                                        class="form-check-input" id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="delete_overtime_notification"
+                                        class="form-check-input" id="exampleCheck1">
+                                </div> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <!-- <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="export_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="import_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Attendence Configuration</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-start">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="attendance_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <!-- <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="add_overtime_notification"
+                                        class="form-check-input" id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="edit_overtime_notification"
+                                        class="form-check-input" id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="delete_overtime_notification"
+                                        class="form-check-input" id="exampleCheck1">
+                                </div> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <!-- <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="export_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <input type="checkbox" formControlName="import_attendence" class="form-check-input"
+                                        id="exampleCheck1">
+                                </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Shift</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-start">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="shift_type" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_shift_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_shift_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_shift_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_shift_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_shift_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </fieldset>
+                    </form>
+
+
+                </div>
+            </li>
+
+            <!-- Leave -->
+            <li class="">
+                <div class="view-table px-4 py-3 border-bottom-0">
+                    <div class="row border-tr bg-thead">
+                        <div class="col-md-4 pt-2">
+                            <span class="px-2">Screen</span>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row justify-content-center p-2">
+                                <div class="col-md-3 text-center">
+                                    <span>View</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Add</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Edit</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Delete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form [formGroup]="LeaveSetupForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Leave Type</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="leave_type" class="form-check-input"
+                                                id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_leave_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_leave_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_leave_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_leave_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_leave_type"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Leave Type Configuration Approval</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox"
+                                                formControlName="view_approval_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_approval_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox"
+                                                formControlName="edit_approval_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox"
+                                                formControlName="delete_approval_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Leave Type Configuration Notification</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox"
+                                                formControlName="view_notification_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox"
+                                                formControlName="add_notification_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox"
+                                                formControlName="edit_notification_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox"
+                                                formControlName="delete_notification_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Configuration</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-start">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <!-- <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_notification_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_notification_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_notification_in_leave_configuration"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_uploade_attendence"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </li>
+
+            <!-- Payroll -->
+            <li class="">
+                <div class="view-table px-4 py-3 border-bottom-0">
+                    <div class="row border-tr bg-thead">
+                        <div class="col-md-4 pt-2">
+                            <span class="px-2">Screen</span>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row justify-content-center p-2">
+                                <div class="col-md-3 text-center">
+                                    <span>View</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Add</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Edit</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <span>Delete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- payrole setup -->
+                    <form [formGroup]="payroleSetupForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row border-tr p-2">
+                                <div class="col-md-4">
+                                    <span>Salary Component</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="salary_component"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="add_salary_component"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="edit_salary_component"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="delete_salary_component"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="export_salary_component"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input type="checkbox" formControlName="import_salary_component"
+                                                class="form-check-input" id="exampleCheck1">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </li>
+        </ul>
+        <div class="row add">
+            <div class="col-md-12 text-center">
+                <button class=" save-button px-4" (click)="updateRequest()">
+                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                    <span class="white" style="margin-left: 10px;">Save
+                        <svg>
+                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

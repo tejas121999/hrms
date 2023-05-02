@@ -1,0 +1,196 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1">Leave Type Configuration - Approval</h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center pb-2 position-relative">
+        <!-- <span class="me-5">
+            <a class="add-button" uk-toggle="target: #add-notification" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Notification</span>
+            </a>
+        </span> -->
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<div class="row mb-3">
+    <div class="px-4 pt-3">
+        <div class="px-4">
+            <ul class="uk-tab justify-content-center mx-auto justify-content-between"
+                data-uk-tab="{connect:'#approval'}" uk-switcher="animation:uk-animation-fade">
+                <li class="uk-active">
+                    <a class="" href="#leave-approval">Leave Approval</a>
+                </li>
+                <li>
+                    <a class="" href="#encash-application">Leave Encash Application</a>
+                </li>
+                <li>
+                    <a class="" href="#encash-approval">Leave Encash Approval</a>
+                </li>
+            </ul>
+            <ul class="uk-flex-center uk-switcher uk-margin" id="approval">
+                <li class="uk-active" id="leave-approval">
+                    <div class="text-end both-button">
+                        <span class="me-5">
+                            <a class="add-button" uk-toggle="target: #add-leave-approval" type="button">
+                                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                                <span class="add-btn ms-2">Add Leave Approval</span>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="view-table px-4 py-3">
+                        <table class="data-table table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Department</th>
+                                    <th scope="col">Require Approval Of</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of leaveData | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count  };let i = index">
+                                    <td>{{data?.leave_approval?.department_name}}</td>
+                                    <td>{{data?.require_approval_of}}</td>
+                                    <td class="cursor-pointer table-options">
+                                        <button class="w-100 bg-white border-0">
+                                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                        </button>
+                                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li class="">
+                                                    <a (click)="openLeaveApproval(data)" class="uk-dropdown-close justify-content-center">Edit</a>
+                                                </li>
+                                                <li class="">
+                                                    <a (click)="deleteLeaveApproval(data.id)" class="uk-dropdown-close justify-content-center">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row mt-4 mb-1">
+                            <div class="d-flex justify-content-center align-items-end">
+                                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>  -->
+                                <!-- <ng-select class="form-control-pagination">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select> -->
+                                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="" id="encash-application">
+                    <div class="text-end both-button">
+                        <span class="me-5">
+                            <a class="add-button" uk-toggle="target: #add-encash-application" type="button">
+                                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                                <span class="add-btn ms-2">Add Encash Application</span>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="view-table px-4 py-3">
+                        <table class="data-table table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Department</th>
+                                    <th scope="col">Require Application Of</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of EncashAppData | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count  };let i = index">
+                                    <td>{{data?.leave_encash_application?.department_name}}</td>
+                                    <td>{{data.require_application_of}}</td>
+                                    <td class="cursor-pointer table-options">
+                                        <button class="w-100 bg-white border-0">
+                                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                        </button>
+                                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li class="">
+                                                    <a (click)="openEncashApplication(data)" class="uk-dropdown-close justify-content-center">Edit</a>
+                                                </li>
+                                                <li class="">
+                                                    <a (click)="deleteEncashApplication(data.id)" class="uk-dropdown-close justify-content-center">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row mt-4 mb-1">
+                            <div class="d-flex justify-content-center align-items-end">
+                                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span> 
+                                <ng-select class="form-control-pagination">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select> -->
+                                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="" id="encash-approval">
+                    <div class="text-end both-button">
+                        <span class="me-5">
+                            <a class="add-button" uk-toggle="target: #add-encash-approval" type="button">
+                                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                                <span class="add-btn ms-2">Add Encash Approval</span>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="view-table px-4 py-3">
+                        <table class="data-table table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Department</th>
+                                    <th scope="col">Require Approval Of</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of EncashApprovalData | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count  };let i = index">
+                                    <td>{{data?.leave_encash_approval?.department_name}}</td>
+                                    <td>{{data?.require_approval_of}}</td>
+                                    <td class="cursor-pointer table-options">
+                                        <button class="w-100 bg-white border-0">
+                                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                        </button>
+                                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li class="">
+                                                    <a (click)="openEncashApproval(data)" class="uk-dropdown-close justify-content-center">Edit</a>
+                                                </li>
+                                                <li class="">
+                                                    <a (click)="deleteEncashApproval(data.id)" class="uk-dropdown-close justify-content-center">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row mt-4 mb-1">
+                            <div class="d-flex justify-content-center align-items-end">
+                                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>  -->
+                                <!-- <ng-select class="form-control-pagination">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select> -->
+                                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<app-add-leave-approval [isEditLeaveApproval]="isEditLeaveApproval"></app-add-leave-approval>
+<app-add-encash-application [isEditEncashApp]="isEditEncashApp"></app-add-encash-application>
+<app-add-encash-approval [isEditEncashApproval]="isEditEncashApproval"></app-add-encash-approval>

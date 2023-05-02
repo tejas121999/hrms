@@ -1,0 +1,111 @@
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+    position: relative;
+    transform: translate(18.4%, 50%);
+}
+
+#progressbar span {
+    position: absolute;
+    top: 42px;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-weight: 600;
+    font-size: 16px;
+    width: 50%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+    height: 70px;
+    font-family: 'poppins';
+    color: rgba(0, 0, 0, 0.25);
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 45px;
+    height: 45px;
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: #B1B1B1;
+    background: white;
+    text-align: center;
+    border-radius: 25px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 0px;
+    transform: translate(43px, 0);
+    justify-content: center;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: "";
+    width: 93%;
+    height: 0px;
+    position: absolute;
+    left: 16%;
+    top: 20px;
+    border: 2px solid #425ED2;
+    border-style: dashed;
+}
+
+#progressbar li:last-child::after {
+    display: none;
+}
+
+#progressbar li.active {
+    color: #000;
+    font-size: 20px;
+}
+
+#progressbar li.active:before {
+    background: #ABB0F1;
+    color: white;
+}
+
+#progressbar li.active:after {
+    border: 2px solid #425ED2;
+    border-style: dashed;
+}
+
+#progressbar li.inactive:before {
+    border: 2px solid rgba(10, 36, 114, 0.57);
+}
+
+.earn {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+}
+.earn i{
+    color: #3D5DD1;
+}
+.border-bottom-blue2{
+    border-bottom: 2px solid #9BA7F0;;
+}
+.bluecheck span::after{
+    content: "✓";
+    font-size: x-large;
+    margin-right: 0.8rem;
+    border-radius: 50%;
+    color: #002160;
+    border: 2px solid #002160;
+    padding: 1px 8px;
+}
+.greycheck span::after{
+    content: "✓";
+    font-size: x-large;
+    margin-right: 0.8rem;
+    border-radius: 50%;
+    color: #B1B1B1;
+    border: 2px solid #B1B1B1;
+    padding: 1px 8px;
+}

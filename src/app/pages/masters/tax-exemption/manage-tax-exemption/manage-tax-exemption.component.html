@@ -1,0 +1,131 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-4">
+        <h1 class="text-truncate" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Exemption Master">Tax Exemption Master</h1>
+    </div>
+    <div class="col-md-3">
+        <div class="d-flex">
+            <img src="./assets/icons/search1.svg" alt="" class="bg-search ps-3" height="35px" width="35px">
+            <input class="form-control w-100 border-0 py-2" type="search" placeholder="Search">
+        </div>
+    </div>
+    <div class="col-md-5 d-flex justify-content-end align-items-center">
+        <span class="me-5 w-50 text-end">
+            <a class="add-button w-50 text-truncate" data-bs-toggle="modal" data-bs-target="#add-tax-exemption">
+                <img class="icon-display mb-1" src="./assets/icons/add.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Tax Exemption</span>
+            </a>
+        </span>
+        <span class="me-3">
+            <a href="" class="add-button" uk-button>
+                <img class="icon-display mb-1" src="./assets/icons/filter.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Filter</span>
+            </a>
+            <div uk-dropdown="mode: click" class="col-auto text-center">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <h5 class="m-0 fw-bold">Filters By</h5>
+                    <div class="py-2">
+                        <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                            <option selected>Assigned To</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                        <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                            <option selected>Created By</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                        <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                            <option selected>Tags</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                    </div>
+                    <div class="d-grid px-3">
+                        <a href="" class="add-button mb-3">Apply Filter</a>
+                        <a href="" class="clear-button">Clear Filter</a>
+                    </div>
+                </ul>
+            </div>
+        </span>
+    </div>
+</div>
+<div class="row mx-4">
+    <div class="bg-white shadow-sm rounded-3 px-4 py-4">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Max Amount</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Max Amount</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more1.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Max Amount</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more1.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Max Amount</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more1.svg" alt=""></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-center">
+                <label for="">Items Per Page</label>
+                <div class="border-bottom-blue col-md-1 ms-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <ng-select [clearable]="false">
+                                <ng-option>1</ng-option>
+                                <ng-option>2</ng-option>
+                                <ng-option>3</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-4 p-0">
+                            <img src="./assets/icons/arrow-dropdown.svg" alt="" width="35px" height="35px" class="">
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-3">
+                    <span>1 - 5 of 10</span>
+                </div>
+                <div class="">
+                    <span class="mx-2">
+                        <a href="">
+                            <img src="./assets/icons/chevron-prev-line.svg" alt="" width="10px" height="10px">
+                        </a>
+                    </span>
+                    <span class="mx-2">
+                        <a href="">
+                            <img src="./assets/icons/chevron-prev.svg" alt="" width="10px" height="10px">
+                        </a>
+                    </span>
+                    <span class="mx-2">
+                        <a href="">
+                            <img src="./assets/icons/chevron-next.svg" alt="" width="10px" height="10px">
+                        </a>
+                    </span>
+                    <span class="mx-2">
+                        <a href="">
+                            <img src="./assets/icons/chevron-next-line.svg" alt="" width="10px" height="10px">
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-add-tax-exemption></app-add-tax-exemption>
+<!-- <div class="col-md-12 text-end">
+    <pagination-controls  previousLabel="Prev" nextLabel="Next"></pagination-controls>
+</div> -->

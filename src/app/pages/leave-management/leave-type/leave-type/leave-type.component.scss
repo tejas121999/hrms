@@ -1,0 +1,51 @@
+.view-h1::before{
+    bottom: -12px !important;
+}
+.disable{
+    border-bottom: 2px solid #b1b1b1;
+    cursor: not-allowed;
+}
+.disable label{
+    color: #B1B1B1;
+    cursor: not-allowed;
+}
+.enable{
+    border-bottom: 2px solid #ABB0F1;
+    border-radius: 10px;
+    box-shadow: 4px 0px 4px rgb(155 167 240 / 10%);
+}
+.enable label{
+    color: #000;
+}
+#style1 {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  #style1::-webkit-color-swatch {
+    border-radius: 15px;
+    border: none;
+    display: none;
+    // background: url('/assets/icons/add.svg') !important;
+  }
+//   #style1::-moz-color-swatch {
+//     border-radius: 15px;
+//     border: none;
+//     display: none;
+//   }
+//   .color-picker{
+//     position: absolute;
+//     transform: translate(90px, 10px);
+//   }
+.leave-type-modal {
+    min-height: 600px;
+    overflow: hidden;
+}
+.leave-type-modal .uk-modal-dialog {
+    height: 100%;
+    overflow: auto;
+    max-height: 100%;
+}

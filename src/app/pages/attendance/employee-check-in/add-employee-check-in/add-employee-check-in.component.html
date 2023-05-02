@@ -1,0 +1,58 @@
+<div class="bg-whitesmoke vh-100">
+    <div class="row p-4 m-0">
+        <div class="col-lg-6">
+            <h2 class="px-3 m-0">Add Employee Check-In</h2>
+        </div>
+        <div class="col-lg-6">
+            <div class="text-end">
+                <a href="" class="add-button px-3">Save</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="box-shadow bg-white mx-5">
+            <div class="row p-4">
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Employee</label>
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control input-bg border-0" placeholder="">
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Time</label>
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control input-bg border-0" [owlDateTime]="time" [owlDateTimeTrigger]="time">
+                    <owl-date-time pickerType="timer" #time></owl-date-time>
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Employee Name</label>
+                    <input type="text" class="form-control input-bg border-0">
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Location/Device ID</label>
+                    <input type="text" class="form-control input-bg border-0">
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Log Type</label>
+                    <ng-select [clearable]="false" class="border-bottom mt-3">
+                        <ng-option class="p-2">Out</ng-option>
+                        <ng-option class="p-2">In</ng-option>
+                    </ng-select>
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Skip Auto Attendance</label>
+                    </div>
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Shift</label>
+                    <input type="text" class="form-control input-bg border-0">
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Attendance Marked</label>
+                    <input type="text" class="form-control input-bg border-0">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

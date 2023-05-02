@@ -1,0 +1,9 @@
+.desig{
+    font-size: 12px;
+}
+.table>:not(caption)>*>* {
+     border-bottom-width: 0px;
+}
+td{
+    line-height: 20px !important;
+}

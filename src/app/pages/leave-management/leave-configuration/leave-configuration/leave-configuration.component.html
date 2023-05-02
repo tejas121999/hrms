@@ -1,0 +1,167 @@
+<div class="row pt-4 px-5">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1">Leave Type Configuration</h1>
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<form action="" class="pb-5" [formGroup]="leaveTypeConfigForm">
+    <fieldset class="uk-fieldset pl-4">
+        <div class="row add px-4 py-4">
+            <div class="col-md-12 mt-2">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Leave Application</span>
+            </div>
+            <div class="col-md-6 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Consider Leave Application based on below
+                        Configuration</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" class="ps-2" formControlName="LTC_1" [items]="options" bindLabel="name"
+                                bindValue="name">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Leave Approval</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Require Approval Of</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_2" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Additional Approval</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Additional Approval Form</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_3" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Additional Approval Days</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_4" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Leave Days</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_5" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Application
+                    Notification</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Send Notification To</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_6" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Approval Notification</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Send Notification To</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_7" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Pending Notification</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Send Notification To</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_8" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Leave Encash Approval</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Require Approval Of</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_9" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Leave Encash Application
+                    Notification</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Send Notification To</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_10" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Leave Encash Approval
+                    Notification</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Send Notification To</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <input type="text" formControlName="LTC_11" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="col-md-12 px-5 py-3">
+        <button class="save-button px-3" *ngIf="leaveConfigTypeData.length == 0" (click)="addLeaveTypeConfig()">
+            <img class=" icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px" width="15px">
+            <span class="white" style="margin-left: 10px;">Add</span>
+            <!-- <span class="mt-1 ml-2 float-right" uk-spinner></span> -->
+        </button>
+        <button class="save-button px-3" *ngIf="leaveConfigTypeData.length != 0" (click)="updateTypeConfig()">
+            <img class=" icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px" width="15px">
+            <span class="white" style="margin-left: 10px;">Update</span>
+            <!-- <span class="mt-1 ml-2 float-right" uk-spinner></span> -->
+        </button>
+    </div>
+</form>

@@ -1,0 +1,23 @@
+.view-h1::before {
+    content: "";
+    display: inline-block;
+    max-width: 20rem;
+    width: 20%;
+    position: relative;
+    border-bottom: 3px solid #3D5DD1;
+    position: absolute;
+    bottom: -12px;
+    left: 10%;
+    transform: translateX(-50%);
+}
+.card-template{
+    background-color: #fff;
+    // border-bottom: 7px solid #ABB0F1;
+    // border-radius: 15px;
+}
+.form-textarea {
+    height: 105px;
+}
+.add-btn {
+    width: 90px;
+}

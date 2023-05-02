@@ -1,0 +1,296 @@
+<div class="pb-5 mb-5">
+    <div class="row pt-4 px-5">
+        <div class="col-md-6 p-0">
+            <h1 class="view-h1"> Configuration</h1>
+        </div>
+        <!-- <div class="border-2pxblue mt-2"></div> -->
+    </div>
+    <div class="row px-5">
+        <ul class="w-50 uk-tab justify-content-start justify-content-between mt-4 ms-0"
+            data-uk-tab="{connect:'#payroll-config'}" uk-switcher="animation:uk-animation-fade">
+            <li class="uk-active">
+                <a class="" href="#process">Process Payroll</a>
+            </li>
+            <li class="uk-active">
+                <a class="" href="#calculation">Calculation</a>
+            </li>
+            <li class="uk-active">
+                <a class="" href="#income-tax">Income Tax</a>
+            </li>
+            <li class="uk-active">
+                <a class="" href="#ot-other">Overtime & Other</a>
+            </li>
+        </ul>
+        <ul class="uk-flex-center uk-switcher uk-margin con" id="payroll-config">
+            <li class="show uk-active">
+                <form action="">
+                    <fieldset class="uk-fieldset pl-4 mb-5 pb-5">
+                        <ol class="list-group list-group-numbered">
+                            <li class="num d-flex justify-content-start align-items-center">Payroll process start period
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" [items]="process_period"
+                                    bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Payroll process end period
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" [items]="process_period"
+                                    bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">PF pension salary amount
+                                <input type="text" class="form-control border-blue mx-2" placeholder="6500">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Percentage for PF Pension
+                                Fund
+                                <input type="text" class="form-control border-blue mx-2" placeholder="8.33">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Percentage for Employer's
+                                EPF
+                                <input type="text" class="form-control border-blue mx-2" placeholder="3.67">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Percentage for PF Employer's
+                                contribution
+                                <input type="text" class="form-control border-blue mx-2" placeholder="12">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Minimum gross salary limit
+                                for calculating ESIC
+                                <input type="text" class="form-control border-blue mx-2" placeholder="25">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Maximum gross salary limit
+                                for calculating ESIC
+                                <input type="text" class="form-control border-blue mx-2" placeholder="15000">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Percentage for ESIC
+                                Employee's contribution
+                                <input type="text" class="form-control border-blue mx-2" placeholder="0.75">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Percentage for ESIC
+                                Employer's contribution
+                                <input type="text" class="form-control border-blue mx-2" placeholder="3.25">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Number of decimal digits
+                                <input type="text" class="form-control border-blue mx-2" placeholder="2">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Specify the mode in which
+                                rounding occurs
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" [items]="rounding" bindLabel="name"
+                                    bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Number of salary slips to be
+                                displayed on the employee profile
+                                <input type="text" class="form-control border-blue mx-2" placeholder="2">
+                            </li>
+                            <li class="d-flex">Show element in salary slip only if amount is greater than zero
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Process payroll as per monthly salary
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Process payroll for employee with payable days as zero
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Always calculate Unpaid Days
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow to process payroll for all employees?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(All the employees will be considered inclusive of Active status. But for
+                                other then Active and Resigned employees, last day of employment should be in that
+                                current payroll period)</span>
+                        </ol>
+                    </fieldset>
+                </form>
+            </li>
+            <li class="">
+                <form action="">
+                    <fieldset class="uk-fieldset pl-4 mb-5 pb-5">
+                        <ol class="list-group list-group-numbered">
+                            <li class="d-flex">Calculate element value for FNF/Arrears as per total days in each month
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Allowed no of payable days in payroll attendance summary
+                                <input type="text" class="form-control border-blue mx-2" placeholder="31">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Earning elements for Payroll Import
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" [items]="payroll_import"
+                                    bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Deductions elements for Payroll Import
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" [items]="payroll_import"
+                                    bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">Consider working days instead of total days for calculation
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Calculate FNF for different months in single month?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                        <span class="ps-4">(If set to No then, FNF will be spread across multiple payroll periods based on resignation date and total payable days. Calculating element value as per total days won't work)</span>
+                            <li class="num d-flex justify-content-start align-items-center">Included payroll earning element while calculation in PF report?
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" [items]="payroll_import"
+                                    bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <span class="ps-4">(Selected element will be considered while calculation in pf report)</span>
+                            <li class="d-flex">Calculate HRA Exemption on monthly bases
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Consider multiple claim types for payroll calculations ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes then, system will match all the reimbursement payroll elements with claim types. Note that claim types and payroll elements name should be identical and claim type should have ticked Included in payroll element on claim types screen to run this setting.)</span>
+                            <li class="d-flex">Auto apply overtime request for attendance while running payroll
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes then, while calculating attendance for payroll overtime will be auto applied and approved)</span>
+                            <li class="d-flex">Calculate Loss of Pay as per shift hours
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Remove elements while calculating PT in FNF
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" [items]="payroll_import"
+                                    bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">Consider payroll month for total days for PF calculation
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes, total days will be calculated from payroll month and not from Payroll period)</span>
+                            <li class="d-flex">Calculate salary for unpaid days to deduct from monthly salary
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(This setting will be applicable only in case of Daily Wages)</span>
+                            <li class="d-flex">Calculate custom element value as per the present days in custom payroll period
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </li>
+            <li class="">
+                <form action="">
+                    <fieldset class="uk-fieldset pl-4 mb-5 pb-5">
+                        <ol class="list-group list-group-numbered">
+                            <li class="d-flex">Calculate Income Tax using system
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">MLWF Base Wage for calculations
+                                <input type="text" class="form-control border-blue mx-2" placeholder="3000">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">MLWF EEC Rate Upto Base Wage
+                                <input type="text" class="form-control border-blue mx-2" placeholder="6">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">MLWF ERC Rate Upto Base Wage
+                                <input type="text" class="form-control border-blue mx-2" placeholder="18">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">MLWF EEC Rate Exceeding Base Wage
+                                <input type="text" class="form-control border-blue mx-2" placeholder="12">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">MLWF ERC Rate Exceeding Base Wage
+                                <input type="text" class="form-control border-blue mx-2" placeholder="36">
+                            </li>
+                            <li class="d-flex">Allow employee to change income tax regime ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes then, employee can change the income tax regime.)</span>
+                        </ol>
+                    </fieldset>
+                </form>
+            </li>
+            <li class="">
+                <form action="">
+                    <fieldset class="uk-fieldset pl-4 mb-5 pb-5">
+                        <ol class="list-group list-group-numbered">
+                            <li class="d-flex">Calculate overtime for payroll
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Overtime Rate(Per Hours)
+                                <input type="text" class="form-control border-blue mx-2" placeholder="35">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Calculate Overtime After(hours)
+                                <input type="text" class="form-control border-blue mx-2" placeholder="10">
+                            </li>
+                            <li class="d-flex">Calculate overtime for every completed hours
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Calculate overtime for Gross salary less than
+                                <input type="text" class="form-control border-blue mx-2" placeholder="240000">
+                            </li>
+                            <li class="d-flex">Show Overtime Hours In Payroll Process Attendance Screen ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Investment Declaration Allowed ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Investment Declaration Processing Mode
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" [items]="mode"
+                                    bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">Allow employee to declare LTA without leaves applied ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes then, employee can declare lta amount in advance before applying for leaves.)</span>
+                            <li class="num d-flex justify-content-start align-items-center">Run Payroll for
+                                <ng-select  [clearable]="false" class="form-control border-blue mx-2" [items]="run_payroll"
+                                    bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">GL Code Field In Payroll Elements Screen ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

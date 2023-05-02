@@ -1,0 +1,122 @@
+<div id="add-leave-type" uk-modal class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <div class="text-end px-3">
+            <button type="button" (click)="reset()" class="uk-modal-close-default" uk-close></button>
+        </div>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Leave Type Master</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="leavetypeForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 add mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Leave Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="150" type="text" formControlName="leave_name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="leavetypeForm.get('leave_name')?.invalid">
+                                        <span class="text-danger">{{getError(leavetypeForm,'leave_name')}}</span>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4 px-3 add mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Annual leaves allowed</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="annual_leave_allow"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="leavetypeForm.get('annual_leave_allow')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(leavetypeForm,'annual_leave_allow')}}</span>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">No. of Days</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number"
+                                                onKeyPress="if(this.value.length==2){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    class="form-control" formControlName="no_of_days">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="leavetypeForm.get('no_of_days')?.invalid">
+                                        <span class="text-danger">{{getError(leavetypeForm,'no_of_days')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Leave Description</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea [maxlength]="100" rows="1" class="form-control border-0"
+                                                    formControlName="leave_desc"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="leavetypeForm.get('leave_desc')?.invalid">
+                                        <span class="text-danger">{{getError(leavetypeForm,'leave_desc')}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <!-- <div class="px-3 cancel">
+                                <button class="cancel-button px-3">
+                                    <img class="icon-display mb-1" src="./assets/icons/cancel.svg" height="15px"
+                                        width="15px">
+                                    <span class="cancel-btn ms-2">Cancel</span>
+                                </button>
+                            </div> -->
+                            <div class="">
+                                <button [disabled]="buttondisable" *ngIf="!isEdit" class="save-button px-3" (click)="addLeaveType()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                    <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                                    <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                                </button>
+
+                                <button *ngIf="isEdit" class="save-button px-3" (click)="editLeaveType()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                    <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                    <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,394 @@
+<div class="pb-5 mb-5">
+    <div class="row pt-4 px-5">
+        <div class="col-md-6 p-0">
+            <h1 class="view-h1"> Configuration</h1>
+        </div>
+        <!-- <div class="border-2pxblue mt-2"></div> -->
+    </div>
+    <div class="row px-5 py-4 con">
+        <div class="d-flex justify-content-start pt-4">
+            <ul class="nav nav-tabs justify-content-start w-75 justify-content-between" id="ex2" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" href="#lb" data-bs-toggle="tab">Leave Balance</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="#approval" data-bs-toggle="tab">Approval</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="#subordinates" data-bs-toggle="tab">Subordinates</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="#lm" data-bs-toggle="tab">Leave Meter</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content mt-3">
+            <div class="tab-pane fade show active" id="lb" role="tabpanel" aria-labelledby="lb">
+                <form action="" [formGroup]="leave_balance">
+                    <fieldset class="uk-fieldset pl-4 mb-5 pb-5">
+                        <ol class="list-group list-group-numbered">
+                            <li class="d-flex">Allow Employee to apply leave more than balance
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" (change)="checkToggle($event)" formControlName="clb_1" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+
+                                </div>
+                                <div class="col-2">
+                                  <ng-select [clearable]="false" class="form-control border-blue mx-2 ml-12" [readonly]="!checktoggle"  [items]="leaveType"
+                                 bindLabel="leave_name" formControlName="clb_11" bindValue="id"
+                                 ></ng-select>
+                              </div>
+                            </li>
+
+
+                            <li class="num d-flex justify-content-start align-items-center">Allow negative balance upto
+                                <input type="text" formControlName="clb_2" class="form-control border-blue mx-2"
+                                    placeholder="4">
+                            </li>
+                            <li class="d-flex">Enable Pending Leave Notification
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="clb_3" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Send Pending Leave
+                                Notification
+                                after no. of days
+                                <input type="text" formControlName="clb_4" class="form-control border-blue mx-2"
+                                    placeholder="3 Days">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Consider balance while
+                                applying
+                                leave
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" formControlName="clb_5"
+                                    [items]="consider_balance" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">Allow duplicating leave type
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="clb_6" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show Pending leaves in Employee Leave Calendar
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="clb_7" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show Pending leaves in Admin Leave Calendar
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="clb_8" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">When to deduct balance while
+                                leave encashment ?
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" formControlName="clb_9"
+                                    [items]="deduct_balance" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">Show leave balance in leave apply screen ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="clb_10" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="approval" role="tabpanel" aria-labelledby="approval">
+                <form action="" [formGroup]="Approval_Configuration">
+                    <fieldset class="uk-fieldset pl-4 mb-5 pb-5">
+                        <ol class="list-group list-group-numbered">
+                            <li class="d-flex">Allow employee to cancel leave after approval
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="ac_1" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow comments for leave approval
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="ac_2" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Enable Auto Approval/Rejection
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="ac_3" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Auto Approve/Reject leaves
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" formControlName="ac_4"
+                                    [items]="leave_status" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Auto Approve/Reject leaves
+                                <input type="text" class="form-control border-blue mx-2" formControlName="ac_5"
+                                    placeholder="5 Days">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">When to deduct leave ?
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" formControlName="ac_6"
+                                    [items]="deduct_leave" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">Allow employee to apply leave outside current financial year
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="ac_7" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Filter data for leave approvals
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input0" formControlName="ac_8" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes and profile is set for logged in employee, then data in
+                                approval will be filtered)</span>
+                            <li class="d-flex">Display approval data as per attendance period
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="ac_9" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(This setting is not applicable to Admin and Profile assign to an
+                                Employee)</span>
+                            <li class="d-flex">Allow to see approvals other then primary approver?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="ac_10" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes then, approver's other then primary approver also can see
+                                the
+                                approval details)</span>
+                            <li class="d-flex">Approve leave request when last approver approves
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="ac_11" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">
+                                (If set to Yes then, the leave request gets approve when the last approver in the
+                                approval
+                                order approves)
+                            </span>
+                            <li class="num d-flex justify-content-start align-items-center">Waiting period before
+                                allowing
+                                other approver's to approve
+                                <input type="text" formControlName="ac_12" class="form-control border-blue mx-2"
+                                    placeholder="1 Days">
+                            </li>
+                            <span class="ps-4">(If above setting is set to Yes then, approver's other then primary
+                                approver
+                                can approve it after waiting period after application date.)</span>
+                            <li class="d-flex">Filter data for leave encashment approvals
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="ac_13" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Send office365 calendar notification to approving employees & hr if leave
+                                is
+                                approved ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="ac_14" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex">Employee list to send office365 calendar notification if leave is
+                                approved Selected HR Employees will get office365 calendar notification once leave is
+                                approved.
+                                <ng-select [clearable]="false" formControlName="ac_15" class="form-control border-blue mx-2">
+                                </ng-select>
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="subordinates" role="tabpanel" aria-labelledby="subordinates">
+                <form action="" [formGroup]="Subordinates">
+                    <fieldset class="uk-fieldset pl-4 mb-5 pb-5">
+                        <ol class="list-group list-group-numbered">
+                            <li class="d-flex">Allow manager's to apply for leave of their subordinates
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="sc_1" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show all subordinates to manager in dashboard leave calendar ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="sc_2" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show all subordinates to functional manager in dashboard leave calendar ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="sc_3" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show subordinates to manager who has profile, in dashboard leave calendar
+                                ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="sc_4" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show subordinates to functional manager who has profile, in dashboard
+                                leave
+                                calendar ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="sc_5" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show all subordinates to manager who has profile, in dashboard leave
+                                calendar
+                                ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="sc_6" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show all subordinates to functional manager who has profile, in dashboard
+                                leave calendar ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="sc_7" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">No. Of Present days to be
+                                considered for previous year leave calculation
+                                <input type="text" formControlName="sc_8" class="form-control border-blue mx-2"
+                                    placeholder="4">
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="lm" role="tabpanel" aria-labelledby="lm">
+                <form action="" [formGroup]="Leave_Master">
+                    <fieldset class="uk-fieldset pl-4 mb-5 pb-5">
+                        <ol class="list-group list-group-numbered">
+                            <li class="num d-flex justify-content-start align-items-center">Options for Employee in
+                                Leave
+                                Calendar on dashboard
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" formControlName="lmc_1"
+                                    [items]="deduct_balance" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Options for Manager in Leave
+                                Calendar on dashboard
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" formControlName="lmc_2"
+                                    [items]="deduct_balance" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">Show Holidays in Leave Calendar
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" formControlName="lmc_3"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Deduct sandwich leaves from either side of the leave applied
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" formControlName="lmc_4"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">No. Of Present days to be
+                                considered for previous year leave calculation
+                                <input type="text" class="form-control border-blue mx-2" formControlName="lmc_5"
+                                    placeholder="4">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Do not include these leaves
+                                for
+                                Privilege Leave Calculation
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" formControlName="lmc_6"
+                                    [items]="leave_calculation" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">Allow Norscot to add leave events to office365 calendar
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="lmc_7" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show leave meter in employee dashboard
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="lmc_8" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow employee to apply for leave outside attendance period
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="lmc_9" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If any of the setting allows to request for future date then, attendance
+                                period end won't be applicable here)</span>
+                            <li class="num d-flex justify-content-start align-items-center">Lock applying for leave
+                                after
+                                <input type="text" class="form-control border-blue mx-2" formControlName="lmc_10"
+                                    placeholder="10 Days">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Default leave view
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" formControlName="lmc_11"
+                                    [items]="leave_view" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="d-flex">Allow to apply two different half day leaves on same day ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="lmc_12" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to No then, two different half day leaves on same day will not be
+                                allowed)</span>
+                            <li class="d-flex">Show user fields in reports filter ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="lmc_13" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes then, user fields selected below will be used in report
+                                filter)</span>
+                            <li class="num d-flex justify-content-start align-items-center">User fields used in reports
+                                filter
+                                <ng-select [clearable]="false" class="form-control border-blue mx-2" formControlName="lmc_14"
+                                    [items]="report_filter" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <span class="ps-4">(Selected user fields will be considered in reports filter)</span>
+                            <li class="num d-flex justify-content-start align-items-center">Maximum number of leaves an
+                                employee can apply during resignation period
+                                <input type="text" class="form-control border-blue mx-2" formControlName="lmc_15"
+                                    placeholder="4">
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <button *ngIf="getLeaveData" class="save-button" (click)="editConfiguration()">
+                Update
+                <svg>
+                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                </svg>
+            </button>
+        </div>
+        <div class="col-md-12">
+            <button *ngIf="!getLeaveData" class="save-button" (click)="addConfiguration()">
+                Add
+                <svg>
+                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

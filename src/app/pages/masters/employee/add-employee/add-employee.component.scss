@@ -1,0 +1,161 @@
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-weight: 600;
+    font-size: 16px;
+    width: 18.33%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+    height: 60px;
+    font-family: 'poppins';
+    color: rgba(0, 0, 0, 0.25);
+}
+
+#progressbar li:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    text-align: center;
+    border-radius: 25px;
+    position: absolute;
+    top: 35px;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: "";
+    width: 88%;
+    height: 0px;
+    position: absolute;
+    left: 12%;
+    top: 44px;
+    border: 2px solid rgba(33, 150, 243, 0.25);
+    border-style: dashed;
+}
+
+#progressbar li.active {
+    color: #000;
+    font-size: 20px;
+}
+
+#progressbar li.active:before {
+    background: #2196F3;
+    color: white;
+}
+
+#progressbar li.active:after {
+    border: 2px solid #2196F3;
+    border-style: dashed;
+}
+
+#progressbar li.inactive:before {
+    border: 2px solid rgba(33, 150, 243, 0.25);
+}
+
+// b {
+//     font-weight: 800;
+//     font-size: 18px;
+//     line-height: 33px;
+//     letter-spacing: 0.04em;
+// }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+textarea {
+    resize: none;
+}
+
+.border-bottom-blue {
+    position: relative;
+}
+
+// .border-bottom-blue input{
+// width: 260px;
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+// height: 64px;
+// border-radius: 6px;
+// background: transparent;
+// border: 1px solid #df2666 !important;
+// padding: 0 20px 0 56px;
+// font-size: 17px;
+// font-family: inherit;
+// color: rgb(255 255 255 / 96%);
+// outline: none;
+// }
+// .border-bottom-blue input.ng-valid .border-bottom-blue{
+//     border-color: #26dfae;
+//     animation: none;
+// }
+// @keyframes shake {
+//     0%,
+//     100% {
+//       translate: 0;
+//     }
+//     25% {
+//       translate: 8px 0;
+//     }
+//     75% {
+//       translate: -8px 0;
+//     }
+//   }
+
+//   .border-bottom-blue input:invalid{
+//     animation: shake 0.1635s 0s 3;
+//   }
+//   .border-bottom-blue{
+//     animation: shake 0.1635s 0s 3;
+//   }
+
+//   input:focus-within .border-bottom-blue{
+//     border: 1px solid #022567 !important;
+//   }
+
+//  .border-bottom-blue:hover{
+//     animation: shake 0.1635s 0s 3;
+//   }
+
+//   input:invalid(:has(.border-bottom-blue)){
+//     animation: shake 0.1635s 0s 3;
+//   }
+
+.add-employee-modal {
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.add-employee-modal .uk-modal-dialog {
+    height: auto;
+    overflow: auto;
+    max-height: 100%;
+}
+// .update-input.row .border-bottom-blue {
+//     border-bottom: 0 !important;
+//     box-shadow: 4px 4px 4px rgba(155, 167, 240, 0.14);
+//     border-radius: 5px;
+// }
+// .update-input .border-bottom-blue:focus-within {
+//     border: 1px solid #ABB0F1 !important;
+// }

@@ -1,0 +1,102 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6">
+        <h1 class="view-h1 pt-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Bank Master">Bank Master</h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center pb-2">
+        <span class="me-5">
+            <a class="add-button px-4" uk-toggle="target: #add-bank" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Bank</span>
+            </a>
+        </span>
+    </div>
+    <!-- <div class="border-2pxblue"></div> -->
+</div>
+<div class="row mx-4">
+    <div class="view-table px-4 py-3">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Bank Name</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Address</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bank Name</td>
+                    <td>Branch</td>
+                    <td>Address</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bank Name</td>
+                    <td>Branch</td>
+                    <td>Address</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bank Name</td>
+                    <td>Branch</td>
+                    <td>Address</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-center">
+                <label for="">Items Per Page</label>
+                <div class="border-bottom-blue col-md-1 ms-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <ng-select [clearable]="false">
+                                <ng-option>1</ng-option>
+                                <ng-option>2</ng-option>
+                                <ng-option>3</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-4 p-0">
+                            <img src="./assets/icons/arrow-dropdown.svg" alt="" width="35px" height="35px" class="">
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-3">
+                    <span>1 - 5 of 10</span>
+                </div>
+                <div class="">
+                    <span class="mx-2">
+                        <a href="">
+                            <img src="./assets/icons/chevron-prev-line.svg" alt="" width="10px" height="10px">
+                        </a>
+                    </span>
+                    <span class="mx-2">
+                        <a href="">
+                            <img src="./assets/icons/chevron-prev.svg" alt="" width="10px" height="10px">
+                        </a>
+                    </span>
+                    <span class="mx-2">
+                        <a href="">
+                            <img src="./assets/icons/chevron-next.svg" alt="" width="10px" height="10px">
+                        </a>
+                    </span>
+                    <span class="mx-2">
+                        <a href="">
+                            <img src="./assets/icons/chevron-next-line.svg" alt="" width="10px" height="10px">
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-add-bank></app-add-bank>
+<!-- <div class="col-md-12 text-end">
+    <pagination-controls  previousLabel="Prev" nextLabel="Next"></pagination-controls>
+</div> -->

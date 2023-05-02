@@ -1,0 +1,698 @@
+<div class="pb-5 mb-5">
+    <div class="row pt-4 px-5">
+        <div class="col-md-6 p-0">
+            <h1 class="view-h1"> Configuration</h1>
+        </div>
+        <!-- <div class="border-2pxblue mt-2"></div> -->
+    </div>
+    <div class="row px-5 pt-4 con">
+        <div class="d-flex justify-content-start pt-4">
+            <ul class="nav nav-tabs justify-content-start w-100 justify-content-between" id="ex2" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" href="#cico" data-bs-toggle="tab">Check In / Check Out</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="#pa" data-bs-toggle="tab">Present / Absent</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="#shift" data-bs-toggle="tab">Shift</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="#regularization" data-bs-toggle="tab">Regularization</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="#subordinates" data-bs-toggle="tab">Subordinates</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="#others" data-bs-toggle="tab">Others</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content mt-3">
+            <div class="tab-pane fade show active" id="cico" role="tabpanel" aria-labelledby="cico">
+                <form action="" [formGroup]="checkinForm">
+                    <fieldset class="uk-fieldset pl-4 mb-3">
+                        <ol class="list-group list-group-numbered">
+                            <li class="d-flex">Auto Check-Out ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in1" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Auto Check-Out After (hrs.)
+                                <input type="text" formControlName="c_in2" class="form-control border-blue mx-2"
+                                    placeholder="10">
+                            </li>
+                            <li class="d-flex">Allow Entering Notes while Check-In ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in3" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Is Notes Mandatory while Check-In ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in4" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Enable both Check-In and Check-Out button
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in5" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show auto checkout message to employee ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in6" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Enable Geo location for Check-In/Check-Out
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in7" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show pending tasks to employees while Check Out
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in8" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow Check-In without Geo location
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in9" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow Check-Out without Geo location
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in10" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Differentiate check-in and
+                                check-out for biometric data
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" forformControlName="c_in11" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                                <!-- <input type="text" formControlName="c_in11" class="form-control border-blue mx-2"
+                                    placeholder="Check In"> -->
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Display label for biometric
+                                check-in
+                                <input type="text" formControlName="c_in12" class="form-control border-blue mx-2"
+                                    placeholder="Check In">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Display label for biometric
+                                check-out
+                                <input type="text" formControlName="c_in13" class="form-control border-blue mx-2"
+                                    placeholder="Check Out">
+                            </li>
+                            <li class="d-flex">Allow Entering Notes while Check-Out ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in14" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Is Notes Mandatory while Check-Out ?
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in15" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Process attendance for first In last Out
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in16" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Calculate actual time for first In last Out
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in17" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to yes then actual time will calculated and not total
+                                time)</span>
+                            <li class="d-flex">Show employee drop down list in my calendar
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in18" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow Employee Tracking
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" formControlName="c_in19" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Difference of Minutes for
+                                adding/updating attendance
+                                <input type="text" formControlName="c_in20" class="form-control border-blue mx-2"
+                                    placeholder="05 Min">
+                            </li>
+                            <span class="ps-4">(In minutes. If kept empty, zero or more than 60 then defaulted to 5
+                                minutes)</span>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="pa" role="tabpanel" aria-labelledby="pa">
+                <form action="" [formGroup]="presentAbsentForm">
+                    <fieldset class="uk-fieldset pl-4 mb-3">
+                        <ol class="list-group list-group-numbered">
+                            <li class="num d-flex justify-content-start align-items-center">Sandwich weekly off for
+                                absent
+                                employee
+                                <ng-select [clearable]="false" formControlName="PA_1" class="form-control border-blue mx-2"
+                                    [items]="weekly_off" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Sandwich holiday for absent
+                                employee
+                                <ng-select [clearable]="false" formControlName="PA_2" class="form-control border-blue mx-2"
+                                    [items]="weekly_off" bindLabel="name" bindValue="name"></ng-select>
+                            </li>
+                            <li class="d-flex">Deduct full day leave if employee is coming after half day time
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_3" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Deduct half day leave if employee is coming after grace period
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_4" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Consider non-half days as
+                                <ng-select [clearable]="false" formControlName="PA_5" class="form-control border-blue mx-2"
+                                    [items]="non_halfday" bindLabel="name" bindValue="name"></ng-select>
+                            </li>
+                            <li class="d-flex">Calculate payable days for payroll ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_6" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show late mark in my attendance
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_7" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show early going in my attendance
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_8" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show loss of pay in my attendance
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_9" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Deduct late coming days from payable days ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_10" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to No then, late coming days will not be deducted from payable
+                                days.)</span>
+                            <li class="d-flex">Deduct early going days from payable days ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_11" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to No then, early going days will not be deducted from payable
+                                days)</span>
+                            <!-- <li class="d-flex">Show exclude employees list in late criteria screens ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_12" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show exclude employees list in early criteria screens ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="PA_13" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li> -->
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="shift" role="tabpanel" aria-labelledby="shift">
+                <form action="" [formGroup]="ShiftConfigForm">
+                    <fieldset class="uk-fieldset pl-4 mb-3">
+                        <ol class="list-group list-group-numbered">
+                            <!-- <li class="d-flex">Continue Old Shift
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_1" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li> -->
+                            <li class="d-flex">Show Shift in My Attendance
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_2" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show Shift Timing in My Attendance
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_3" class="form-check-input"   type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <!-- <li class="d-flex">Allow rotational shift
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_4" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes, then system will try to figure out best shift is assigned
+                                to
+                                employee rather than manual assignment.)</span>
+                            <li class="d-flex">Allow assigning weekly offs for rotational shift
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_5" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(This setting only works when rotational shift is On. If set to Yes, then
+                                system will automatically checks for weekly offs.)</span>
+                            <li class="d-flex">Allow assigning holidays for rotational shift
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_6" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(This setting only works when rotational shift is On. If set to Yes, then
+                                system will automatically checks for holidays.)</span> -->
+                            <li class="num d-flex justify-content-start align-items-center">Buffer time for shift start
+                                time when comparison is made on both check in/out time
+                                <input formControlName="sc_7" type="text" class="form-control border-blue mx-2"
+                                    placeholder="30 Min">
+                            </li>
+                            <!-- <li class="d-flex">Show shift type in my attendance
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_8" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li> -->
+                            <li class="d-flex">Assign shift to newly created employee ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_9" class="form-check-input"  type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes then, when new employee is created, that employee will
+                                assign
+                                shift based on below dropdown.)</span>
+                            <li class="num d-flex justify-content-start align-items-center">Select shift for newly
+                                created
+                                employee
+                                <ng-select [clearable]="false" formControlName="sc_10" class="form-control border-blue mx-2"  bindValue="id" bindLabel="shift_name"
+                                  ></ng-select>
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="regularization" role="tabpanel" aria-labelledby="regularization">
+                <form action="" [formGroup]="RegularizationForm">
+                    <fieldset class="uk-fieldset pl-4 mb-3">
+                        <ol class="list-group list-group-numbered">
+                            <li class="num d-flex justify-content-start align-items-center">Attendance start period
+                                <ng-select [clearable]="false" formControlName="r_1" class="form-control border-blue mx-2"
+                                    [items]="attendance_period" bindLabel="name" bindValue="name"></ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Attendance End period
+                                <ng-select [clearable]="false" formControlName="r_2" class="form-control border-blue mx-2"
+                                    [items]="attendance_period" bindLabel="name" bindValue="name"></ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Lock attendance for
+                                regularization/rationalization after
+                                <input formControlName="r_3" type="text" class="form-control border-blue mx-2"
+                                    placeholder="No of days Value">
+                            </li>
+                            <li class="d-flex">Allow employee to regularize/rationalize outside attendance period
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="r_4" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow employee to rationalize even if employee is present ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="r_5" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow rationalization on weekly off
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="r_6" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow rationalization on holiday
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="r_7" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow employee to select shift while rationalizing from My Attendance ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="r_8" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to No, employee won't be able to select shift from
+                                dropdown.)</span>
+                            <li class="num d-flex justify-content-start align-items-center">Number of Rationalization
+                                Allowed To Employee In Attendance Period
+                                <input formControlName="r_9" type="text" class="form-control border-blue mx-2"
+                                    placeholder="04 Days">
+                            </li>
+                            <li class="d-flex">Show all details in regularization screen ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="r_10" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(Like check in/out, weekly off, absent etc.)</span>
+                            <li class="d-flex">Send attendance rationalization notification after approval to employee ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="r_11" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Allow employee to
+                                rationalize
+                                for no of days in past?
+                                <input formControlName="r_12" type="text" class="form-control border-blue mx-2"
+                                    placeholder="Enter Value">
+                            </li>
+                            <span class="ps-4">(Empty or zero value will not be considered.)</span>
+                            <li class="d-flex">Show overtime column in regularization screen ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="r_13" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show overtime column in rationalization screen ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="r_14" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Employee status for
+                                regularization?
+                                <ng-select [clearable]="false" formControlName="r_15" class="form-control border-blue mx-2"
+                                    [items]="employee_status" bindLabel="name" bindValue="name"></ng-select>
+                            </li>
+                            <span class="ps-4">(Employees will be filtered based on above selected status on
+                                regularization
+                                screen in employee dropdown)</span>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="subordinates" role="tabpanel" aria-labelledby="subordinates">
+                <form action="" [formGroup]="SubordinatesForm">
+                    <fieldset class="uk-fieldset pl-4 mb-3">
+                        <ol class="list-group list-group-numbered">
+                            <li class="d-flex">Show all subordinates to manager in my attendance ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_1" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show all subordinates to functional manager in my attendance ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_2" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(Note that if employee is both manager and functional manager then
+                                combined
+                                employees will be shown.)</span>
+                            <li class="d-flex">Show all subordinates to manager in attendance reports ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_3" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show all subordinates to functional manager in attendance reports ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_4" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(Note that if employee is both manager and functional manager then
+                                combined
+                                employees will be shown.)</span>
+                            <li class="d-flex">Show subordinates to manager who has profile, in my attendance ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_5" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show subordinates to functional manager who has profile, in my attendance
+                                ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_6" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Filter data for attendance approvals
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_7" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Display approval data as per attendance period
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_8" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(This setting is not applicable to Admin and Profile assign to an
+                                Employee)</span>
+                            <li class="d-flex">Filter data for overtime approvals
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_9" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow to see approvals other then primary approver ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_10" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes then, approver's other then primary approver also can see
+                                the
+                                approval details)</span>
+                            <li class="num d-flex justify-content-start align-items-center">Waiting period before
+                                allowing
+                                other approver's to approve
+                                <input formControlName="sc_11" type="text" class="form-control border-blue mx-2"
+                                    placeholder="03 Days">
+                            </li>
+                            <span class="ps-4">(If above setting is set to Yes then, approver's other then primary
+                                approver
+                                can approve it after waiting period after application date.)</span>
+                            <li class="d-flex">Allow approver to update total overtime hours
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_12" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow approver to update total overtime hours to go above actual overtime
+                                hours ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_13" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes, then system will not allow total overtime hours go beyond
+                                actual overtime hours)</span>
+                            <li class="d-flex">Send Daily Status Details for approvals ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_14" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes, then daily status will go for approvals.)</span>
+                            <li class="d-flex">Filter data for daily status approvals
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_15" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes and profile is set for logged in employee, then data in
+                                approval will be filtered)</span>
+                            <li class="d-flex">Show daily status approvals in my attendance ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="sc_16" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="others" role="tabpanel" aria-labelledby="others">
+                <form action="" [formGroup]="OthersConfigForm">
+                    <fieldset class="uk-fieldset pl-4 mb-5">
+                        <ol class="list-group list-group-numbered">
+                            <li class="d-flex">Send missing attendance notification ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_1" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Weekly Working hours
+                                <input formControlName="o_2" type="text" class="form-control border-blue mx-2"
+                                    placeholder="09 hrs">
+                            </li>
+                            <span class="ps-4">(Use `:` for minutes separator.)</span>
+                            <li class="d-flex">Show total hours in my attendance ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_3" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show total hours in my attendance on leave dates ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_4" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show loss of pay in my attendance
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_5" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show holiday option in Roster to Employee ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_6" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Show weekly off option in Roster to Employee ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_7" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Process attendance without using any attendance configuration ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_8" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes, then system will not read any attendance configuration
+                                and
+                                process data as it is.)</span>
+                            <li class="d-flex">Automatically credit leave for holiday and weekly off
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_9" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Credited leave will get
+                                expire
+                                after
+                                <input formControlName="o_10" type="text" class="form-control border-blue mx-2"
+                                    placeholder="05 Days">
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Automatically credit leave
+                                for
+                                working on weekly off and holiday
+                                <ng-select [clearable]="false" formControlName="o_11" class="form-control border-blue mx-2"
+                                    [items]="credit_leave" bindLabel="name" bindValue="name"></ng-select>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Minimum working hours
+                                require to
+                                get full day leave credit
+                                <input formControlName="o_12" type="text" class="form-control border-blue mx-2"
+                                    placeholder="No. of hrs">
+                            </li>
+                            <li class="d-flex">Allow half day leave credit for working on weekly off holiday ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_13" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <span class="ps-4">(If set to Yes, then system will check lower and higher range of working
+                                hours and accordingly credit half day.)</span>
+                            <li class="num d-flex justify-content-start align-items-center">Minimum working hours
+                                require to
+                                get half day leave credit
+                                <input formControlName="o_14" type="text" class="form-control border-blue mx-2"
+                                    placeholder="No. of hrs">
+                            </li>
+                            <span class="ps-4">(If above setting is Yes, then system will check for value of this
+                                setting
+                                and value of full day leave credit and found in between then will credit half day leave.
+                                Default value is 5 minutes.)</span>
+                            <li class="d-flex">Send Email Notification for Late Coming ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_15" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="num d-flex justify-content-start align-items-center">Employee status for my
+                                attendance
+                                <ng-select [clearable]="false" formControlName="o_16" class="form-control border-blue mx-2"
+                                    [items]="employee_status" bindLabel="name" bindValue="name"></ng-select>
+                            </li>
+                            <span class="ps-4">(Employees will be filtered based on above selected status on my
+                                attendance
+                                screen in employee dropdown)</span>
+                            <li class="num d-flex justify-content-start align-items-center">My Calendar Week Start Day
+                                <ng-select [clearable]="false" formControlName="o_17" class="form-control border-blue mx-2"
+                                    [items]="calendar_week" bindLabel="name" bindValue="name"></ng-select>
+                            </li>
+                            <li class="d-flex">Allow overtime capping on Overtime Approval Screen ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_18" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Allow to cancel overtime request ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_19" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="d-flex">Send overtime cancellation request for approval ?
+                                <div class="form-check form-switch ms-3">
+                                    <input formControlName="o_20" class="form-check-input" type="checkbox"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <button *ngIf="this.getConfigData" class=" save-button" (click)="editConfiguration()">
+                Update
+            </button>
+        </div>
+        <div class="col-md-12">
+            <button *ngIf="!this.getConfigData" class=" save-button" (click)="attendenceConfig()">
+                Add
+            </button>
+        </div>
+    </div>
+</div>

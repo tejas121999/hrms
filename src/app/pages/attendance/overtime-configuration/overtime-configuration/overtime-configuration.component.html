@@ -1,0 +1,256 @@
+<div class="row pt-4 px-5">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1">Overtime Configuration</h1>
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<div class="row px-5 pt-4">
+    <div class="d-flex justify-content-start pt-4">
+        <ul class="nav nav-tabs justify-content-start col-md-6 justify-content-between" id="ex2" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" href="#overtime-calculation" data-bs-toggle="tab">Overtime Calculation</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" href="#overtime-capping" data-bs-toggle="tab">Overtime Capping</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="overtime-calculation" role="tabpanel"
+            aria-labelledby="overtime-calculation">
+            <form action="">
+                <fieldset class="uk-fieldset pl-4">
+                    <div class="row add">
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input bg-white p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">Calculate overtime based on the below shown
+                                    Cal..</label>
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                        <ng-select [clearable]="false"></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-3 mt-4">
+                            <div class="bg-input bg-white p-1 border-bottom-blue">
+                                <label for="" class="form-label ps-2">Calculated By</label>
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                        <ng-select></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div class="view-table px-4 py-3 mt-4">
+                <table class="data-table table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Employment Types</th>
+                            <th scope="col">Normal Days</th>
+                            <th scope="col">Weekly Off</th>
+                            <th scope="col">Holiday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Permanent</td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                        </tr>
+                        <tr>
+                            <td>Contract</td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                        </tr>
+                        <tr>
+                            <td>Trainee</td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                        </tr>
+                        <tr>
+                            <td>Consultant</td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                        </tr>
+                        <tr>
+                            <td>Probation</td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                            <td><input type="text" class="form-control border-blue"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="px-4 my-4 pb-4">
+                <div class="d-flex mb-3">
+                    <label for="">Consider Working On Weekly Off / Holiday Consider Total Hours As Overtime
+                        Hours</label>
+                    <div class="form-check form-switch ps-5">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    </div>
+                </div>
+                <span class="text-dark">Overtime Hours Will Be Calculated Based On (Total OT Hrs Or Actual OT Hrs Based
+                    Upon Above Config.) (Nos. Added In Text Box Under Normal Days / Weekly Off / Holiday</span>
+                <div class="num mt-3">
+                    <label for="" class="d-flex">Start Calculating OT After <input type="text"
+                            class="form-control border-blue mx-3"> Minutes</label>
+                </div>
+                <div class="d-flex mt-3">
+                    <label for="">This Is Applicable On Weekly Off / Holiday</label>
+                    <div class="form-check form-switch ps-5">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="me-5">
+                        <a class="add-button mt-2" data-bs-toggle="collapse" href="#late-criteria" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                            <span class="add-btn ms-2 text-white">Overtime Round Off Criteria</span>
+                        </a>
+                    </span>
+                </div>
+                <div class="row collapse my-4" id="late-criteria">
+                    <div class="col-md-4 px-4 mt-4">
+                        <div class="bg-input bg-white p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">Round Mode</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <ng-select [clearable]="false" class="ps-2 text-dark" [items]="mode" bindLabel="name" bindValue="name">
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 px-4 mt-4">
+                        <div class="bg-input bg-white p-1 border-bottom-blue">
+                            <label for="" class="form-label ps-2">No. of Decimal Digits</label>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade show" id="overtime-capping" role="tabpanel" aria-labelledby="overtime-capping">
+            <div class="d-flex mt-2">
+                <label for="">Apply Overtime Capping ?</label>
+                <div class="form-check form-switch ps-5">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                </div>
+            </div>
+            <div class="view-table px-4 py-3 mt-3">
+                <table class="data-table table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Frequency</th>
+                            <th scope="col">Capping Hours</th>
+                            <th scope="col">Consider For Capping</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Daily</td>
+                            <td><input type="text" class="form-control cap-input"></td>
+                            <td>
+                                <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Weekly Off</label>
+                                <input type="checkbox" class="form-check-input mx-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Holiday</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Weekly</td>
+                            <td><input type="text" class="form-control cap-input"></td>
+                            <td class="col-md-4">
+                                <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Weekly Off</label>
+                                <input type="checkbox" class="form-check-input mx-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Holiday</label>
+                                <div class="">
+                                    <span class="text-dark">Calculation will be done from 1st day of week to last day of
+                                        week. Week will start from Monday to Sunday</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Monthly <br>
+                                <input type="checkbox" class="form-check-input mx-3" id="exampleCheck1">
+                                <label class="form-check-label cap-label" for="exampleCheck1">Apply Attendance Period</label>
+                            </td>
+                            <td><input type="text" class="form-control cap-input"></td>
+                            <td class="col-md-4">
+                                <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Weekly Off</label>
+                                <input type="checkbox" class="form-check-input mx-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Holiday</label>
+                                <div class="">
+                                    <span class="text-dark">Calculation will be done from 1st day of month to last day
+                                        of month. If attendance period is selected then system will calculate based on
+                                        that</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Quarterly</td>
+                            <td><input type="text" class="form-control cap-input"></td>
+                            <td class="col-md-4">
+                                <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Weekly Off</label>
+                                <input type="checkbox" class="form-check-input mx-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Holiday</label>
+                                <div class="">
+                                    <span class="text-dark">Calculation will be done from 1st day of quarter to last day
+                                        of quarter. Quarter will be from Jan-Mar, Apr-Jun, Jul-Sep & Oct-Dec.</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Half Yearly</td>
+                            <td><input type="text" class="form-control cap-input"></td>
+                            <td class="col-md-4">
+                                <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Weekly Off</label>
+                                <input type="checkbox" class="form-check-input mx-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Holiday</label>
+                                <div class="">
+                                    <span class="text-dark">Calculation will be done from 1st day of half year to last
+                                        day of half year. Half year will start from Jan-Jun & Jul-Dec.</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Yearly</td>
+                            <td><input type="text" class="form-control cap-input"></td>
+                            <td class="col-md-4">
+                                <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Weekly Off</label>
+                                <input type="checkbox" class="form-check-input mx-3" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Holiday</label>
+                                <div class="">
+                                    <span class="text-dark">Calculation will be done from 1st day of year to last day of
+                                        year. Year will start from Jan-Dec.</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="num mt-3">
+                <label for="" class="d-flex">Locking Period For Past OT Request <input type="text"
+                        class="form-control border-blue mx-3"> No. of Days</label>
+            </div>
+        </div>
+    </div>
+</div>

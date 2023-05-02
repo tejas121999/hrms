@@ -1,0 +1,157 @@
+<div cdkScrollable id="add-present-emp" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit? "Edit":"Add"}} Always Present Employee</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="alwaysPresentEmpForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add pt-4">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Employee</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" [items]="user_data" bindLabel="first_name"
+                                                    formControlName="employee_id" bindValue="id">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="alwaysPresentEmpForm.get('employee_id')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(alwaysPresentEmpForm,'employee_id')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Start Time(Minimum)</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" [owlDateTime]="startTimeMin"
+                                                    [owlDateTimeTrigger]="startTimeMin"
+                                                    formControlName="minimum_start_time">
+                                                <owl-date-time pickerType="timer" #startTimeMin></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="startTimeMin">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="alwaysPresentEmpForm.get('minimum_start_time')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(alwaysPresentEmpForm,'minimum_start_time')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Start Time(Maximum)</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" [owlDateTime]="startTimeMax"
+                                                    [owlDateTimeTrigger]="startTimeMax"
+                                                    formControlName="maximum_start_time">
+                                                <owl-date-time pickerType="timer" #startTimeMax></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="startTimeMax">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="alwaysPresentEmpForm.get('maximum_start_time')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(alwaysPresentEmpForm,'maximum_start_time')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">End Time(Minimum)</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" [owlDateTime]="endTimeMin"
+                                                    [owlDateTimeTrigger]="endTimeMin"
+                                                    formControlName="minimum_end_time">
+                                                <owl-date-time pickerType="timer" #endTimeMin></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="endTimeMin">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="alwaysPresentEmpForm.get('minimum_end_time')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(alwaysPresentEmpForm,'minimum_end_time')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">End Time(Maximum)</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" [owlDateTime]="endTimeMax"
+                                                    [owlDateTimeTrigger]="endTimeMax"
+                                                    formControlName="maximum_end_time">
+                                                <owl-date-time pickerType="timer" #endTimeMax></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="endTimeMax">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 px-4 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Description</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea rows="1" class="form-control"
+                                                    formControlName="description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div *ngIf="!isEdit" class="text-center" style="margin-top: 40px;">
+                            <button class="save-button px-3" (click)="addAlwaysPresentEmp()">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white">Save</span>
+                            </button>
+                        </div>
+                        <div *ngIf="isEdit" class="text-center" style="margin-top: 40px;">
+                            <button class="save-button px-3" (click)="editAlwaysPresentEmp()">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white">Update</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

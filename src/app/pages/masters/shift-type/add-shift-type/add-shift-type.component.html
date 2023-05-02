@@ -1,0 +1,386 @@
+<div cdkScrollable id="add-shift-type" class="uk-modal-container modal-scroll-form add-shift-modal"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body scrollbar">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? "Edit": "Add"}} Shift Master</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="shifttypeForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Shift Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="150" type="text" formControlName="shift_name"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="shifttypeForm.get('shift_name')?.invalid">
+                                        <span class="text-danger">{{getError(shifttypeForm,'shift_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Start Time</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input readonly class="form-control ml-2" formControlName="start_time"
+                                                    [owlDateTime]="startTimer" [owlDateTimeTrigger]="startTimer">
+                                                <owl-date-time pickerType="timer" #startTimer></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="startTimer">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="shifttypeForm.get('start_time')?.invalid">
+                                        <span class="text-danger">{{getError(shifttypeForm,'start_time')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">End Time</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input readonly class="form-control ml-2" formControlName="end_time"
+                                                    [owlDateTime]="endTimer" [owlDateTimeTrigger]="endTimer">
+                                                <owl-date-time pickerType="timer" #endTimer></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="endTimer">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="shifttypeForm.get('end_time')?.invalid">
+                                        <span class="text-danger">{{getError(shifttypeForm,'end_time')}}</span>
+                                    </div>
+                                </div>
+                                <!-- ==================== -->
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Full Day Working hrs</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number"
+                                                onKeyPress="if(this.value.length==2){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    formControlName="full_day_working_hrs" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="shifttypeForm.get('full_day_working_hrs')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(shifttypeForm,'full_day_working_hrs')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Work Hours (Less Than Half Day)</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number"
+                                                onKeyPress="if(this.value.length==2){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    formControlName="working_hrs_LT_half_day" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="shifttypeForm.get('working_hrs_LT_half_day')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(shifttypeForm,'working_hrs_LT_half_day')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <!-- <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Late Mark Time</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="late_mark_time"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Late Mark Time</label>
+                                        <!-- <span class="text-danger">*</span> -->
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" readonly
+                                                    formControlName="late_mark_time" [owlDateTime]="Late_Mark_Time"
+                                                    [owlDateTimeTrigger]="Late_Mark_Time">
+                                                <owl-date-time pickerType="timer" #Late_Mark_Time></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="Late_Mark_Time">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Work Hours (Half Day)</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number"
+                                                onKeyPress="if(this.value.length==2){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    formControlName="half_day_working_hrs" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="shifttypeForm.get('half_day_working_hrs')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(shifttypeForm,'half_day_working_hrs')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Work Hours (OT Rate)</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number"
+                                                onKeyPress="if(this.value.length==2){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    formControlName="working_hours_ot_rate" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="shifttypeForm.get('working_hours_ot_rate')?.invalid">
+                                        <span
+                                            class="text-danger">{{getError(shifttypeForm,'working_hours_ot_rate')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <!-- <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Half Day Time</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="half_day_time" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Half Day Time</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" readonly
+                                                    formControlName="half_day_time" [owlDateTime]="Half_day_time"
+                                                    [owlDateTimeTrigger]="Half_day_time">
+                                                <owl-date-time pickerType="timer" #Half_day_time></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="Half_day_time">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="shifttypeForm.get('half_day_time')?.invalid">
+                                        <span class="text-danger">{{getError(shifttypeForm,'half_day_time')}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <ul class="uk-tab shift" data-uk-tab="{connect:'#my-id'}" uk-switcher="animation:uk-animation-fade">
+                        <li class="uk-active">
+                            <a class="" href="#half-day" (click)="currentTab(1)">Half Day</a>
+                        </li>
+                        <li>
+                            <a href="#full-day" (click)="currentTab(2)">Full Day</a>
+                        </li>
+                    </ul>
+                    <ul class="uk-flex-center uk-switcher uk-margin" id="my-id">
+                        <li class="">
+                            <a class="mr-2 mt-3" (click)="halfDayItems()">
+                                <img class="icon-display" src="./assets/icons/add-field.svg">
+                            </a>
+                            <form [formGroup]="hdForm">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <ul
+                                            class="nav nav-tabs field mt-4 justify-content-center justify-content-between">
+                                            <li class="col-md-5">
+                                                <span>Week Days</span>
+                                            </li>
+                                            <li class="col-md-5">
+                                                <span>Off Days</span>
+                                            </li>
+                                            <li class="col-md-2"></li>
+                                        </ul>
+                                        <div class="add" formArrayName="halfDay">
+                                            <ul *ngFor="let hd of halfDayForm.controls; let i = index"
+                                                [formGroupName]="i"
+                                                class="p-0 my-1 row justify-content-center justify-content-between list-unstyled">
+                                                <li class="col-md-5">
+                                                    <div class="bg-input p-1 border-bottom-blue col-md-8 mx-auto">
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <ng-select [clearable]="false" class="ps-2" [items]="week_days"
+                                                                    bindLabel="name" bindValue="name"
+                                                                    formControlName="week_days"></ng-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="col-md-5">
+                                                    <div class="bg-input p-1 border-bottom-blue col-md-8 mx-auto">
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <ng-select [clearable]="false" class="ps-2" [items]="off_days"
+                                                                    bindLabel="name" bindValue="name"
+                                                                    formControlName="off_days"></ng-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex col-md-2">
+                                                    <a (click)="halfDayEdit(i, hd)">
+                                                        <img src="./assets/icons/edit.svg"
+                                                            style="margin-top: 20px;margin-right: 10px;">
+                                                    </a>
+                                                    <a class="mr-2 mt-3" *ngIf="isEdit" (click)="removeItem(i , hd)">
+                                                        <img class="icon-display" src="./assets/icons/delete.svg">
+                                                    </a>
+                                                </li>
+                                                <li class="col-md-12">
+                                                    <div class="add-field-line"></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ul class="list-unstyled d-flex justify-content-end mt-3">
+                                            <li class="nextprev">
+                                                <a href="" data-uk-switcher-item="0"><span>Previous</span></a>
+                                            </li>
+                                            <li class="nextprev px-3"><a href=""
+                                                    data-uk-switcher-item="1"><span>Next</span></a></li>
+                                        </ul>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </li>
+                        <li class="">
+                            <a class="mr-2 mt-3" (click)="fullDayItems()">
+                                <img class="icon-display" src="./assets/icons/add-field.svg">
+                            </a>
+                            <form [formGroup]="fdForm">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <ul
+                                            class="nav nav-tabs field mt-4 justify-content-center justify-content-between">
+                                            <!-- <li class="col-md-1"></li> -->
+                                            <li class="col-md-5">
+                                                <span>Week Days</span>
+                                            </li>
+                                            <li class="col-md-5">
+                                                <span>Off Days</span>
+                                            </li>
+                                            <li class="col-md-2"></li>
+                                        </ul>
+                                        <div class="add" formArrayName="fullDay">
+                                            <ul *ngFor="let fd of fullDayForm.controls;  let i = index"
+                                                [formGroupName]="i"
+                                                class="p-0 my-1 row justify-content-center justify-content-between list-unstyled">
+                                                <!-- <li class="col-md-1">
+                                                    <a class="mr-2 mt-3">
+                                                        <img class="icon-display" src="./assets/icons/add-field.svg">
+                                                    </a>
+                                                </li> -->
+                                                <li class="col-md-5">
+                                                    <div class="bg-input p-1 border-bottom-blue w-50 mx-auto">
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <ng-select [clearable]="false" class="ps-2" [items]="week_days"
+                                                                    bindLabel="name" bindValue="name"
+                                                                    formControlName="week_days"></ng-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="col-md-5">
+                                                    <div class="bg-input p-1 border-bottom-blue w-50 mx-auto">
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <ng-select [clearable]="false" class="ps-2" [items]="off_days"
+                                                                    bindLabel="name" bindValue="name"
+                                                                    formControlName="off_days"></ng-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex col-md-2">
+                                                    <a (click)="fullDayEdit(i)">
+                                                        <img src="./assets/icons/edit.svg"
+                                                            style="margin-top: 20px;margin-right: 10px;">
+                                                    </a>
+                                                    <a class="mr-2 mt-3">
+                                                        <img class="icon-display" src="./assets/icons/delete.svg">
+                                                    </a>
+                                                </li>
+                                                <li class="col-md-12">
+                                                    <div class="add-field-line"></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ul class="list-unstyled d-flex justify-content-end mt-3">
+                                            <li class="nextprev">
+                                                <a href="" data-uk-switcher-item="0"><span>Previous</span></a>
+                                            </li>
+                                            <li class="nextprev px-3"><a href=""
+                                                    data-uk-switcher-item="1"><span>Next</span></a></li>
+                                        </ul>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </li>
+                    </ul>
+                    <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                        <div class="">
+                            <button [disabled]="disabledbutton" *ngIf="isEdit == false " class="save-button px-3"
+                                (click)="addShiftType()">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save</span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                                <!-- <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span> -->
+                            </button>
+                            <button *ngIf="isEdit == true" class="save-button px-3" (click)="updateShifType()">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update</span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                <!-- <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span> -->
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

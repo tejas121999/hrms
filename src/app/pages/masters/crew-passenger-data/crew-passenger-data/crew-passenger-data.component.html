@@ -1,0 +1,334 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2">Crew Passenger Data</h1>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="px-5">
+        <div class="">
+            <ul class="uk-tab justify-content-start w-25 mx-2" data-uk-tab="{connect:'#cpd'}"
+                uk-switcher="animation:uk-animation-fade">
+                <li class="uk-active">
+                    <a class="" href="#general-info">General</a>
+                </li>
+                <li class="uk-active">
+                    <a class="" href="#manifest-info">Manifest Info</a>
+                </li>
+            </ul>
+            <ul class="uk-flex-center uk-switcher uk-margin" id="cpd">
+                <li class="show active uk-active" id="general-info">
+                    <form action="" [formGroup]="crewForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">No of Passenger</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="no_of_passenger" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Date</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control"
+                                                 formControlName="date" readonly>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span>
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Time</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control" [owlDateTime]="passengerTime"
+                                                    [owlDateTimeTrigger]="passengerTime" formControlName="time">
+                                                <owl-date-time pickerType="timer" #passengerTime>
+                                                </owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="passengerTime">
+                                                    <img src="./assets/icons/timer.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Passenger Weight</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="passenger_weight" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Luggage Weight</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="luggage_weight"  readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Total Weight</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="total_weight" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Cargo: ONGC:</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="cargo_ongc" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Cat</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="cat" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Others</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="others" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Cargo Total</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="cargo_total" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Total Payload</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="total_payload" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Status</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="status" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </li>
+                <li class="show active uk-active" id="manifest-info">
+                    <form action="" [formGroup]="crewPassengerForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Company name</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="company_name" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Company Address</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea class="form-control" rows="1" formControlName="company_address" readonly></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">RFM Number</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="rfm_number" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Mode Of Journey</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="mode_of_journey" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Vendor Number</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" class="form-control" formControlName="vendor_name" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Schedule Sector</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="scheduled_sector" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Date of Sortie</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control"
+                                                     formControlName="date_of_sorti" readonly>
+                                                <!-- <owl-date-time pickerType="calendar" #date_of_sortie readonly>
+                                                </owl-date-time> -->
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span>
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Task</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="task" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Sortie Type</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="sorti_type" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Plant</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="plant" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Remark</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea rows="1" class="form-control" formControlName="remark" readonly></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </li>
+            </ul>
+            <div class="view-table px-3 py-3" >
+                <table class="data-table table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Type</th>
+                            <th scope="col">Vendor Code</th>
+                            <th scope="col">Crew</th>
+                            <th scope="col">Passenger Name</th>
+                            <th scope="col">Designation</th>
+                            <th scope="col">Originating Plant</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Purchasing Order</th>
+                            <th scope="col">Plant</th>
+                            <th scope="col">Nationality</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Joining Date</th>
+                            <th scope="col">Mobile No</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of crewEmployees">
+                            <td>{{passenger_data.type}}</td>
+                            <td>{{passenger_data.vendor_code}}</td>
+                            <td>{{crewName.crew_name}}</td>
+                            <td>{{item.emp_name}}</td>
+                            <td>{{item.job_title}}</td>
+                            <td>{{passenger_data.plant_of_manifest}}</td>
+                            <td></td>
+                            <td>{{passenger_data.purchasing}}</td>
+                            <td>{{passenger_data.plant}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

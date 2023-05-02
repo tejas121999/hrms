@@ -1,0 +1,187 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2">Attendance</h1>
+    </div>
+    <!-- <div class="col-md-6 d-flex justify-content-end align-items-center pb-2">
+        <div class="d-flex border-blue br-5">
+            <input class="form-control form-control-lg w-100 py-2" type="search" placeholder="Search...">
+            <img src="./assets/icons/search.svg" alt="" class="bg-search pe-3" height="35px" width="35px">
+        </div>
+    </div> -->
+    <!-- <div class="border-2pxblue"></div> -->
+</div>
+
+<app-loader *ngIf="loader"></app-loader>
+
+
+<div *ngIf="!loader" class="row pt-4 px-5 mb-5 emp-attendance">
+    <div class="row counts mb-4 px-3 py-2">
+        <div class="col-md-12">
+            <h2>This Month Overview</h2>
+        </div>
+        <div class="d-flex counts overcount" style="width:1036px">
+            <div *ngFor="let item of messageEvent">
+                <p [ngStyle]="{'background':item.color}" class="mx-auto">{{item.count}}</p>
+                <span class="text-capitalize">{{item.title}}</span>
+            </div>
+        </div>
+    </div>
+    <div #data class="col-md-6 p-0">
+        <div  class="calendar py-3 mb-5">
+            <!-- <h4 style="text-align: center; font-weight: 540;">{{viewName}}</h4> -->
+            <full-calendar *ngIf="calendarOptions" #fullcalendar  [options]="calendarOptions">
+              <ng-template #eventContent let-arg>
+                  <b>{{ arg.event.title }}</b> - {{ arg.event.start.getDate() }}
+              </ng-template>
+          </full-calendar>
+        </div>
+    </div>
+
+
+    <div class="col-md-4 ps-4">
+        <div class="reason p-4">
+            <div class="" >
+                <div class="row">
+                    <div class="col-md-10">
+                        <h6 class="present text-capitalize" [ngStyle]="{'color': displayDateDetails.borderColor}">{{displayDateDetails?.title}}</h6>
+                    </div>
+                    <div class="image text-end col-md-2">
+                        <button class="border-0 bg-white" (click)="onclick()">
+                            <img src="./assets/icons/grey-edit.svg" alt="" height="35px" width="35px">
+                        </button>
+                    </div>
+                </div>
+                <div class="" *ngIf="!visibleEdit">
+                  <div class="">
+                    <div *ngIf="displayDateDetails?.date" class="d-flex justify-content-start align-items-center mb-4">
+                        <div class="pe-4">
+                            <img src="./assets/icons/grey_calendar.svg" height="35px" width="35px" alt="" class="">
+                        </div>
+                        <span>{{displayDateDetails?.date}}</span>
+                    </div>
+                    <div *ngIf="displayDateDetails?.leavetype" class="d-flex justify-content-start align-items-center mb-4">
+                        <div class="pe-4">
+                            <img src="./assets/icons/grey_upload.svg" height="35px" width="35px" alt="" class="">
+                        </div>
+                        <span *ngIf="displayDateDetails?.leavetype "  >{{displayDateDetails?.leavetype}}</span>
+
+
+                      </div>
+
+                      <div *ngIf="displayDateDetails?.leavesName" class="d-flex justify-content-start align-items-center mb-4">
+                        <div class="pe-4">
+                            <img src="./assets/icons/grey_upload.svg" height="35px" width="35px" alt="" class="">
+                        </div>
+                        <span *ngIf="displayDateDetails?.leavesName "  >{{displayDateDetails?.leavesName}}</span>
+
+
+                      </div>
+
+
+                    <div *ngIf="displayDateDetails?.inTime " class="d-flex justify-content-start align-items-center mb-4">
+                        <div class="pe-4">
+                            <img src="./assets/icons/grey_time.svg" height="35px" width="35px" alt="" class="">
+                        </div>
+                        <span>{{displayDateDetails.inTime |date:'shortTime'}}</span>
+                    </div>
+                    <div *ngIf="displayDateDetails?.outTime" class="d-flex justify-content-start align-items-center mb-4">
+                        <div class="pe-4">
+                            <img src="./assets/icons/grey_time.svg" height="35px" width="35px" alt="" class="">
+                        </div>
+                        <span>{{displayDateDetails.outTime |date:'shortTime'}}</span>
+                    </div>
+                </div>
+                </div>
+                <div class="" *ngIf="visibleEdit">
+                    <form action="" [formGroup]="regularization" class="mb-3">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add justify-content-center">
+                                <div class="col-md-12 px-3 mt-2">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Date</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input readonly="true" formControlName="date" [(ngModel)]="selectDate" name="selectDate" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-12 px-3 mt-2">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Shift Type</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select class="ps-2"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-12 px-3 mt-2">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Check In Time</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input formControlName="checkin_time"  [(ngModel)]="inTime" name="inTime" readonly class="form-control ml-2"
+                                                    [owlDateTime]="checkIn" [owlDateTimeTrigger]="checkIn">
+                                                <owl-date-time pickerType="timer" #checkIn></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1 text-end">
+                                                <span [owlDateTimeTrigger]="checkIn">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-2">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Check Out Time</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input formControlName="checkout_time"  [(ngModel)]="outTime" name="outTime" readonly class="form-control ml-2"
+                                                    [owlDateTime]="checkOut" [owlDateTimeTrigger]="checkOut">
+                                                <owl-date-time pickerType="timer" #checkOut></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1 text-end">
+                                                <span [owlDateTimeTrigger]="checkOut">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-2">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for=""   class="form-label ps-2">Reason</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea required formControlName="reason" rows="1" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-2">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Manager Name </label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [readOnly]="true"  [(ngModel)]="manage_name" formControlName="managerName" name="manage_name" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="row add">
+                        <div class="col-md-12 text-center">
+                            <button (click)="saveRegularize()" class="save-button px-3">
+                                <span class="save-btn text-blue">Regularize</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

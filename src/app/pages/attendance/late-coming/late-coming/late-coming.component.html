@@ -1,0 +1,198 @@
+<div class="row pt-4 px-5">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1">Late Coming / Early Going</h1>
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<form action="">
+    <fieldset class="uk-fieldset pl-4">
+        <div class="row add px-4 pt-4">
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Late Coming</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4 d-flex">
+                <label for="" class="ps-2">Active Employee Late Coming</label>
+                <div class="form-check form-switch ms-3">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                </div>
+                <!-- <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Active Employee Late Coming</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select class="ps-2" [items]="late_coming" bindLabel="name" bindValue="name">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Deduction Type</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" class="ps-2" [items]="deduction_type" bindLabel="type" bindValue="type">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Leave Type For Deduction</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" class="ps-2" [items]="leave_type" bindLabel="type" bindValue="type">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4 d-flex">
+                <label for="" class="ps-2">Deduct For Every Late Coming</label>
+                <div class="form-check form-switch ms-3">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                </div>
+                <!-- <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Deduct For Every Late Coming</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <ng-select class="ps-2" [items]="late_coming" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <!-- <div class="col-md-4 px-4 mt-5">
+                <span class="me-5">
+                    <a class="add-button mt-2" data-bs-toggle="collapse" href="#late-criteria" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                        <span class="add-btn ms-2 text-white">Late Coming Criteria</span>
+                    </a>
+                </span>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="row collapse" id="late-criteria">
+                <div class="col-md-4 px-4 mt-4">
+                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Select Criteria</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <ng-select class="ps-2" [items]="criteria" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 px-4 mt-4">
+                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Criteria List</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <ng-select></ng-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </fieldset>
+</form>
+<form action="">
+    <fieldset class="uk-fieldset pl-4">
+        <div class="row add px-4 pt-4">
+            <div class="col-md-12 mt-4">
+                <span class="blue-dot px-3"><i class="fa fa-circle" aria-hidden="true"></i> Early Going</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4 d-flex">
+                <label for="" class="ps-2">Active Employee Early Going</label>
+                <div class="form-check form-switch ms-3">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                </div>
+                <!-- <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Active Employee Early Going</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select class="ps-2" [items]="late_coming" bindLabel="name" bindValue="name">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Deduction Type</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" class="ps-2" [items]="deduction_type" bindLabel="type" bindValue="type">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Leave Type For Deduction</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" class="ps-2" [items]="leave_type" bindLabel="type" bindValue="type">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4 d-flex">
+                <label for="" class="ps-2">Deduct For Every Early Going</label>
+                <div class="form-check form-switch ms-3">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                </div>
+                <!-- <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Deduct For Every Early Going</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <ng-select class="ps-2" [items]="late_coming" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <!-- <div class="col-md-4 px-4 mt-5">
+                <span class="me-5">
+                    <a class="add-button mt-2" data-bs-toggle="collapse" href="#early-criteria" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                        <span class="add-btn ms-2 text-white">Early Going Criteria</span>
+                    </a>
+                </span>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="row collapse" id="early-criteria">
+                <div class="col-md-4 px-4 mt-4">
+                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Select Criteria</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <ng-select class="ps-2" [items]="criteria" bindLabel="name" bindValue="name">
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 px-4 mt-4">
+                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Criteria List</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <ng-select></ng-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </fieldset>
+</form>

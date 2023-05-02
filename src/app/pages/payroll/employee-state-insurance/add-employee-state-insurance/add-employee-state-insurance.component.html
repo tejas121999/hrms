@@ -1,0 +1,79 @@
+<div id="add-esi" uk-modal class="uk-modal-container modal-scroll-form" uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <div class="text-end px-3">
+            <button type="button" class="uk-modal-close-default" (click)="reset()" uk-close></button>
+        </div>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">Add Employee State Insurance</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">ESI Number</label>
+                                        <div class="row g-0">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Deduction Cycle</label>
+                                        <div class="row g-0">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Employee Contribution (of gross
+                                            pay)</label>
+                                        <div class="row g-0">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Employer Contribution (of gross
+                                            pay)</label>
+                                        <div class="row g-0">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4">
+                                    <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Include employee’s contribution
+                                        in the CTC</label>
+                                </div>
+                                <div class="col-md-12 px-3 mt-3">
+                                    <span>Note : ESI deduction will be made only if the employees monthly salary is less
+                                        than or equal to ₹21,000. If the employee gets a salary revision which increases
+                                        their monthly salary above ₹21,000 they would have to continue making ESI
+                                        contributions till the end of the contribution period in which the salary was
+                                        revised (April-September or October-March).</span>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button class="save-button px-3">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" style="margin-left: 10px;">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

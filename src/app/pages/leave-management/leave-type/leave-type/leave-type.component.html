@@ -1,0 +1,772 @@
+<div cdkScrollable id="add-leave" class="uk-modal-container modal-scroll-form leave-type-modal"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body scrollbar" style="width: 1300px;">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Leave Type</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="leaveTypeForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add py-4">
+                                <div class="col-md-12 mt-2">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Leave
+                                        Details</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Leave Type</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <!-- <ng-select class="ps-2" [items]="leaveData"
+                                                            bindLabel="leave_name" bindValue="id"
+                                                            formControlName="LT_1">
+                                                        </ng-select> -->
+                                                <input type="text" formControlName="leave_name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="leaveTypeForm.get('leave_name')?.invalid">
+                                    <span class="text-danger">{{getError(leaveTypeForm,'leave_name')}}</span>
+                                </div>
+                                    <div class="pt-1">
+                                        <span class="px-2"><input type="checkbox" #chkEnable ngModel (change)="isPriviledge(chkEnable.checked)" class="form-input" formControlName="priviledge"> Is This a Privilege Leave</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Color</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-8">
+                                                <span class="ps-2">{{color}}</span>
+                                            </div>
+                                            <div class="col-md-4 d-flex">
+                                                <!-- <img class="color-picker" src="./assets/icons/add.svg" alt=""> -->
+                                                <input type="color" (ngModelChange)="getCollorCode($event)" formControlName="LT_2" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Description</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea rows="1" wrap="off" formControlName="LT_3"
+                                                    class="form-control form-input-scroll"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Leave
+                                        Amount Criteria</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">No. Of Leave For All Employee</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" onKeyPress="if(this.value.length==4){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " formControlName="no_of_days" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="leaveTypeForm.get('no_of_days')?.invalid">
+                                    <span class="text-danger">{{getError(leaveTypeForm,'no_of_days')}}</span>
+                                </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disablePriviledge ? 'disable' : 'enable'">
+                                        <label for="" class="form-label ps-2">No. of Days After 1 PL Will Be Credited</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="working_days" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4" >
+                                    <div class="bg-input bg-white p-1 border-bottom-blue"[ngClass]="disablePriviledge ? 'disable' : 'enable'">
+                                        <label for="" class="form-label ps-2">Earned Day's</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="earned_days" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row add pb-4">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Exception Criteria</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_5" [items]="criteria" bindLabel="name"
+                                                    bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4 py-3">
+                                    <a class="mr-2 mt-3" (click)="addItems()">
+                                        <img class="icon-display" src="./assets/icons/add-field1.svg">
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <form action="" [formGroup]="criteriaForm">
+                        <fieldset class="uk-fieldset" formArrayName="criteriaOption">
+                            <div class="row" *ngFor="let co of criteriaOptionForm.controls; let i = index"
+                            [formGroupName]="i">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Criteria Option</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="criteria_option" [items]="criteriaValue" bindLabel="name"
+                                                    bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">No. Of Leave</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="number_of_leaves">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4 py-3">
+                                    <a class="mr-2 mt-3" (click)="removeItem(i, co)">
+                                        <img class="icon-display" src="./assets/icons/remove.svg">
+                                    </a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <form action="" [formGroup]="leaveTypeForm" class="pb-5">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row">
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Leave
+                                        Advance Options</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Applicable From</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_6" [items]="from"
+                                                bindLabel="name" bindValue="name">
+                                            </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Auto Credit</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_7" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Consider This Leave As LWP/LOP?</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_8" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Calculate Leave As Per</label>
+                                        <span class="ps-2" data-uk-tooltip="{cls:'my-tooltip'}" uk-tooltip="title: For e.g. Leave period is January to December. Employee joined on 1st February of this year and probation is ending on 30th September of this year.
+                                        If criteria set to:
+                                        Grant All then, leave will be calculated from 1st January to 31st December.
+                                        Date Of Joining then, leave will be calculated from 1st February to 31st December.
+                                        After Probation Date then, leave will be calculated from 1st October to 31st December.; delay: 500">
+                                            <img src="./assets/icons/info.svg" alt="" >
+                                        </span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_9" [items]="calculate_leave"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Allocate Leave As Per</label>
+                                        <span class="ps-2" data-uk-tooltip="{cls:'my-tooltip'}" uk-tooltip="title: For Current year, all the leaves will be given in advance. For Previous year, leaves will be calculated based on total working days of employee in previous year. This leave cannot be used for prorate purpose Leave amount criteria should not use No of months in service criteria.; delay: 500">
+                                            <img src="./assets/icons/info.svg" alt="" >
+                                        </span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_10" [items]="allocate_leave"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Allow Half Day Leave</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_11" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Prorata
+                                        Options</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">On Prorate</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" formControlName="LT_12" (change)="selectOption($event)" class="ps-2" [items]="on_prorate"
+                                                bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disableProrate ? 'disable' : 'enable'">
+                                        <label for="" class="form-label ps-2">By</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" formControlName="LT_13" class="ps-2" class="ps-2" [items]="on_prorate_by"
+                                                bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disableProrate ? 'disable' : 'enable'">
+                                        <label for="" class="form-label ps-2">When to Prorate</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_14"
+                                                    [items]="when_prorate" bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i>
+                                        Probation Options</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Applicable to employees on
+                                            Probation</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" (change)="selectEmpProbation($event)" formControlName="LT_15" [items]="emp_probation"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disableEmpProbation ? 'disable' : 'enable'">
+                                        <label for="" class="form-label ps-2">Until Probation is Over?</label>
+                                        <span class="ps-2" data-uk-tooltip="{cls:'my-tooltip'}" uk-tooltip="title: Accumulated leaves will be given to employee after probation period is over.
+                                        If prorata selected then, above prorata options will be applied.; delay: 500">
+                                            <img src="./assets/icons/info.svg" alt="" >
+                                        </span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" formControlName="LT_16" (change)="selectProbationOver($event)" class="ps-2" [items]="probation_over"
+                                                bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disableProbation ? 'disable' : 'enable'">
+                                        <label for="" class="form-label ps-2">By</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" formControlName="LT_17" class="ps-2" [items]="on_prorate_by"
+                                                bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disableProbation ? 'disable' : 'enable'">
+                                        <label for="" class="form-label ps-2">When to Prorate</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" formControlName="LT_18" class="ps-2"
+                                                    [items]="when_prorate" bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Carry
+                                        Forward Leaves</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Can carry forward to next year</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" (change)="selectCarryForward($event)" formControlName="LT_19" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="row">
+                                        <div class="col-md-6 px-3">
+                                            <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disableCarryForward ? 'disable' : 'enable'">
+                                                <label for="" class="form-label ps-2">Type</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <ng-select [clearable]="false" class="ps-2" (change)="onChangeofOptions($event)" [items]="value" bindLabel="name"
+                                                            bindValue="id" formControlName="LT_20">
+                                                        </ng-select>
+                                                        <!-- <select class="ps-2" formControlName="criteria_option" [(ngModel)]="myDropDown" (change)="onChangeofOptions($event)">
+                                                        <option value="0">Percentage</option>
+                                                        <option value="1">Amount</option>
+                                                    </select> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 px-3" *ngIf="myDropDown">
+                                            <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disableCarryForward ? 'disable' : 'enable'">
+                                                <label for="" class="form-label ps-2">Percentage</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" formControlName="LT_21" class="form-control">
+                                                        <!-- <ng-select class="ps-2" formControlName="percentage" [items]="options"
+                                                            bindLabel="name" bindValue="name">
+                                                        </ng-select> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3" *ngIf="!myDropDown">
+                                            <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disableCarryForward ? 'disable' : 'enable'">
+                                                <label for="" class="form-label ps-2">Amount</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" formControlName="LT_21" class="form-control">
+                                                        <!-- <ng-select class="ps-2" formControlName="amount" [items]="options"
+                                                            bindLabel="name" bindValue="name">
+                                                        </ng-select> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Reminder of carry forward leaves</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_22" [items]="reminder"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <span class="px-2"><input type="checkbox" class="form-input"> If carry forward leave
+                                        balance permits, leaves can be carry forwarded in multiplication with no of
+                                        years
+                                        passed by employee in organization?</span>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Leave
+                                        Applying
+                                        Options</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Can Apply Leaves For Past Dates</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_23" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Apply Past Leaves Till (No. Of
+                                            Days)</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_24" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Can Apply Leaves For Future Dates</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_25" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Apply Future Leaves Till (No. Of
+                                            Days)</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_26" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Restrict Leaves In Same Month ?</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_27" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="px-2">If this is yes the past/future attendance period setting won't
+                                        apply.</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Monthly Frequency </label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_28" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="px-2">Keep empty or zero for no restrictions.</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Min Leaves Can Be Applied At A
+                                            Time</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_29" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Max Leaves Can Be Applied At A
+                                            Time</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_30" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Gap Between Two Leaves Applied</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_31" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Attachment Mandatory (leave days)</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_32" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Can Employee Apply For Credit
+                                            Request</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select class="ps-2" formControlName="LT_33" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Exclude Weekend / Holiday</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_34" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="px-2"><input type="checkbox" class="form-input"> consider half day
+                                        while weekend / holiday ?</span>
+                                </div>
+                                <div class="col-md-12 mt-4 px-4">
+                                    <label class="ps-2">Allow To Apply Leave If Other Leaves are applied Before/After
+                                        This Leave ? </label>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4 pt-2">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2"></label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select class="ps-2" (change)="selectDays($event)" formControlName="LT_35" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue" [ngClass]="disableDays ? 'disable' : 'enable'">
+                                        <label for="" class="form-label ps-2">No. Of Days</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_36" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 mt-1 px-4">
+                                    <span class="px-2">If set to no then enter no. of days and select leave type between
+                                        these days selected
+                                        leave cannot be applied. Empty or zero days or non leave selection will be
+                                        consider as “Yes” </span>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Leave
+                                        Balance Options
+                                    </span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Maximum Balance Leaves Allowed</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_37" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Leave
+                                        Encash Options </span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Encash Leave</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_38" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Frequency</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_39" [items]="frequency"
+                                                bindLabel="name" bindValue="name">
+                                            </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Maximum Leaves Allowed To Encash</label>
+                                        <span class="ps-2" uk-tooltip="title: Maximum no of leaves allowed to encashed subjected to leave balance available for that employee. Empty or 0 will not allow to encash any balance from current leave balance.; delay: 500; pos: top-right">
+                                            <img src="./assets/icons/info.svg" alt="" >
+                                        </span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_40" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Leave Request Expiry</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_41" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Leave
+                                        Encash For FNF </span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Encash Allowed For FNF</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_42" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Encash As Per Prorata For FNF</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_43" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Display
+                                        Options </span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Show Leave Type In Leave Meters</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_44" [items]="options"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Leave
+                                        Credit Option </span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Round Mode</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" formControlName="LT_45" [items]="mode"
+                                                    bindLabel="name" bindValue="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">No. of Decimal Digits</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="LT_46" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="col-md-12 px-5 py-3 text-center">
+                        <button *ngIf="!isEdit" [disabled]="buttondisable" class="save-button px-3" (click)="addLeaveType()">
+                            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                            <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save
+                                <svg>
+                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                </svg>
+                            </span>
+                            <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                            <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                        </button>
+                        <button *ngIf="isEdit" class="save-button px-3" (click)="updateLeaveType()">
+                            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                    <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                    <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

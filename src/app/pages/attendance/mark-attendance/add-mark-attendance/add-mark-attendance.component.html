@@ -1,0 +1,157 @@
+<div cdkScrollable id="add-mark-attendance" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Mark'}} Attendance</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row mb-3">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="addAttendenceForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-12 px-3 mt-4" *ngIf="!isEdit">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">For Employee/ Group</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12 px-2">
+                                                <ng-select [clearable]="false" formControlName="emp_attendence_name"
+                                                    [multiple]="true" [items]="employeeData" bindLabel="first_name"
+                                                    bindValue="id">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4" *ngIf="isEdit">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">For Employee/ Group</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12 px-2">
+                                                <ng-select [clearable]="false" formControlName="emp_attendence_name"
+                                                    [items]="employeeData" bindLabel="first_name" bindValue="id">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Date</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input (ngModelChange)="dateFun($event)" readonly
+                                                    formControlName="attendence_date" [max]="currentDate"
+                                                    [(ngModel)]="currentDate" class="form-control"
+                                                    [owlDateTime]="fromDate" [owlDateTimeTrigger]="fromDate">
+                                                <owl-date-time pickerType="calendar" #fromDate></owl-date-time>
+                                            </div>
+
+                                            <div class="col-md-1 text-center">
+                                                <span [owlDateTimeTrigger]="fromDate">
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4" *ngIf="isEdit">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Start Time</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" formControlName="start_time"
+                                                    [owlDateTime]="startTimer" [(ngModel)]="startsTime"
+                                                    name="startsTime" [owlDateTimeTrigger]="startTimer">
+                                                <owl-date-time pickerType="timer" #startTimer></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="startTimer">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4" *ngIf="isEdit">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">End Time</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" formControlName="end_time"
+                                                    [owlDateTime]="EndTime" [(ngModel)]="endsTime" name="endsTime"
+                                                    [owlDateTimeTrigger]="EndTime">
+                                                <owl-date-time pickerType="timer" #EndTime></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="EndTime">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <label for="" class="form-label">Status</label>
+                                    <div class="">
+                                        <label class="pe-4">
+                                            <input class="uk-radio" (change)="AddDatawhileAbsent()" [(ngModel)]="status"
+                                                value="present" formControlName="status" type="radio" name="status"
+                                                checked>
+                                            Present
+                                        </label>
+                                        <label *ngIf="isEdit" class="pe-4">
+                                            <input class="uk-radio" value="absent" (change)="clearDatawhileAbsent()"
+                                                formControlName="status" type="radio" name="status">
+                                            Absent
+                                        </label>
+                                        <!--   <label>
+                                            <input class="uk-radio" value="half_day" formControlName="status"
+                                                type="radio" name="status">
+                                            Half Day
+                                        </label> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="col-md-12 d-flex justify-content-center text-end mt-5">
+                        <div class="">
+                            <button class="save-button px-3" *ngIf="!isEdit" (click)="addAttendence()">
+                                <!-- <svg height="50" width="150" xmlns="http://www.w3.org/2000/svg">
+                                    <rect id="shape" height="50" width="150" />
+                                  </svg> -->
+                                <svg>
+                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                </svg>
+                                <!-- <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+                                    <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+                                    <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+                                  </svg> -->
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <!-- <img class="icon-display mb-1" src="./assets/icons/save1.svg" height="15px"
+                                    width="15px"> -->
+                                <div class="mt-1 float-right" *ngIf="buttonLoader" uk-spinner></div>
+                                <span class="save-btn ms-2">Save</span>
+                            </button>
+                            <button class="save-button px-3" *ngIf="isEdit" (click)="editMarkAttendance()">
+                                <svg>
+                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                </svg>
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <div class="mt-1 float-right" *ngIf="buttonLoader" uk-spinner></div>
+                                <span class="save-btn ms-2">Update</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

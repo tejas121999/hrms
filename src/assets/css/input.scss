@@ -1,0 +1,166 @@
+input[type=search] {
+    // background-color: rgba(218, 228, 255, 0.49) !important;
+    border-radius: 5px;
+}
+
+input[type=search]::placeholder {
+    color: #B1B1B1;
+    font-size: 20px;
+}
+
+input[type=search]:focus {
+    box-shadow: none;
+    border: none;
+}
+
+input[type=checkbox] {
+    border: 2px solid #ABB0F1 !important;
+}
+
+input:checked[type=checkbox] {
+    background-color: #ABB0F1 !important;
+    border: 1px solid #ABB0F1 !important;
+}
+
+.form-check-input {
+    width: 1.3em;
+    height: 1.3em;
+}
+
+input[type=radio]{
+    border: 1px solid #022567 !important;
+}
+input[type=radio]:checked{
+    background-color: #022567 !important;
+}
+
+.uk-radio:checked{
+    background-color: #022567 !important;
+}
+// .form-check-input{
+//     background-color: #fff !important;
+// }
+// input[type=radio]:checked{
+//     background-color: #022567 !important;
+// }
+
+.form-control:disabled{
+    cursor: not-allowed;
+}
+
+label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
+}
+
+.form-control,
+.uk-input {
+    padding: 0 0.5rem 0 0.5rem;
+}
+
+.ng-select {
+    top: 5px;
+}
+
+.add textarea {
+    min-height: 20px;
+}
+
+.add label {
+    margin-bottom: 0;
+}
+
+input[type="file"]::file-selector-button {
+    display: none;
+}
+
+input[type="file"]{
+    border: none;
+    position: relative;
+}
+
+input[type="file"]::after {
+    // content: "\1F4CE";
+    position: absolute;
+    right: 0px;
+    background-color: #fff !important;
+    content: "";
+    background: url(/assets/icons/upload.svg) no-repeat center center/cover;
+    width: 38px;
+    height: 31px;
+    top: -4px;
+    border: 7px solid white;
+    // position: absolute;
+    // right: 0px;
+    // background-color: #0A2472 !important;
+    // content: "";
+    // background: url(/assets/icons/upload.svg) no-repeat center center/cover;
+    // width: 32px;
+    // height: 32px;
+    // color: white;
+    // top: -5px;
+    // border-left: 6px solid #0A2472;
+    // border-right: 7px solid #0A2472;
+    // border-top: 9px solid #0A2472;
+    // border-bottom: 8px solid #0A2472;
+    // border-radius: 10px;
+}
+
+input,
+.add textarea {
+    border: none !important;
+    background-color: transparent !important;
+    resize: none;
+}
+
+.add textarea:focus,
+input[type=file]:focus {
+    box-shadow: none !important;
+}
+
+.form-control:focus{
+    box-shadow: none !important;
+}
+
+.add input:focus-visible {
+    outline: none;
+}
+.ng-select .ng-clear-wrapper {
+    background: white !important;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 2px;
+}
+.ng-select .ng-arrow-wrapper{
+    background: white !important;
+    height: 20px;
+    margin-bottom: 2px;
+}
+.form-control-graph {
+    height: 35px;
+    border: none;
+}
+.form-control-graph.ng-select .ng-clear-wrapper {
+    display: none;
+}
+.form-control-graph.ng-select span.ng-arrow-wrapper:before {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    background-image: url('../../assets/icons/up-arrow1.svg');
+    background-position: right center;
+    background-repeat: no-repeat;
+    width: 29px;
+    height: 15px;
+    background-size: 13px;
+}
+.form-control-graph.ng-select .ng-select-container {
+    padding: 4px 10px;
+}
+.form-control-graph.ng-select .ng-clear-wrapper {
+    padding-left: 10px;
+}

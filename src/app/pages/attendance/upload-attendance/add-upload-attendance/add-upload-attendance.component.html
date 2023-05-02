@@ -1,0 +1,57 @@
+<div cdkScrollable id="add-upload-attendance" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">Upload Attendance</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row mb-3">
+            <div class="px-4">
+                <div class="">
+                    <form action="">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add justify-content-center">
+                                <div class="col-md-8 px-3 mt-4">
+                                    <div class="row g-0 upload-box">
+                                        <div class="col-md-12 text-center">
+                                            <ngx-dropzone (change)="onSelect($event)" class="border-0">
+                                                <ngx-dropzone-label>
+                                                    <div class="col-md-12 upload">
+                                                        <img src="./assets/icons/upload.svg" alt=""><br>
+                                                        <p class="text-black mb-0 mt-3">Upload File</p>
+                                                        <p class="mt-1 mb-2">Drag & drop <span class="text-primary">file</span>, Download the <span class="text-primary">format</span></p>
+                                                    </div>
+                                                </ngx-dropzone-label>
+                                                <ngx-dropzone-preview class="dropzone-preview" *ngFor="let f of files"
+                                                    [removable]="true" (removed)="onRemove(f)">
+                                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})
+                                                    </ngx-dropzone-label>
+                                                </ngx-dropzone-preview>
+                                            </ngx-dropzone>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="col-md-12 d-flex justify-content-center text-end mt-5">
+                        <div class="">
+                            <button class="save-button px-3">
+                                <img class="icon-display mb-1" src="./assets/icons/save1.svg" height="15px"
+                                    width="15px">
+                                <span class="save-btn ms-2">Save
+                                    <svg>
+                                        <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

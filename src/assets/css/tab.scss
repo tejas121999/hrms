@@ -1,0 +1,76 @@
+.nav-tabs {
+    background: #EBEDFF;
+    border-radius: 4px;
+}
+.uk-tab {
+    background: #EBEDFF;
+    border-radius: 4px;
+}
+.uk-tab>*{
+    padding-left: 0 !important;
+}
+
+.nav-tabs li a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    color: #2C2C2C;
+    padding: 0.7rem 1rem;
+}
+.uk-tab li a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    color: #2C2C2C;
+    padding: 0.7rem 1rem;
+    text-transform: capitalize;
+}
+
+.add-field li {
+    // padding: 0.7rem 1rem;
+    padding: 0.7rem 0.2rem;
+    width: 14.28%;
+    text-align: center;
+}
+
+.add-field li span {
+    font-weight: 500;
+    font-size: 16px;
+    color: #000;
+}
+
+.nav-tabs .nav-link:target {
+    border: none !important;
+}
+.uk-tab a:target {
+    border: none !important;
+}
+
+.nav-tabs .nav-link:hover {
+    border: none !important;
+    color: #2C2C2C;
+}
+.uk-tab a:hover {
+    border: none !important;
+    color: #2C2C2C;
+}
+
+.nav-tabs .nav-link.active {
+    color: #2C2C2C;
+    font-weight: 500;
+    background-color: transparent;
+    border-bottom: 3px solid #2C2C2C !important;
+    border: none;
+}
+.uk-tab li.uk-active a{
+    color: #2C2C2C;
+    font-weight: 500;
+    background-color: transparent;
+    border-bottom: 3px solid #2C2C2C !important;
+    border: none;
+}
+.nextprev a{
+    font-size: 20px;
+}

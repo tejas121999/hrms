@@ -1,0 +1,74 @@
+<div id="add-lwf-slab" uk-modal class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <div class="text-end px-3">
+            <button type="button" class="uk-modal-close-default" uk-close></button>
+        </div>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3"> Add LWF Slab </h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="LWFForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 add mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Deduction Month</label>
+                                        <div class="row g-0">
+                                            <ng-select [clearable]="false" [items]="month" bindLabel="month" bindValue="month"
+                                                class="form-control" formControlName="month"></ng-select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Employee Amount</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " class="form-control" formControlName="employee_amount">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Employer Amount</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " class="form-control" formControlName="employer_amount">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Comments</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea [maxlength]="100" rows="1" class="form-control"
+                                                    formControlName="comment"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button class="save-button px-3">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" style="margin-left: 10px;">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

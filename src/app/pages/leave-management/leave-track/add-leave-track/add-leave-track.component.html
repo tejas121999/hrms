@@ -1,0 +1,179 @@
+<div cdkScrollable id="leave-track" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Leave Application</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <form [formGroup]="leaveTrackForm">
+                <div class="px-4">
+                    <div class="">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Leave Type</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" [disabled]="isEdit" name="loan_id" [items]="leaveType"
+                                                    (change)="getLeaveDay($event)" bindLabel="leave_name" bindValue="id"
+                                                    formControlName="leave_type"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="leaveTrackForm.get('leave_type')?.invalid">
+                                        <span class="text-danger">{{getError(leaveTrackForm,'leave_type')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Available Leave </label>
+                                        <div class="row g-0">
+                                            <input class="form-control" [maxLength]="50" readonly [(ngModel)]="no_of_days" name="no_of_days"
+                                                type="text" formControlName="available_leave">
+                                        </div>
+
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="leaveTrackForm.get('available_leave')?.invalid">
+                                        <span class="text-danger">{{getError(leaveTrackForm,'available_leave')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">From Date</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input readonly class="form-control" formControlName="from_date"
+                                                    [owlDateTime]="todate"  [(ngModel)]="clearFromDate" name="clearFromDate" (ngModelChange)="fromDate($event)"
+                                                    [owlDateTimeTrigger]="todate">
+                                                <owl-date-time pickerType="calendar" #todate></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="todate">
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="leaveTrackForm.get('from_date')?.invalid">
+                                        <span class="text-danger">{{getError(leaveTrackForm,'from_date')}}</span>
+                                    </div>
+                                    <!-- rohitg@techsimians.com -->
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">To Date</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control" formControlName="to_date"
+                                                    [owlDateTime]="formdate"  [(ngModel)]="clearToDate" name="clearToDate" [min]="minimumDate"
+                                                    (ngModelChange)="gettoDate($event)" [owlDateTimeTrigger]="formdate">
+                                                <owl-date-time pickerType="calendar" #formdate></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="formdate">
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="leaveTrackForm.get('to_date')?.invalid">
+                                        <span class="text-danger">{{getError(leaveTrackForm,'to_date')}}</span>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="balanceDateToggle">
+                                    <span class="text-danger">Leave balance as on {{selectedDate | date :'shortDate'}} is exceeded</span>
+                                </div>
+
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Total Leave Days</label>
+                                        <div class="row g-0">
+                                            <input class="form-control" readonly [(ngModel)]="days" name="days" formControlName="total_leave"
+                                                type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Reason</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <input class="form-control text-lowercase" formControlName="reason_leave" [maxLength]="100" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="leaveTrackForm.get('reason_leave')?.invalid">
+                                        <span class="text-danger">{{getError(leaveTrackForm,'reason_leave')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Manager Name</label>
+                                        <div class="row g-0">
+                                            <input type="text" class="form-control" readonly [(ngModel)]="managename" name="managename"
+                                                formControlName="manage_name">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div style="display: none;"  class="col-md-6 px-3 mt-4">
+                                    <input (change)="checkValue($event)" type="checkbox" name="" id=""> <label for=""
+                                        class="form-label ps-2">Select
+                                        Other
+                                    </label>
+                                </div>
+                                <div *ngIf="isChecked" class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label p-1">Select Others</label>
+                                        <ng-select [clearable]="false" class="ps-2" [items]="managerName" [multiple]="true" bindLabel="first_name"
+                                            bindValue="id" formControlName="other_manage_names"
+                                            (remove)="onRemove($event)"></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center text-end mt-5">
+                    <div *ngIf="isEdit" class="">
+                        <button (click)="updateleavetrack()" class="save-button px-3">
+                            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                            <span class="white" style="margin-left: 10px;">Update
+                                <svg>
+                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <div *ngIf="!isEdit" class="">
+                        <button (click)="addleavetrack()" class="save-button px-3">
+                            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                            <span class="white" style="margin-left: 10px;">Save
+                                <svg>
+                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

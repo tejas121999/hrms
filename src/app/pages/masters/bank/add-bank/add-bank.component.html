@@ -1,0 +1,283 @@
+<!-- <div class="modal fade" id="add-bank" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="text-end px-3 py-3">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div> -->
+<div cdkScrollable id="add-bank" class="uk-modal-container modal-scroll-form" uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-5">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">Add Bank Master</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4 py-3">
+                <div class="">
+                    <form action="" [formGroup]="bankForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Bank Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="bank_name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankForm.get('bank_name')?.invalid">
+                                        <span class="text-danger">{{getError(bankForm,'bank_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Account No</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="account_no" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankForm.get('account_no')?.invalid">
+                                        <span class="text-danger">{{getError(bankForm,'account_no')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">IFSC Code</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="ifsc_code" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankForm.get('ifsc_code')?.invalid">
+                                        <span class="text-danger">{{getError(bankForm,'ifsc_code')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Branch Code</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="branch" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankForm.get('branch')?.invalid">
+                                        <span class="text-danger">{{getError(bankForm,'branch')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label">INR Account No</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="code" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Country</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11 ps-2">
+                                                <ng-select formControlName="country">
+                                                    <ng-option>1</ng-option>
+                                                    <ng-option>2</ng-option>
+                                                    <ng-option>3</ng-option>
+                                                </ng-select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px"
+                                                    height="25px" class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankForm.get('country')?.invalid">
+                                        <span class="text-danger">{{getError(bankForm,'country')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">State</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11 ps-2">
+                                                <ng-select formControlName="state">
+                                                    <ng-option>1</ng-option>
+                                                    <ng-option>2</ng-option>
+                                                    <ng-option>3</ng-option>
+                                                </ng-select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px"
+                                                    height="25px" class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankForm.get('state')?.invalid">
+                                        <span class="text-danger">{{getError(bankForm,'state')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">District</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="district" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankForm.get('district')?.invalid">
+                                        <span class="text-danger">{{getError(bankForm,'district')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">City</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="city" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankForm.get('city')?.invalid">
+                                        <span class="text-danger">{{getError(bankForm,'city')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Address</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea rows="2" formControlName="address" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankForm.get('address')?.invalid">
+                                        <span class="text-danger">{{getError(bankForm,'address')}}</span>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="d-flex justify-content-center pt-4">
+                        <ul class="nav nav-tabs justify-content-center w-50 justify-content-between" id="ex2"
+                            role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" href="#basic-info" data-bs-toggle="tab">Basic Info</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="#address-info" data-bs-toggle="tab">Address Info</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="sign-off">
+                            <form action="">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <div class="col-md-4 px-3 mt-5">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Balance</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-5">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Contact No.</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-5">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">BIC/Swift Code</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-5">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Credit</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-5">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Website</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="address-info" role="tabpanel" aria-labelledby="sign-off">
+                            <form action="">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <div class="col-md-4 px-3 mt-5">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Address</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <textarea rows="2" class="form-control border-0"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                        <div class="">
+                            <button class="save-button px-3" (click)="addBank()">
+                                <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                    width="15px">
+                                <span class="save-btn ms-2">Save</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

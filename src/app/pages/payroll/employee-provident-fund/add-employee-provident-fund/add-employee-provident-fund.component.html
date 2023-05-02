@@ -1,0 +1,110 @@
+<div id="add-epf" uk-modal class="uk-modal-container modal-scroll-form" uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <div class="text-end px-3">
+            <button type="button" class="uk-modal-close-default" (click)="reset()" uk-close></button>
+        </div>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">Add Employee Provident Fund</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">EPF Number</label>
+                                        <div class="row g-0">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Deduction Cycle</label>
+                                        <div class="row g-0">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Employee Contribution Rate</label>
+                                        <div class="row g-0">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Employer Contribution Rate</label>
+                                        <div class="row g-0">
+                                            <ng-select [clearable]="false" class="ps-2" [items]="rate" bindLabel="name" bindValue="name"></ng-select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4">
+                                    <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Include employee's contribution
+                                        in the CTC</label>
+                                </div>
+                                <div class="col-md-12 px-5 mt-4">
+                                    <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Include employer's EDLI contribution in the CTC</label>
+                                </div>
+                                <div class="col-md-12 px-5 mt-4">
+                                    <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Include admin charges in the CTC</label>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4">
+                                    <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Override PF contribution rate at employee level</label>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4 pt-3">
+                                    <label>PF Configuration When LOP Applied</label>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4">
+                                    <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Pro-rate restricted PF wage</label><br>
+                                    <h5 class="ms-5 my-1">PF contribution will be pro-rated based on the number of days worked by the employee.</h5>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4">
+                                    <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Consider all application salary components if PF wage is less than ₹15,000 after loss of pay</label><br>
+                                    <h5 class="ms-5 my-1">PF wages will be computed using the salary earned in that particular month (based on LOP) rather than the actual amount mentioned in the salary structure.</h5>
+                                </div>
+                                <div class="col-md-12 px-3 mt-5">
+                                    <label>ABRY Eligbility</label>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4">
+                                    <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Eligible for ABRY scheme</label><br>
+                                    <h5 class="ms-5 my-1">The EPF contribution of both the employee and the employer (with a few exceptions) will be paid by the government for eligible employees who receive up to ₹15,000 in monthly wages.</h5>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4 d-flex">
+                                    <label for="" class="form-label me-5">Contibution Type</label>
+                                    <div class="">
+                                        <label class="pe-4"><input class="uk-radio me-2" value="Earnings" type="radio">Earnings</label>
+                                        <label class="pe-4"><input class="uk-radio me-2" value="Deduction" type="radio">Deduction</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button class="save-button px-3">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" style="margin-left: 10px;">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

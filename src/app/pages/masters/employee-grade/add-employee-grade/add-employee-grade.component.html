@@ -1,0 +1,66 @@
+<!-- <div class="modal fade" id="add-employee-grade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="text-end px-3 py-3">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div> -->
+<div cdkScrollable id="add-employee-grade" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Grade Master</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="employeeGradeForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Grade</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="grade_name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="employeeGradeForm.get('grade_name')?.invalid">
+                                        <span class="text-danger">{{getError(employeeGradeForm,'grade_name')}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                <!-- <div class="px-3 cancel">
+                    <button class="cancel-button px-3" (click)="reset()">
+                        <img class="icon-display mb-1" src="./assets/icons/cancel.svg" height="15px" width="15px">
+                        <span class="cancel-btn ms-2">Cancel</span>
+                    </button>
+                </div> -->
+                <div class="">
+                    <button *ngIf="!isEdit" class="save-button px-3" (click)="addEmployeeGrade()">
+                        <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px" width="15px">
+                        <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save</span>
+                        <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                        <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                    </button>
+                    <button *ngIf="isEdit" class="save-button px-3" (click)="editGrade()">
+                        <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px" width="15px">
+                        <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update</span>
+                        <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                        <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

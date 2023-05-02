@@ -1,0 +1,258 @@
+<div cdkScrollable id="add-exit-detail" class="uk-modal-container modal-scroll-form add-exit-detail"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body scrollbar">
+        <button class="uk-modal-close-default" type="reset" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Exit Details</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="uk-margin">
+                    <form action="" [formGroup]="addCandidate">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="card-border">
+                                <div class="row add">
+                                    <div class="col-12 pt-4 ps-4">
+                                        <h4 class="text-blue mb-0">Separation</h4>
+                                    </div>
+                                    <div class="col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Employee Name</label>
+                                            <span class="text-danger">*</span>
+                                            <div class="row g-0">
+                                                <div class="col-md-12 ps-2">
+                                                    <ng-select [clearable]="false" [items]="employeeData" formControlName="employeee_name"
+                                                        bindLabel="first_name" bindValue="id">
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                            *ngIf="addCandidate.get('employeee_name')?.invalid">
+                                            <span class="text-danger">{{getError(addCandidate,'employeee_name')}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Separation Date</label>
+                                            <span class="text-danger">*</span>
+                                            <div class="row g-0">
+                                                <div class="col-md-11">
+                                                    <input readonly formControlName="separation_date"
+                                                        class="form-control" [owlDateTime]="birth"
+                                                        [owlDateTimeTrigger]="birth">
+                                                    <owl-date-time pickerType="calendar" #birth>
+                                                    </owl-date-time>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <span [owlDateTimeTrigger]="birth">
+                                                        <img src="./assets/icons/calendar.svg" alt="" width="18px"
+                                                            height="18px" class="">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                            *ngIf="addCandidate.get('separation_date')?.invalid">
+                                            <span
+                                                class="text-danger">{{getError(addCandidate,'separation_date')}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Interviewer</label>
+                                            <span class="text-danger">*</span>
+                                            <div class="row g-0">
+                                                <div class="col-md-12 ps-2">
+                                                    <ng-select [clearable]="false" [items]="employeeData" formControlName="interviewer"
+                                                        bindLabel="first_name" bindValue="id">
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                            *ngIf="addCandidate.get('interviewer')?.invalid">
+                                            <span class="text-danger">{{getError(addCandidate,'interviewer')}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Reason For Leaving</label>
+                                            <span class="text-danger">*</span>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control"
+                                                        formControlName="reason_for_leaving">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-border">
+                                <div class="row add">
+                                    <div class="col-12 pt-4 ps-4">
+                                        <h4 class="text-blue mb-0">Questionnaire</h4>
+                                    </div>
+                                    <div class="col-md-6 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Working With This Organization
+                                                Again</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="organization"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">What Did You Like The Most Of The
+                                                Organization</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="most_organization"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Things Organization Should Do To
+                                                Improve Staff Welfare</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="organization_things"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Anything You Wish To Share With
+                                                Us</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="share_with"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-border">
+                                <div class="row add">
+                                    <div class="col-12 pt-4 ps-4">
+                                        <h4 class="text-blue mb-0">Checklist For Exit Interview</h4>
+                                    </div>
+                                    <div class="col-12 col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Company Vehicle Handed In</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="company_vehicle"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">All Equipments Handed In </label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="equipments"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Security</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="security" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Exit Interview Conducted</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="exit_interview"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Notice Period Followed</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="notice_period"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Resignation Letter Submitted</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="resignation_letter_submitted"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Manager Clearance</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" formControlName="manager_clearance"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="px-3 cancel">
+                                <button *ngIf="!isEdit" (click)="addExitCandidate()" class="save-button px-3"
+                                    style="margin: 10px;"><i aria-hidden="true" class="fa fa-bookmark-o"></i><span
+                                        class="white" style="margin-left: 10px;">Save
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <button *ngIf="isEdit" (click)="updateExitDetails()" class="save-button px-3"
+                                    style="margin: 10px;"><i aria-hidden="true" class="fa fa-bookmark-o"></i><span
+                                        class="white" style="margin-left: 10px;">Update
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

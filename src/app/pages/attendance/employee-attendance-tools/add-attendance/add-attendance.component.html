@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="border-bottom">
+        <h2 class="m-0 p-3">Employee Attendance Tool</h2>
+    </div>
+    <div class="container-fluid">
+        <div class="box-shadow bg-white mx-4">
+            <div class="row p-4">
+                <div class="col-lg-6 px-3 my-3">
+                    <label for="" class="form-label">Date</label>
+                    <input formControlName="to" class="form-control" [owlDateTime]="to" [owlDateTimeTrigger]="to">
+                    <owl-date-time pickerType="calendar" #to></owl-date-time>
+                </div>
+                <div class="col-lg-6 px-3 my-3">
+                    <label for="" class="form-label">Branch</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-6 px-3 my-3">
+                    <label for="" class="form-label">Department</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-lg-6 px-3 my-3">
+                    <label for="" class="form-label">Company</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="border-top p-4">
+                <h6>UNMARKED ATTENDANCE</h6>
+                <div class="buttons">
+                    <a href="" class="mark-btn me-3">Check all</a>
+                    <a href="" class="mark-btn">Uncheck all</a>
+                </div>
+                <div class="row pt-5 pb-4">
+                    <div class="col-lg-3">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Pratiksha Ughade</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Tejas Talkar</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Monika Joshi</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Akhilesh Vishwakarma</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Kavita Jadhav</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Priya Yadav</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Saloni Chikhale</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Riya Shukla</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <a href="" class="add-button me-3">Mark Present</a>
+                    <a href="" class="mark-btn me-3">Mark Absent</a>
+                    <a href="" class="mark-btn">Mark Half Day</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

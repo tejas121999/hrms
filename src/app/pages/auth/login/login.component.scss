@@ -1,0 +1,37 @@
+.login-img img {
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position: center !important;
+    height: 100vh;
+}
+
+.login .card {
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: none;
+}
+
+.login-btn {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    border: none;
+    background: #3D5DD1;
+    box-shadow: 0px 4px 4px rgba(61, 93, 209, 0.34);
+    border-radius: 4px;
+}
+.toast-warning{
+    color: #721c24!important;
+    background-color: #f8d7da!important;
+    border-color: #f5c6cb!important;
+}
+.login{
+    position: relative;
+}
+

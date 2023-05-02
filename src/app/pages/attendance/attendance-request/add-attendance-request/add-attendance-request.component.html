@@ -1,0 +1,71 @@
+<div class="bg-whitesmoke vh-100">
+    <div class="row p-4 m-0">
+        <div class="col-lg-6">
+            <h2 class="px-3 m-0">New Attendance Request</h2>
+        </div>
+        <div class="col-lg-6">
+            <div class="text-end">
+                <a href="" class="add-button px-3">Save</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="box-shadow bg-white mx-5">
+            <div class="row p-4">
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Employee</label>
+                    <input type="text" class="form-control input-bg border-0" placeholder="">
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Company</label>
+                    <input type="text" class="form-control input-bg border-0">
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Employee Name</label>
+                    <input type="text" class="form-control input-bg border-0">
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">From Date</label>
+                    <input type="text" class="form-control input-bg border-0" [owlDateTime]="from" [owlDateTimeTrigger]="from">
+                    <owl-date-time pickerType="calendar" #from></owl-date-time>
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Department</label>
+                    <input type="text" class="form-control input-bg border-0">
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">To Date</label>
+                    <input type="text" class="form-control input-bg border-0" [owlDateTime]="to" [owlDateTimeTrigger]="to">
+                    <owl-date-time pickerType="calendar" #to></owl-date-time>
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Half Day</label>
+                    </div>
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Half Day Date</label>
+                    <input type="text" class="form-control input-bg border-0" [owlDateTime]="halfday" [owlDateTimeTrigger]="halfday">
+                    <owl-date-time pickerType="calendar" #halfday></owl-date-time>
+                </div>
+            </div>
+        </div>
+        <div class="box-shadow bg-white mx-5 mt-3">
+            <div class="row p-4">
+                <h5>Reason</h5>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Reason</label>
+                    <ng-select [clearable]="false" class="input-bg mt-3">
+                        <ng-option class="p-2">Work From Home</ng-option>
+                        <ng-option class="p-2">Tester</ng-option>
+                    </ng-select>
+                </div>
+                <div class="col-lg-6 px-5 my-3">
+                    <label for="" class="form-label">Explaination</label>
+                    <textarea class="form-control input-bg" placeholder="Was on-site" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<!-- <div class="modal fade" id="add-designation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="text-end px-3 py-3">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div> -->
+<div cdkScrollable id="add-role" class="uk-modal-container modal-scroll-form" uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} New Role</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="roleMasterForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Role Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" formControlName="roll_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="roleMasterForm.get('roll_name')?.invalid">
+                                        <span class="text-danger">{{getError(roleMasterForm,'roll_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="">
+                                        <label class="pe-4">
+                                            <input class="me-2 uk-radio" value="General" formControlName="type_roll"
+                                                type="radio" name="type_roll">General Role
+                                        </label><br>
+                                        <label class="pe-4">
+                                            <input class="me-2 uk-radio" value="Specific" formControlName="type_roll"
+                                                type="radio" name="type_roll">Specific Role
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Clone Role</label>
+                                        <!-- <span class="text-danger">*</span> -->
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" [items]="getRoleData" (change)="getClone()"
+                                                    formControlName="colne_roll" bindLabel="roll_name"
+                                                    bindValue="id"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger">would you like to clone this role as you will get same
+                                        access of that role</span>
+                                </div>
+                                <div class="col-md-6 px-3 mt-5">
+                                    <input type="checkbox" formControlName="defaultAccess" (change)="defaultAccess()"
+                                        class="form-check-input me-3" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Do You Want To Keep This As
+                                        Default Access?</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button *ngIf="!isEdit" class="save-button px-3" (click)="addRole()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" style="margin-left: 10px;">Save</span>
+                                    <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                                </button>
+                                <button *ngIf="isEdit" class="save-button px-3" (click)="editRole()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update</span>
+                                    <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                    <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-view-default-role></app-view-default-role>

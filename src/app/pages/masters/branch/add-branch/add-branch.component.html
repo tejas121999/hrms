@@ -1,0 +1,449 @@
+<div cdkScrollable id="add-branch" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row">
+            <div class="col-12 text-center title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Branch</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row mb-3">
+            <div class="px-4 pt-3">
+                <div class="">
+                    <form action="" [formGroup]="branchForm">
+                        <ul class="uk-tab justify-content-center mx-auto" data-uk-tab="{connect:'#branch'}"
+                            uk-switcher="animation:uk-animation-fade">
+                            <li [ngClass]="{'uk-active' : active && index===0 || index === 0}">
+                                <a class="" [ngClass]="{'active' : active && index===0 || index === 0}"
+                                    href="#branch-info" (click)="setCurrentTab(0)">Branch Info</a>
+                            </li>
+                            <li [ngClass]="{'uk-active' : active && index===1 || index === 1}">
+                                <a class="" href="#tax-info" [ngClass]="{'active' : active && index===1}"
+                                    (click)="setCurrentTab(1)">Tax Info</a>
+                            </li>
+                            <li [ngClass]="{'uk-active' : active && index===2 || index === 2}">
+                                <a class="" href="#warehouse-info" [ngClass]="{'active' : active && index===2} "
+                                    (click)="setCurrentTab(2)">Warehouse Info</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tabs content -->
+                        <ul class="uk-flex-center uk-switcher uk-margin" id="branch">
+                            <li class="" [ngClass]="{' show active uk-active' : active && index===0 || index === 0}"
+                                id="branch-info">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Branch Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="150"
+                                                            formControlName="branch_name" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="branchForm.get('branch_name')?.invalid">
+                                                <span class="text-danger">{{getError(branchForm,'branch_name')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Branch Code</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="10"
+                                                            formControlName="branch_code" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="branchForm.get('branch_code')?.invalid">
+                                                <span class="text-danger">{{getError(branchForm,'branch_code')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Branch Type</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" bindLabel="name" [items]="type" bindValue="name"
+                                                            formControlName="branch_type">
+                                                            <!-- <ng-option>Dependent</ng-option>
+                                                                <ng-option>Independent</ng-option> -->
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Branch Address</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <textarea type="text" 
+                                                            formControlName="branch_address" wrap="off" class="form-control form-input-scroll"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Department</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-11 ps-2">
+                                                        <ng-select [items]="departmentId" bindLabel="department_name"
+                                                            bindValue="id" formControlName="department">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="branchForm.get('department')?.invalid">
+                                                <span class="text-danger">{{getError(branchForm,'department')}}</span>
+                                            </div>
+                                        </div> -->
+                                        <!-- <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Weekly Off</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12"> -->
+                                        <!-- <ng-select>
+                                                            <ng-option>1</ng-option>
+                                                            <ng-option>2</ng-option>
+                                                        </ng-select> -->
+                                        <!-- <ng-select [items]="weak_of" bindLabel="days" bindValue="days"
+                                                            formControlName="weakly_off">
+                                                        </ng-select> -->
+                                        <!-- <input type="text" formControlName="weakly_off"
+                                                            class="form-control">
+                                                    </div> -->
+                                        <!-- <div class="col-md-1">
+                                                        <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px"
+                                                            height="25px" class="">
+                                                    </div> -->
+                                        <!-- </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Company Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <!-- <ng-select>
+                                                            <ng-option>Techsimians</ng-option>
+                                                            <ng-option>Tata</ng-option>
+                                                        </ng-select> -->
+                                                        <ng-select [clearable]="false" [items]="companyData" bindLabel="company_name"
+                                                            formControlName="company_name" bindValue="id">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="branchForm.get('company_name')?.invalid">
+                                                <span class="text-danger">{{getError(branchForm,'company_name')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Email</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="email" [maxlength]="50"
+                                                            formControlName="branch_email" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="branchForm.get('branch_email')?.invalid">
+                                                <span class="text-danger">{{getError(branchForm,'branch_email')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Year of Establishment</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-11">
+                                                        <input [min]="" formControlName="year_of_establish"
+                                                            class="form-control" [owlDateTime]="year_of_establish"
+                                                            [owlDateTimeTrigger]="year_of_establish">
+                                                        <owl-date-time pickerType="calendar" #year_of_establish>
+                                                        </owl-date-time>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <span [owlDateTimeTrigger]="year_of_establish">
+                                                            <img src="./assets/icons/calendar.svg" alt="" width="18px"
+                                                                height="18px" class="">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Fax</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="number" onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " formControlName="fax"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Mobile</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+
+                                                        <input type="number"
+                                                        onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                            class="form-control" formControlName="branch_mobile">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                            *ngIf="branchForm.get('branch_mobile')?.invalid">
+                                            <span class="text-danger">{{getError(branchForm,'branch_mobile')}}</span>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Phone No</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <!-- <input type="number"
+                                                            onKeyPress="if(this.value.length==10  && this.value!='e') return false;"
+                                                            formControlName="phone_no" class="form-control"> -->
+                                                        <input type="number"
+                                                        onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                            class="form-control" formControlName="phone_no">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Contact Person</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="30"
+                                                            formControlName="contact_person" class="form-control">
+                                                        <!-- <ng-select>
+                                                            <ng-option>1</ng-option>
+                                                            <ng-option>2</ng-option>
+                                                        </ng-select> -->
+                                                        <!-- <ng-select [items]="contactPerson" bindLabel="person"
+                                                            formControlName="contact_person" bindValue="person">
+                                                        </ng-select> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- <ul class="list-unstyled row justify-content-end mt-3 page">
+                                    <li class="nextprev w-50 px-3">
+                                        <button data-uk-switcher-item="0" class="save-button">
+                                            <span>Previous</span>
+                                        </button>
+                                    </li>
+                                    <li class="nextprev w-50 px-3">
+                                        <button data-uk-switcher-item="1" class="save-button">
+                                            <span>Next</span>
+                                        </button>
+                                    </li>
+                                </ul> -->
+                            </li>
+                            <li class="" id="tax-info" [ngClass]="{'show active uk-active' : active && index===1}">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">PAN No</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="10" formControlName="pan_no"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                            *ngIf="branchForm.get('pan_no')?.invalid">
+                                            <span class="text-danger">{{getError(branchForm,'pan_no')}}</span>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Header</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="10" formControlName="header"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">GST</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="20" formControlName="cst"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Excise Registration</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="10"
+                                                            formControlName="excise_registration" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Footer</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="10" formControlName="footer"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- <ul class="list-unstyled row justify-content-end mt-3 page">
+                                    <li class="nextprev w-50 px-3">
+                                        <button href="" data-uk-switcher-item="0" class="save-button">
+                                            <span>Previous</span>
+                                        </button>
+                                    </li>
+                                    <li class="nextprev w-50 px-3">
+                                        <button href="" data-uk-switcher-item="2" class="save-button">
+                                            <span>Next</span>
+                                        </button>
+                                    </li>
+                                </ul> -->
+                            </li>
+                            <li class="" [ngClass]="{'show active uk-active' : active && index===2}">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <div class="col-md-4 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Associate Warehouse</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="10"
+                                                            formControlName="associate_warehouse" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- <ul class="list-unstyled row justify-content-end mt-3 page">
+                                    <li class="nextprev w-50 px-3">
+                                        <button href="" data-uk-switcher-item="1" class="save-button">
+                                            <span>Previous</span>
+                                        </button>
+                                    </li>
+                                </ul> -->
+                            </li>
+                        </ul>
+                    </form>
+                    <div class="row justify-content-center text-center mt-4">
+                        <!-- <div class="col-md-6 position-relative"></div> -->
+                        <div class="px-3">
+                            <ng-container *ngIf="index != 0 && !buttonLoader">
+                                <button style="margin: 10px;" class="save-button prn px-3" [disabled]="buttonLoader"
+                                    (click)="setCurrentTab(index-1)">
+                                    <span class="white" *ngIf="!buttonLoader">Previous
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="!isEdit && index != 2 && !buttonLoader ">
+                                <button style="margin: 10px;" class="save-button prn px-3" [disabled]="buttonLoader"
+                                    (click)="setCurrentTab(index+1)">
+                                    <span class="white" *ngIf="!buttonLoader">Next
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="isEdit && index != 2 && !buttonLoader">
+                                <button style="margin: 10px;" class="save-button prn px-3" [disabled]="buttonLoader"
+                                    (click)="setCurrentTab(index+1)">
+                                    <span class="white" *ngIf="!buttonLoader">Next
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </ng-container>
+
+                            <button *ngIf="!isEdit && index == 2" class=" save-button px-4" (click)="addBranch()">
+                                <!-- <svg>
+                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                  </svg> -->
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save
+                                    <svg>
+                                        <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                    </svg>
+                                </span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+                            <button *ngIf="isEdit" class="save-button px-4" (click)="eidtBranch()">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update
+                                    <svg>
+                                        <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                    </svg>
+                                </span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+                        </div>
+                        <!-- <div class="" *ngIf="currentTab =='warehouse-info'">
+                            <button *ngIf="!isEdit " class=" save-button px-4" (click)="addBranch()">
+                                <img class="icon-display mb-1" src="./assets/icons/save1.svg" height="15px"
+                                    width="15px">
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save</span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+                            <button *ngIf="isEdit" class="save-button px-4" (click)="eidtBranch()">
+                                <img class="icon-display mb-1" src="./assets/icons/save1.svg" height="15px"
+                                    width="15px">
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update</span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

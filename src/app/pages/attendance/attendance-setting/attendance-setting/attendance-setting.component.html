@@ -1,0 +1,123 @@
+<div class="row pt-4 px-5">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1">Attendance Setting</h1>
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<div class="row px-5 pt-4 pb-5 mb-5">
+    <form [formGroup]="myForm">
+        <fieldset class="uk-fieldset pl-4">
+            <div class="row" formArrayName="attendanceSetting">
+                <div class="col-md-6 p-0 mt-4"
+                    *ngFor="let attendanceSetting of attendanceSettingForm.controls; let i = index" [formGroupName]="i">
+                    <div class="card bg-white card-border-bottom p-3 col-md-10">
+                        <div class="card-heading d-flex px-3 py-2">
+                            <div class="">
+                                <!-- <span>Present</span> -->
+                                <input type="text" class="form-control" formControlName="title" placeholder="Add Title">
+                            </div>
+                            <div class="ms-auto">
+                                <!-- <a href=""><img src="./assets/icons/more2.svg" alt=""></a> -->
+                                <button class="w-100 bg-transparent border-0">
+                                    <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                </button>
+                                <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <!-- <li class="">
+                                            <a class="uk-dropdown-close justify-content-center"
+                                                (click)="addAttendenceSetting(i)">Save</a>
+                                        </li> -->
+                                        <li class="">
+                                            <a class="uk-dropdown-close justify-content-center"
+                                                (click)="openEdit(i,attendanceSetting.value)">Edit</a>
+                                        </li>
+                                        <!-- <li class="">
+                                            <a (click)="deleteSetting(i,attendanceSetting.value)"
+                                                class="uk-dropdown-close justify-content-center">Delete</a>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-3 py-2">
+                            <div class="col-md-7">
+                                <div class="mb-3 row">
+                                    <label for="" class="col-sm-5">Code</label>
+                                    <div class="col-sm-4 p-0">
+                                        <input type="text" class="form-control border-blue" formControlName="code">
+                                    </div>
+                                </div>
+                                <div class="att-color d-flex">
+                                    <label for="" class="col-sm-5">Color</label>
+                                    <div class="col-sm-8 color-picker">
+                                        <input type="color" name="color" class="form-control p-0 border w-75"
+                                            (ngModelChange)="getCollorCode(attendanceSetting)"
+                                            formControlName="color_code" />
+                                        <p>{{attendanceSetting.value.color_code}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-5" *ngIf="i == 0">
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Check In</label>
+                                </div>
+                                <div class=" form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Check Out</label>
+                                </div>
+                            </div> -->
+                            <div class="col-md-12 text-center mt-3" *ngIf="index == i">
+                                <button class="save-button px-3" (click)="updateSetting()">
+                                    <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                        width="15px">
+                                    <span class="save-btn ms-2">Update</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-5 mt-4 d-flex align-items-center justify-content-center">
+                    <a class="mr-2 mt-3" (click)="addItems()">
+                        <img class="icon-display" src="./assets/icons/add-field.svg" height="52px" width="52px">
+                    </a>
+                </div> -->
+            </div>
+        </fieldset>
+    </form>
+</div>
+<app-loader *ngIf="loader"></app-loader>
+
+
+
+<!-- <div class="col-md-2"></div>
+    <div class="col-md-5">
+        <div class="card bg-white card-border-bottom p-3">
+            <div class="card-heading d-flex px-3 py-2">
+                <div class="">
+                    <span>Absent</span>
+                </div>
+                <div class="ms-auto">
+                    <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                </div>
+            </div>
+            <div class="row px-3 py-2">
+                <div class="col-md-12">
+                    <div class="mb-3 row">
+                        <label for="" class="col-sm-3">Code</label>
+                        <div class="col-sm-3 p-0">
+                            <input type="text" class="form-control border-blue">
+                        </div>
+                    </div>
+                    <div class="att-color d-flex">
+                        <label for="" class="col-sm-3">Color</label>
+                        <div class="col-sm-6 color-picker">
+                            <input type="color" [(ngModel)]="color" #nameField="ngModel" name="color" (ngValue)="color"
+                                class="form-control p-0 border w-75" />
+                            <p>{{color}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->

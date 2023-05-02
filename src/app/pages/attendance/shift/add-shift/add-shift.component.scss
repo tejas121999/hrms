@@ -1,0 +1,90 @@
+:host ::ng-deep {
+    .ng-dropdown-panel .ng-dropdown-panel-items {
+        max-height: 167px !important;
+    }
+}
+.shift {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+.shift i{
+    color: #3D5DD1;
+}
+// .nav-tabs {
+//     background: none;
+//     border-radius: 4px;
+// }
+// .nav-tabs li a {
+//     font-family: "Poppins";
+//     font-style: normal;
+//     font-weight: 500;
+//     font-size: 18px;
+//     color: #B1B1B1;
+//     padding: 0.3rem 1rem;
+// }
+// .nav-tabs .nav-link.active{
+//     font-weight: 600;
+//     color: #0A2472;
+//     border-bottom: 2px solid #0a2472 !important;
+//     font-size: 20px;
+// }
+// .nav-tabs {
+//     border-bottom: 2px solid #9BA7F0;
+// }
+.field li {
+    padding: 0.7rem 0.2rem;
+    text-align: center;
+  }
+.add-field-line{
+    border-bottom: 2px solid #9BA7F0;
+}
+.shift.uk-tab {
+    background: none;
+    border-radius: 4px;
+}
+.shift.uk-tab li a {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #B1B1B1;
+    padding: 0.3rem 1rem;
+    text-transform: capitalize;
+}
+.shift.uk-tab .uk-active a{
+    font-weight: 600;
+    color: #0A2472 !important;
+    border-bottom: 2px solid #0a2472 !important;
+    font-size: 20px;
+}
+.shift.uk-tab:before {
+    border-bottom: 2px solid #9BA7F0 !important;
+}
+.nextprev a {
+    border: 2px solid #3D5DD1;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+.nextprev a span{
+    font-size: 16px;
+    color: #3D5DD1;
+    font-weight: 400;
+}
+.add-shift-modal {
+    min-height: 600px;
+    overflow: hidden;
+}
+.add-shift-modal .uk-modal-dialog {
+    height: 100%;
+    overflow: auto;
+    max-height: 100%;
+}
+.add-field {
+    position: absolute;
+    right: 5px;
+    top: -54px;
+}
+.nav-tabs {
+    background-color: rgba(155, 167, 240, 0.6);;
+}

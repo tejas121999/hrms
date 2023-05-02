@@ -1,0 +1,619 @@
+<div cdkScrollable id="add-package" class="uk-modal-container modal-scroll-form modal-popup"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body scrollbar">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="col-md-12 text-center title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Package</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form [formGroup]="generalPackageForm" action="" class="mb-3">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10">
+                                    <div class="row add justify-content-center">
+                                        <div class="col-md-6 px-3 mt-4">
+                                            <div class="bg-input bg-white p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Package Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" formControlName="package_name"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 mt-4">
+                                            <div class="bg-input bg-white p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Annual CTC</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="number" onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " formControlName="annual_ctc"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 mt-4">
+                                            <label for="" class="form-label ps-2">Package Type</label>
+                                            <div class="ps-2">
+                                                <label class="pe-4">
+                                                    <input class="uk-radio" value="Annual CTC"
+                                                        formControlName="package_type" type="radio" name="package_type">
+                                                    Annual CTC</label>
+                                                <label>
+                                                    <input class="uk-radio" formControlName="package_type" type="radio"
+                                                        value="Daily" name="package_type"> Daily
+                                                    Rate</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 mt-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="card-border px-4 my-4">
+                        <div class="add">
+                            <ul class="nav nav-tabs add-field mt-4 row">
+                                <li class="col-md-3">
+                                    <span>Salary Component</span>
+                                </li>
+                                <li class="col-md-3">
+                                    <span>Calculation Type</span>
+                                </li>
+                                <li class="col-md-3">
+                                    <span>Monthly Amount</span>
+                                </li>
+                                <li class="col-md-3">
+                                    <span>Annual Amount</span>
+                                </li>
+                            </ul>
+                            <form [formGroup]="earningsForm">
+                                <!-- <fieldset class="uk-fieldset pl-4"> -->
+                                <div class="add-field-line row py-3">
+                                    <div class="col-md-3">
+                                        <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i>
+                                            Earnings
+                                        </span>
+                                    </div>
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3 text-end">
+                                        <a class="add-button px-3 mr-2 mt-3">
+                                            <span>Add Earnings</span>
+                                        </a>
+                                        <div uk-dropdown="mode: click;pos: bottom" class="w-25 p-3 text-start">
+                                            <ul class="list-unstyled" *ngFor="let earnings of Earnings">
+                                                <li (click)="addEarnings(earnings)" class="py-1">
+                                                    {{earnings?.salary_component_name}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row add-field-line py-3 justify-content-center align-items-center">
+                                    <!-- <form [formGroup]="earningsForm"> -->
+                                    <fieldset class="uk-fieldset pl-4">
+                                        <div formArrayName="earning">
+                                            <div *ngFor="let earning of earningsComponent.controls; let i = index"
+                                                [formGroupName]="i"
+                                                class="p-0 my-1 row justify-content-center justify-content-between list-unstyled">
+                                                <div class="col-md-2 justify-content-center align-items-center d-grid">
+                                                    <div class="px-3">
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <!-- <input type="number" placeholder="Basic"
+                                                                            class="form-control"
+                                                                            formControlName="salary_component_name"> -->
+                                                                <label>{{earning?.value?.component_name}}</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="px-3 border-bottom-blue">
+                                                        <label for="" class="form-label">% of ctc</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input type="text" formControlName="type"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="px-3 border-bottom-blue">
+                                                        <label for="" class="form-label"></label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input type="text" [readOnly]="true"
+                                                                    formControlName="monthly_value"
+                                                                    class="form-control text-center">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="px-3 border-bottom-blue">
+                                                        <label for="" class="form-label"></label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input type="text" [readOnly]="true"
+                                                                    formControlName="yearly_value"
+                                                                    class="form-control text-center">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <a class="mr-2 mt-2" type="button"
+                                                        (click)="deleteComponent(i, earning)"> <img class="icon-display"
+                                                            src="./assets/icons/delete.svg"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <!-- </form> -->
+                                </div>
+                                <div class="row add-field-line py-3 justify-content-center align-items-center">
+                                    <div class="col-md-3 text-center">
+                                        <label>Fixed Allowance</label>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <label>Fixed Amount</label>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <label>₹ {{comp_monthly_cost}}</label>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <label>₹ {{comp_yearly_cost}}</label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                            </form>
+                            <!-- <form>
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="add-field-line row py-3">
+                                        <div class="col-md-3">
+                                            <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i>
+                                                Deductions
+                                            </span>
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-3 text-end">
+                                            <a class="add-button px-3 mr-2 mt-3">
+                                                <span>Add Deductions</span>
+                                            </a>
+                                            <div uk-dropdown="mode: click;pos: bottom" class="w-25 p-3 text-start">
+                                                <ul class="list-unstyled" *ngFor="let deduction of Deduction">
+                                                    <li class="py-1">{{deduction.salary_component_name}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row py-3 justify-content-center align-items-center deductions">
+                                        <div class="col-md-3">
+                                            <label>EPF - <span>Employer Contribution</span></label>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <span>Contribute To Employee Pension Scheme</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <label>12.00% Of PF Wages </label>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <label>2500</label>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <label>30000</label>
+                                        </div>
+                                    </div>
+                                    <div class="row py-3 justify-content-center align-items-center deductions">
+                                        <div class="col-md-3">
+                                            <label>EDLI - <span>Employer Contribution</span></label>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <label>12.00% Of PF Wages </label>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <label>75</label>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <label>900</label>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="row add-field-line py-3 justify-content-center align-items-center deductions">
+                                        <div class="col-md-3">
+                                            <label>EPF Admin Charge - <span>Employer Contribution</span></label>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <label>12.00% Of PF Wages </label>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <label>104</label>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <label>1248</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form> -->
+                            <ul class="nav nav-tabs add-field my-4 row">
+                                <li class="col-md-3">
+                                    <span>Cost Of Company</span>
+                                </li>
+                                <li class="col-md-3">
+                                    <span></span>
+                                </li>
+                                <div class="col-md-3 text-center">
+                                    <label>₹{{ctc}}</label>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <label>₹{{ctc}}</label>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- <form action="" [formGroup]="generalPackageForm" class="mb-3">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row add justify-content-center">
+                                        <div class="col-md-10 px-3 mt-4 border-bottom-blue">
+                                            <label for="" class="form-label">Package Name</label>
+                                            <span class="text-danger">*</span>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input [maxlength]="30" type="text" class="form-control"
+                                                        formControlName="package_name">
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalPackageForm.get('package_name')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(generalPackageForm,'package_name')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 px-3 mt-4 bg-input border-bottom-blue">
+                                            <label for="" class="form-label">Annual CTC</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="number"
+                                                        onKeyPress="if(this.value.length==20  && this.value!='e') return false;"
+                                                        class="form-control" formControlName="annual_ctc"
+                                                        (ngModelChange)="ctcChange($event)">
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalPackageForm.get('annual_ctc')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(generalPackageForm,'annual_ctc')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 px-3 mt-4">
+                                            <label for="" class="form-label">Package Type</label>
+                                            <div class="">
+                                                <label class="pe-4"><input class="uk-radio" value="Annual" type="radio"
+                                                        formControlName="package_type" name="package_type">
+                                                    Annual CTC</label>
+                                                <label><input class="uk-radio" type="radio" value="Daily"
+                                                        formControlName="package_type" name="package_type"> Daily
+                                                    Rate</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row add justify-content-center">
+                                        <div class="col-md-10 px-3 mt-4 border-bottom-blue bg-input">
+                                            <label for="" class="form-label">Overtime Daily Rate</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="number"
+                                                        onKeyPress="if(this.value.length==10  && this.value!='e') return false;"
+                                                        class="form-control" formControlName="overtime_daily_rate">
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalPackageForm.get('overtime_daily_rate')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(generalPackageForm,'overtime_daily_rate')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10 px-3 mt-4 bg-input border-bottom-blue">
+                                            <label for="" class="form-label">Overtime Hourly Rate</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="number"
+                                                        onKeyPress="if(this.value.length==10  && this.value!='e') return false;"
+                                                        class="form-control" formControlName="overtime_hourly_rate">
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalPackageForm.get('overtime_hourly_rate')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(generalPackageForm,'overtime_hourly_rate')}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form> -->
+
+                    <!-- <div class="d-flex justify-content-center pt-4">
+                        <ul class="nav nav-tabs justify-content-center w-75 justify-content-between" id="ex1"
+                            role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" href="#annual-package" data-bs-toggle="tab">Annual
+                                    Package</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="#leave-info" data-bs-toggle="tab">Leave Info</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="annual-package">
+                            <a class="mr-2 mt-3" (click)="addItems()">
+                                <img class="icon-display" src="./assets/icons/add-field.svg">
+                            </a>
+                            <form [formGroup]="myForm" *ngIf="anualPackageForm.controls.length > 0">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <ul
+                                            class="nav nav-tabs add-field mt-4 justify-content-center justify-content-between">
+                                            <li class="">
+                                                <span>Salary Component</span>
+                                            </li>
+                                            <li class="">
+                                                <span>Type</span>
+                                            </li>
+                                            <li class="">
+                                                <span>Value</span>
+                                            </li>
+                                            <li class="">
+                                                <span>Actual %</span>
+                                            </li>
+                                            <li class="">
+                                                <span>Deduction %</span>
+                                            </li>
+                                            <li class="">
+                                                <span>Monthly Value</span>
+                                            </li>
+                                            <li class="">
+                                                <span>Yearly Value</span>
+                                            </li>
+                                        </ul>
+                                        <ul class="p-0">
+                                            <div formArrayName="anualPackage">
+                                                <div class="text-start"
+                                                    *ngFor="let components of anualPackageForm.controls; let i = index"
+                                                    [formGroupName]="i">
+                                                    <div class="d-flex add add-field-line">
+                                                        <div class="width-div">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <span for="" class="form-label ps-2">Component</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <ng-select
+                                                                            formControlName="salary_component_name"
+                                                                            [items]="salaryComponent"
+                                                                            bindLabel="salary_component_name"
+                                                                            bindValue="id"
+                                                                            (change)="selectComponent($event)">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <span style="color: red;"
+                                                                *ngIf="isEdit && anualPackageForm.controls[i].value.salary_component_name == ''">
+                                                                Component is required
+                                                            </span>
+                                                        </div>
+                                                        <div class="width-div">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <span for="" class="form-label ps-2">Type</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <ng-select formControlName="type"
+                                                                            [items]="packageType" bindLabel="type"
+                                                                            bindValue="type"
+                                                                            (change)="typeChange($event, i)">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <span style="color: red;"
+                                                                *ngIf="isEdit && anualPackageForm.controls[i].value.type == ''">
+                                                                Component is required
+                                                            </span>
+                                                        </div>
+                                                        <div class="width-div">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <span for="" class="form-label ps-2">Value</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <input class="form-control" type="number"
+                                                                            onKeyPress="if(this.value.length > 2  && this.value!='e') return false;"
+                                                                            formControlName="value" type="number"
+                                                                            (ngModelChange)="annualPackage($event, i)">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <span style="color: red;"
+                                                                *ngIf="isEdit && anualPackageForm.controls[i].value.value == ''">
+                                                                Component is required
+                                                            </span>
+                                                        </div>
+                                                        <div class="width-div">
+                                                            <div class="col-md-12">
+                                                                <input class="form-control" formControlName="actual">
+                                                            </div>
+                                                        </div>
+                                                        <div class="width-div">
+                                                            <div class="col-md-12">
+                                                                <input class="form-control" formControlName="deduction">
+                                                            </div>
+                                                        </div>
+                                                        <div class="width-div">
+                                                            <div class="col-md-12">
+                                                                <input class="form-control"
+                                                                    formControlName="monthly_value">
+                                                            </div>
+                                                        </div>
+                                                        <div class="width-div">
+                                                            <div class="col-md-12">
+                                                                <input class="form-control"
+                                                                    formControlName="yearly_value">
+                                                            </div>
+                                                        </div>
+                                                        <div *ngIf="isEdit && this.index != i || !showEdit"
+                                                            class="d-flex">
+                                                            <a (click)="openEdit(i)" *ngIf="isEdit">
+                                                                <img src="./assets/icons/edit.svg"
+                                                                    style="margin-top: 20px;margin-right: 10px;">
+                                                            </a>
+                                                            <a class="mr-2 mt-3" *ngIf="isEdit"
+                                                                (click)="deletePackage(i, components)">
+                                                                <img class="icon-display"
+                                                                    src="./assets/icons/delete.svg">
+                                                            </a>
+                                                        </div>
+
+                                                        <div *ngIf="this.index == i && showEdit" class="d-flex">
+                                                            <a>
+                                                                <i class="fa fa-check" style="color: blue;"
+                                                                    (click)="updatePackageById(i , components)"
+                                                                    aria-hidden="true"></i>
+                                                            </a>
+                                                            <a style="color: rgb(255, 0, 0);">
+                                                                <i class="fa fa-times" (click)="closeEdit()"
+                                                                    aria-hidden="true"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                        <a class="mr-2 mt-3" *ngIf="!isEdit" (click)="removeItem(i)">
+                                                            <img class="icon-display" src="./assets/icons/delete.svg">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <i>Total Yearly Value: {{totalYearlyValue | number: '.2'}}</i>
+                                        <i *ngIf="invalidYearlyValue" style="color: red">
+                                            <div>
+                                                Total Yearly Value greater than CTC
+                                            </div>
+                                        </i>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                            <div class="no-data" *ngIf="anualPackageForm.controls.length == 0">
+                                <div class="text-center">
+                                    <div class="text-center">
+                                        <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+                                    </div>
+                                    <h3 class="">No Data Yet...</h3>
+                                    <span>Be the first one to add</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade show" id="leave-info">
+                            <a class="mr-2 mt-3" (click)="addLeave()">
+                                <img class="icon-display" src="./assets/icons/add-field.svg">
+                            </a>
+                            <form action="" [formGroup]="leaveForm" *ngIf="leavePackageForm.controls.length > 0">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <ul
+                                            class="nav nav-tabs add-field mt-4 justify-content-center justify-content-between">
+                                            <li class="w-50">
+                                                <span>Leave Type</span>
+                                            </li>
+                                            <li class="w-50">
+                                                <span>Number Of Days</span>
+                                            </li>
+                                        </ul>
+                                        <ul class="p-0">
+                                            <div formArrayName="leavePackage">
+                                                <div class="text-start"
+                                                    *ngFor="let leave of leavePackageForm.controls; let i = index"
+                                                    [formGroupName]="i">
+                                                    <div class="d-flex add add-field-line pb-1">
+                                                        <div class="w-50">
+                                                            <div class="bg-input p-1 border-bottom-blue w-50 mx-auto">
+                                                                <span for="" class="form-label ps-2">Leave Type</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <ng-select formControlName="leave_id"
+                                                                            [items]="leaveData" bindLabel="leave_name"
+                                                                            bindValue="id" (change)="getLeaveDay(i)">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="w-50">
+                                                            <div class="w-50 mx-auto">
+                                                                <input class="form-control"
+                                                                    formControlName="number_days">
+                                                            </div>
+                                                        </div>
+                                                        <a class="mr-2 mt-3" *ngIf="isEdit"
+                                                            (click)="deleteComponent(i, leave)">
+                                                            <img class="icon-display" src="./assets/icons/delete.svg">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <div class="no-data" *ngIf="leavePackageForm.controls.length == 0">
+                                <div class="text-center">
+                                    <div class="text-center">
+                                        <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+                                    </div>
+                                    <h3 class="">No Data Yet...</h3>
+                                    <span>Be the first one to add</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> -->
+                    <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                        <div class="">
+                            <button *ngIf="!isEdit" class="save-button px-3" (click)="addPackage()">
+                                <img class="icon-display mb-1" src="./assets/icons/save1.svg" height="15px"
+                                    width="15px">
+                                <span class="save-btn ms-2">Save</span>
+                            </button>
+                            <button *ngIf="isEdit" class="save-button px-3" (click)="updatePackage()">
+                                <img class="icon-display mb-1" src="./assets/icons/save1.svg" height="15px"
+                                    width="15px">
+                                <span class="save-btn ms-2">Update</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

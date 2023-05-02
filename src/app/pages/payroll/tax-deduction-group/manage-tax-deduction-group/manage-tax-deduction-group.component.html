@@ -1,0 +1,92 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2">Tax Deduction Group</h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center pb-2">
+        <span>
+            <a class="add-button px-4" uk-toggle="target: #add-group" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Group</span>
+            </a>
+        </span>
+    </div>
+    <!-- <div class="border-2pxblue"></div> -->
+</div>
+<form action="" class="pb-5">
+    <fieldset class="uk-fieldset pl-4">
+        <div class="row add px-4 pt-4">
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Financial Year</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" class="ps-2" [items]="year" bindLabel="year" bindValue="year"></ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Category</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" class="ps-2" [items]="category" bindLabel="category" bindValue="category"></ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<div class="row mx-4">
+    <div class="view-table px-4 py-3">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Group</th>
+                    <th scope="col">Section</th>
+                    <th scope="col">Group Max. Limit</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Deduction Under Chapter VI A</td>
+                    <td>80C, 80CCC, 80CCD, 80CCD(2)</td>
+                    <td>150000.00</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Deduction Under Chapter VI A</td>
+                    <td>80CCG</td>
+                    <td>0.00</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Deduction Under Chapter VI A</td>
+                    <td>80CCD (1)</td>
+                    <td>0.00</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-center">
+                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>
+                <ng-select class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select> -->
+                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+<app-add-tax-deduction-group></app-add-tax-deduction-group>

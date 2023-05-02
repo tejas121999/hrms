@@ -1,0 +1,190 @@
+<div cdkScrollable id="add-yearly-roster" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">Add Yearly Roster</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="yearlyCrewForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">From Date</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input readonly [min]=""
+                                                    class="form-control" (ngModelChange)="fromDates($event)"  [(ngModel)]="fromdate" name="fromdate"  formControlName="startDate" [owlDateTime]="from_date"
+                                                    [owlDateTimeTrigger]="from_date">
+                                                <owl-date-time pickerType="calendar" #from_date></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="from_date">
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="yearlyCrewForm.get('startDate')?.invalid">
+                                    <span
+                                        class="text-danger">{{getError(yearlyCrewForm,'startDate')}}</span>
+                                </div>
+
+                                </div>
+
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2"> Days cycle</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" [items]="dateday" formControlName="gap"  (change)="gapdate($event)" bindLabel="day" bindValue="day"></ng-select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="yearlyCrewForm.get('gap')?.invalid">
+                                    <span
+                                        class="text-danger">{{getError(yearlyCrewForm,'gap')}}</span>
+                                </div>
+
+                                </div>
+
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">To Date</label>
+                                        <div  class="row g-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Please Give the Message here For to date">
+                                            <div class="col-md-11">
+                                                <input   (ngModelChange)="toDate($event)"  [owlDateTimeFilter]="myFilter"  [disabled]="toggle" readonly formControlName="endDate"
+                                                    class="form-control" [(ngModel)]="todate" name="todate" [owlDateTime]="to_date"
+                                                    [owlDateTimeTrigger]="to_date" >
+                                                <owl-date-time pickerType="calendar"   #to_date></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="to_date">
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="yearlyCrewForm.get('endDate')?.invalid">
+                                    <span
+                                        class="text-danger">{{getError(yearlyCrewForm,'endDate')}}</span>
+                                </div>
+                                </div>
+
+
+
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Main crew name</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" [items]="crewData" (change)="getonCrewDatas($event)" bindLabel="crew_name"
+                                                    formControlName="on_crew_id"
+                                                    bindValue="id"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="yearlyCrewForm.get('on_crew_id')?.invalid">
+                                    <span
+                                        class="text-danger">{{getError(yearlyCrewForm,'on_crew_id')}}</span>
+                                </div>
+
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for=""  class="form-label ps-2">Replacement Crew name</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+
+                                                <ng-select  [clearable]="false" [items]="offcrewfetchData" (change)="getRepCrewData($event)" name="repcrewname" [(ngModel)]="repcrewname"  bindLabel="crew_name"
+                                                    formControlName="off_crew_id"
+                                                    bindValue="id"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="yearlyCrewForm.get('off_crew_id')?.invalid">
+                                    <span
+                                        class="text-danger">{{getError(yearlyCrewForm,'off_crew_id')}}</span>
+                                </div>
+                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="matchdes">
+                                    <span
+                                        class="text-danger">Kindly ensure that the Main Designation and Replace Crew Designation need to be same.</span>
+                                </div>
+
+                                </div>
+                                <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                                    <div class="">
+                                        <button style="margin:10px" class="save-button px-3" [disabled]="buttonDisable"
+                                            *ngIf="!isEdit"  (click)="addYearlyRoster()">
+                                            <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                                width="15px">
+                                            <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Add
+                                                <svg>
+                                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                                </svg>
+                                            </span>
+                                            <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                                            <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                                        </button>
+
+
+                                        <button *ngIf="isEdit" class="save-button px-3">
+                                            <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                                width="15px">
+                                            <span class="white" style="margin-left: 10px;">Update
+                                                <svg>
+                                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                                </svg>
+                                            </span>
+                                            <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </form>
+                    <table *ngIf="!tabletoggle" class="table col-md-12 px-12 mt-4" >
+                        <thead>
+                          <tr>
+                            <th scope="col">Sr.no</th>
+                            <th scope="col">Main Crew Designation</th>
+                            <th scope="col">Main Crew Employee</th>
+                            <th scope="col">Replace Crew Designation</th>
+                            <th scope="col">Replace Crew Employee</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let data of comboCrewData;let i = index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{data.mainDes}}</td>
+                            <td>{{data.mainEmp}}</td>
+                            <td>{{data.repDes}}</td>
+                            <td>{{data.repEmp}}</td>
+                          </tr>
+
+
+                        </tbody>
+                      </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

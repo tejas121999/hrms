@@ -1,0 +1,291 @@
+<div cdkScrollable id="add-manifest-passenger" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Passenger</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="passengerForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row">
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Type</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="type"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="passengerForm.get('type')?.invalid">
+                                        <span class="text-danger">{{getError(passengerForm,'type')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Purchasing</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="purchasing"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="passengerForm.get('purchasing')?.invalid">
+                                        <span class="text-danger">{{getError(passengerForm,'purchasing')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Plant</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="plant"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="passengerForm.get('plant')?.invalid">
+                                        <span class="text-danger">{{getError(passengerForm,'plant')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 add px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Date</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input [readonly]="true" [min]="" formControlName="date" class="form-control"
+                                                    [owlDateTime]="date" [owlDateTimeTrigger]="date">
+                                                <owl-date-time pickerType="calendar" #date></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="date">
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="passengerForm.get('date')?.invalid">
+                                        <span class="text-danger">{{getError(passengerForm,'date')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Vendor Code</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="10" type="text" formControlName="vendor_code"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="passengerForm.get('vendor_code')?.invalid">
+                                        <span class="text-danger">{{getError(passengerForm,'vendor_code')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Sub-vendor Code</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="subvendor_code"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="uk-fieldset pl-4 mt-4">
+                            <span class="px-3"><b>01</b> Manifest Information</span>
+                            <div class="row">
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Company Name</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="50" type="text" formControlName="company_name"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Company Address</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea [maxlength]="100" rows="1" formControlName="company_address"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">RFM Number</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input onKeyPress="if(this.value.length==20){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    type="number" formControlName="rfm_number" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Vendor Number</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    type="number" formControlName="vendor_name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 add px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Date of Sortie</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input [readonly]="true" [min]="" formControlName="date_of_sorti" class="form-control"
+                                                    [owlDateTime]="sorti" [owlDateTimeTrigger]="sorti">
+                                                <owl-date-time pickerType="calendar" #sorti></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="sorti">
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Sortie Type</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="sorti_type"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Task</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="task"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Plant For Manifest</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="plant_for_manifest"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Mode of Journey</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="mode_of_journey"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Schedule Sector</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="scheduled_sector"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Schedule Departure Time</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="20" type="text" formControlName="schedule_dep_time"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-3 add mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Remark</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea [maxlength]="100" rows="1" formControlName="remark"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                    <div class="">
+                        <button *ngIf="!isEdit" [disabled]="buttonDisable" class="save-button px-3"
+                            (click)="addPassenger()">
+                            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                            <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save
+                                <svg>
+                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                </svg>
+                            </span>
+                            <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                            <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                        </button>
+                        <button *ngIf="isEdit" class="save-button px-3" (click)="editBooking()">
+                            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                            <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update
+                                <svg>
+                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                </svg>
+                            </span>
+                            <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                            <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

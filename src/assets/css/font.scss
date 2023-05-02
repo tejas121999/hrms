@@ -1,0 +1,61 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+h1, h2, h3, h4, h5, h6, a, button, p, span, label, table th, td, ol{
+    font-family: 'poppins';
+}
+h1{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    color: #2C2C2C;
+    margin: 0;
+    position: relative;
+}
+// h1::before{
+//     content: '';
+//     display: inline-block;
+//     max-width: 20rem;
+//     width: 25%;
+//     position: relative;
+//     border-bottom: 3px solid #3D5DD1;
+//     position: absolute;
+//     bottom: -3px;
+//     left: 50%;
+//     -webkit-transform: translateX(-50%);
+//     transform: translateX(-50%);
+// }
+.view-h1, .title-border{
+    position: relative;
+}
+.title-border::before{
+    content: "";
+    display: inline-block;
+    max-width: 100%;
+    width: calc(100% - 92px);
+    position: relative;
+    border-bottom: 1.8px solid #9BA7F0;
+    position: absolute;
+    bottom: 16px;
+    left: 35px;
+    transform: unset;
+}
+.title-border.card-title-border::before {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+table th, td{
+    font-size: 18px;
+}
+.uk-fieldset span{
+    color: #000;
+}
+.uk-modal-container .uk-modal-body .card-title-border h1 {
+    font-weight: 500;
+    color: #2C2C2C;
+}
+.uk-modal-container .uk-modal-body .uk-close {
+    right: 38px;
+    top: 25px;
+}

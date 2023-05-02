@@ -1,0 +1,76 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2">Loan Master</h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center pb-2">
+        <span>
+            <a class="add-button" uk-toggle="target: #add-loan-type" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Loan</span>
+            </a>
+        </span>
+    </div>
+    <!-- <div class="border-2pxblue"></div> -->
+</div>
+<div class="row mx-4">
+    <div class="view-table px-4 py-3" *ngIf="loanList.length > 0 && !loader">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Loan Name</th>
+                    <th scope="col">Rate of Interest</th>
+                    <th scope="col">Max. Loan Amount</th>
+                    <th scope="col">Duration</th>
+                    
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let loan of loanList | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count };let i = index" >
+                    <td>{{loan.loan_name}}</td>
+                    <td>{{loan.rate_of_interest}}</td>
+                    <td>{{loan.max_loan_ammount}}</td>
+                    <td>{{loan.duration}} {{loan.duration_type}} </td>
+                    <td class="cursor-pointer table-options">
+                        <button class="w-100 bg-white border-0"><img style="size: 4px;" src="./assets/icons/more2.svg"
+                            alt=""></button>
+                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                            <ul class="uk-nav uk-dropdown-nav">
+                                <li class="">
+                                    <a class="uk-dropdown-close justify-content-center"
+                                        (click)="openEdit(loan)">Edit</a>
+                                </li>
+                                <li class="">
+                                    <a class="uk-dropdown-close justify-content-center"
+                                        (click)="deleteLoan(loan.id)">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-center align-items-end">
+                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>  -->
+                <!-- <ng-select class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select> -->
+                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+    <div class="no-data" *ngIf="loanList.length == 0 && !loader">
+        <div class="text-center">
+            <div class="text-center">
+                <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+            </div>
+            <h3 class="">No Data Yet...</h3>
+            <span>Be the first one to add</span>
+        </div>
+    </div>
+    <app-loader *ngIf="loader"></app-loader>
+</div>
+<app-add-loan-type></app-add-loan-type>

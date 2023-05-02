@@ -1,0 +1,167 @@
+<div class="bg-whitesmoke vh-100">
+    <div class="row p-4 m-0 box-shadow bg-white">
+        <div class="col-lg-6">
+            <h2 class="px-3 m-0">Shift Request</h2>
+        </div>
+        <div class="col-lg-6">
+            <div class="text-end mx-5">
+                <a href="" class="add-button px-3">Save</a>
+            </div>
+        </div>
+    </div>
+    <div class="row p-4 m-0">
+        <div class="col-md-2">
+            <p>Filter By</p>
+            <div class="mb-3 row">
+                <a class="filter-btn border col-md-6 mx-2" uk-button>
+                    <span class="add-btn">Department</span>
+                    <img class="icon-display pt-2 float-end" src="./assets/icons/updown-caret.svg" height="10px"
+                        width="10px">
+                </a>
+                <div uk-dropdown="mode: click" class="col-auto">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-header">Header</li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <a class="filter-btn border col-md-6 mx-2" uk-button>
+                    <span class="add-btn">Created by</span>
+                    <img class="icon-display pt-2 float-end" src="./assets/icons/updown-caret.svg" height="10px"
+                        width="10px">
+                </a>
+                <div uk-dropdown="mode: click" class="col-auto">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-header">Header</li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <a class="filter-btn border col-md-6 mx-2" uk-button>
+                    <span class="add-btn">Designation</span>
+                    <img class="icon-display pt-2 float-end" src="./assets/icons/updown-caret.svg" height="10px"
+                        width="10px">
+                </a>
+                <div uk-dropdown="mode: click" class="col-auto">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-header">Header</li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <a class="filter-btn border col-md-6 mx-2" uk-button>
+                    <span class="add-btn">Employment Type</span>
+                    <img class="icon-display pt-2 float-end" src="./assets/icons/updown-caret.svg" height="10px"
+                        width="10px">
+                </a>
+                <div uk-dropdown="mode: click" class="col-auto">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-header">Header</li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center mx-3 mt-3">
+                <a class="add-button mt-3 w-80">Apply Filters</a>
+                <a class="clear-button mt-3 w-80">Clear Filters</a>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="container-fluid">
+                <div class="box-shadow bg-white mx-5">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Connections
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body p-0">
+                                    <div class="border-bottom p-4">
+                                        <div class="button px-4">
+                                            <a href="" class="mark-btn me-3" routerLink="/add-shift-assignment">
+                                                <span class="badge bg-secondary me-2">1</span>Shift Assignment</a>
+                                            <a href="" class="mark-btn">
+                                                <img class="icon-display mb-1" src="./assets/icons/add.svg" height="10px" width="10px">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row p-4">
+                                        <div class="col-lg-6 px-5 my-3">
+                                            <label for="" class="form-label">Shift Type</label>
+                                            <span class="text-danger">*</span>
+                                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                                        </div>
+                                        <div class="col-lg-6 px-5 my-3">
+                                            <label for="" class="form-label">Company</label>
+                                            <span class="text-danger">*</span>
+                                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                                        </div>
+                                        <div class="col-lg-6 px-5 my-3">
+                                            <label for="" class="form-label">Employee</label>
+                                            <span class="text-danger">*</span>
+                                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                                        </div>
+                                        <div class="col-lg-6 px-5 my-3">
+                                            <label for="" class="form-label">Approver</label>
+                                            <span class="text-danger">*</span>
+                                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                                        </div>
+                                        <div class="col-lg-6 px-5 my-3">
+                                            <label for="" class="form-label">Employee Name</label>
+                                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                                        </div>
+                                        <div class="col-lg-6 px-5 my-3">
+                                            <label for="" class="form-label">From Date</label>
+                                            <span class="text-danger">*</span>
+                                            <input type="text" class="form-control input-bg border-0" [owlDateTime]="from"
+                                                [owlDateTimeTrigger]="from">
+                                            <owl-date-time pickerType="calendar" #from></owl-date-time>
+                                        </div>
+                                        <div class="col-lg-6 px-5 my-3">
+                                            <label for="" class="form-label">Status</label>
+                                            <span class="text-danger">*</span>
+                                            <input type="text" class="form-control input-bg border-0" placeholder="">
+                                        </div>
+                                        <div class="col-lg-6 px-5 my-3">
+                                            <label for="" class="form-label">To Date</label>
+                                            <input type="text" class="form-control input-bg border-0" [owlDateTime]="to"
+                                                [owlDateTimeTrigger]="to">
+                                            <owl-date-time pickerType="calendar" #to></owl-date-time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

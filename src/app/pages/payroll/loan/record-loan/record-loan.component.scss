@@ -1,0 +1,20 @@
+h3 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 38px;
+    color: #002160;
+}
+
+.view-h1::before {
+    content: "";
+    display: inline-block;
+    max-width: 20rem;
+    width: 20%;
+    position: relative;
+    border-bottom: 3px solid #3D5DD1;
+    position: absolute;
+    bottom: -12px;
+    left: 10%;
+    transform: translateX(-50%);
+}

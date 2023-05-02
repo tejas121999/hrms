@@ -1,0 +1,157 @@
+<div class="row py-4 px-5 title-border">
+  <div class="col-md-6 p-0">
+    <h1 class="view-h1 pt-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Leave Type Master">
+      Leave summary
+    </h1>
+  </div>
+  <div *ngIf="permission?.add_leave_track" class="col-md-6 d-flex justify-content-end align-items-center">
+    <span class="col-md-5 text-end">
+      <span>
+        <a class="add-button px-4" uk-toggle="target: #leave-track" type="button">
+          <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px" />
+          <span class="add-btn ms-2">Apply Leave</span>
+        </a>
+      </span>
+    </span>
+    <!-- <span  class="col-md-5">
+      <div class="border-blue p-2 rounded-3">
+        <ng-select placeholder="Select :" [items]="option" [(ngModel)]="selectedAttributes"
+          (change)="changeFilter($event)" bindLabel="name" bindValue="id">
+        </ng-select>
+      </div>
+    </span> -->
+  </div>
+  <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<div *ngIf="!loader" class="row px-5">
+  <!-- <div class="col-md-12">
+        <div class="col-md-4">
+            <input class="form-control border border-blue mx-2 input-bg col-md-4" type="search" placeholder="Employee Name">
+        </div>
+    </div> -->
+  <div class="col-xl-7 col-xxl-8">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div *ngFor="let item of availableLeaves" class="col-md-3 mt-4">
+            <div class="leave-card annual bg-white">
+              <div class="d-grid justify-content-center align-items-center text-center">
+                <span class="leave-name">{{ item?.leave_name }}</span>
+                <span class="leave-days">
+                  <span>{{ item.takenLeave }} / {{ item.assignLeave }}</span>
+                </span>
+                <span class="">Balance : {{item.assignLeave- item.takenLeave }}  <span></span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mt-5">
+        <div class="row">
+          <div class="col-md-9">
+            <h1 class="upcoming">Leaves Applied</h1>
+          </div>
+          <div class="col-md-3 text-end">
+            <!-- <button class="bg-transparent border-0" type="button">
+              <img src="./assets/icons/filter1.svg" width="30px" height="30px" alt="">
+            </button>
+            <div uk-dropdown="mode: click; pos: bottom-right" class="filter-dd">
+              <ul class="list-unstyled p-2 text-start">
+                <li *ngFor="let item of option">
+                  <a (click)="changeFilter(item.id)" class="border-0 bg-transparent">{{item.name}}</a> -->
+                  <!-- <a href="">{{item.name}}</a> -->
+                <!-- </li>
+              </ul>
+            </div>-->
+            <div class="dropdown">
+              <button type="button" id="dropdownMenuButton1" class="filter-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="./assets/icons/filter1.svg" height="30px" width="30px" alt="">
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li  *ngFor="let item of option let i = index">
+                  <!-- <a class="dropdown-item">Action</a> -->
+                  <a (click)="changeFilter(item.id)" [ngClass]="{'active-filter': item.id == isActive}" class="dropdown-item">{{item.name}}</a>
+              </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div *ngFor="
+            let leave of leaveData
+              | paginate
+                : {
+                    itemsPerPage: limit,
+                    currentPage: currentPage,
+                    totalItems: count
+                  };
+            let i = index
+          " class="upcoming-card border-bottom-blue bg-white mt-4">
+          <div class="d-flex justify-content-between p-4">
+            <div class="day d-grid">
+              <span class="fw-300 pb-3">From date </span>
+              <span>{{leave.from_date|date}}</span>
+            </div>
+
+            <div class="day d-grid">
+              <span class="fw-300 pb-3">To date</span>
+              <span>{{leave.to_date|date}}</span>
+            </div>
+
+            <div class="day d-grid">
+              <span class="fw-300 pb-3">Number Of days</span>
+              <span>{{leave.total_leave_days}}</span>
+            </div>
+            <div class="type d-grid">
+              <span class="fw-300 pb-3">Leave Type</span>
+              <span>{{leave?.leave_type_data?.leave_name}}</span>
+            </div>
+            <div *ngIf="!toggle" class="request d-grid">
+              <span class="fw-300 pb-3">Requested By</span>
+              <span>Saloni Chikhale</span>
+            </div>
+            <div class="d-grid">
+              <span class="fw-300 pb-3">Status</span>
+              <span *ngIf="leave?.isApproved==2">Approved</span>
+              <span *ngIf="leave?.isApproved==0">Pending</span>
+              <span *ngIf="leave?.isApproved==1">Cancelled</span>
+            </div>
+            <div *ngIf="!toggle" class="reason d-grid">
+              <span class="fw-300 pb-3">Reason</span>
+              <span>{{leave.reason}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="no-data" *ngIf="leaveData.length == 0 && !loader">
+          <div class="text-center">
+              <div class="text-center">
+                  <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+              </div>
+              <h3 class="">No Data Yet...</h3>
+              <span>Be the first one to add</span>
+          </div>
+      </div>
+        <div class="row mt-4 mb-5">
+          <div class="d-flex justify-content-center align-items-end">
+
+                <pagination-controls class="mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-5 col-xxl-4">
+    <div class="leave-calendar mt-3">
+      <full-calendar *ngIf="calendarOptions" #fullcalendar  [options]="calendarOptions">
+        <ng-template #eventContent let-arg>
+            <b>{{ arg.event.title }}</b> - {{ arg.event.start.getDate() }}
+        </ng-template>
+    </full-calendar>
+    </div>
+  </div>
+</div>
+<app-loader *ngIf="loader"></app-loader>
+
+<app-add-leave-track [isEdit]="isEdit"></app-add-leave-track>

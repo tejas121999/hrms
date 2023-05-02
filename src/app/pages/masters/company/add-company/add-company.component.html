@@ -1,0 +1,533 @@
+<div cdkScrollable id="add-company" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Company Master</h1>
+            </div>
+
+            <!-- test commit -->
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row mt-3">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="companyForm">
+                        <ul class="uk-tab justify-content-center mx-auto mt-4" data-uk-tab="{connect:'#company'}"
+                            uk-switcher="animation:uk-animation-fade">
+                            <li [ngClass]="{'uk-active' : active && index===0 || index === 0}">
+                                <a class="" href="#general-info" (click)="setCurrentTab(0)"
+                                    [ngClass]="{'active' : active && index===0 || index === 0}">General</a>
+                            </li>
+                            <li [ngClass]="{'uk-active' : active && index===1 || index === 1}">
+                                <a class="" href="#company-info" (click)="setCurrentTab(1)"
+                                    [ngClass]="{'active' : active && index===1}">Company
+                                    Info</a>
+                            </li>
+                            <li [ngClass]="{'uk-active' : active && index===2 || index === 2}">
+                                <a class="" href="#tax-info" (click)="setCurrentTab(2)"
+                                    [ngClass]="{'active' : active && index===2} ">Tax Info</a>
+                            </li>
+                        </ul>
+                        <ul class="uk-flex-center uk-switcher uk-margin" id="company">
+                            <li class="" [ngClass]="{' show active uk-active' : active && index===0 || index === 0} "
+                                id="general-info">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Company name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="company_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="companyForm.get('company_name')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(companyForm,'company_name')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Code</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="company_code">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="companyForm.get('company_code')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(companyForm,'company_code')}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </li>
+                            <li class="" id="company-info" [ngClass]="{'show active uk-active' : active && index===1}">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <div class="col-md-4 px-3 mt-3"
+                                            *ngIf="this.userData.data.isFirst == false && !disableParent">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Parent company</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="parent_company">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3" *ngIf="this.userData.data.isFirst == false">
+                                            <input type="checkbox" class="form-check-input me-3" id="exampleCheck1"
+                                                formControlName="subsidiaries" #chkEnable
+                                                (change)="isParent(chkEnable.checked)">
+                                            <label class="form-check-label" for="exampleCheck1">Subsidiaries</label>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Year of establishment</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-11">
+                                                        <input [(ngModel)]="yearDate" name="yearDate" [max]="todaysDate"
+                                                            formControlName="year_of_establishment" class="form-control"
+                                                            [owlDateTime]="year_of_establish"
+                                                            [owlDateTimeTrigger]="year_of_establish">
+                                                        <owl-date-time pickerType="calendar" #year_of_establish>
+                                                        </owl-date-time>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <span [owlDateTimeTrigger]="year_of_establish">
+                                                            <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                                height="20px" class="">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="this.userData.data.isFirst == false" class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Type of organization</label>
+
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <ng-select [clearable]="false" [items]="type_of_org"
+                                                            bindLabel="name" class="ps-2"
+                                                            formControlName="type_of_orginization"
+                                                            bindValue="name"></ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Phone</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="number"
+                                                            onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                            class="form-control" formControlName="company_phone">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="companyForm.get('company_phone')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(companyForm,'company_phone')}}</span>
+                                            </div> -->
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Email</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="email" class="form-control"
+                                                            formControlName="company_email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="companyForm.get('company_email')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(companyForm,'company_email')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Fax</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="number"
+                                                            onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                            class="form-control" formControlName="company_fax">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="companyForm.get('company_fax')?.invalid">
+                                                <span class="text-danger">{{getError(companyForm,'company_fax')}}</span>
+                                            </div> -->
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Website</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="company_website">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Contact person</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="company_contact_person">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Mobile</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="number"
+                                                            onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                            class="form-control" formControlName="company_mobile">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="companyForm.get('company_mobile')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(companyForm,'company_mobile')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Address</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <textarea type="text" wrap="off"
+                                                            class="form-control form-input-scroll"
+                                                            formControlName="company_address"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Secondary address</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <textarea type="text" wrap="off"
+                                                            class="form-control form-input-scroll"
+                                                            formControlName="company_secondary_address"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Country</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <ng-select [clearable]="false" [items]="Countries"
+                                                            bindLabel="name" class="ps-2" bindValue="name"
+                                                            (change)="getcountryid($event)"
+                                                            formControlName="company_country">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="companyForm.get('company_country')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(companyForm,'company_country')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">State</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <ng-select [clearable]="false" [items]="state" bindLabel="name"
+                                                            class="ps-2" bindValue="name" (change)="getstateid($event)"
+                                                            formControlName="company_state">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="companyForm.get('company_state')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(companyForm,'company_state')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">City</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <ng-select [clearable]="false" [items]="city" bindLabel="name"
+                                                            class="ps-2" bindValue="name" (change)="getstateid($event)"
+                                                            formControlName="company_city">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">District</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="company_district">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Pincode</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input
+                                                            onKeyPress="if(this.value.length==6){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                            type="number" class="form-control"
+                                                            formControlName="company_zipcode">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+                            </li>
+                            <li class="" id="tax-info" [ngClass]="{'show active uk-active' : active && index===2}">
+                                <fieldset class="uk-fieldset pl-4">
+                                    <div class="row add">
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">VAT</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="company_vat">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">GST</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="company_gst">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">PAN number</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" [maxlength]="10" class="form-control"
+                                                            formControlName="company_pan">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="companyForm.get('company_pan')?.invalid">
+                                                <span class="text-danger">{{getError(companyForm,'company_pan')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">CIN number</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="CIN_no">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">IEC</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" formControlName="IEC">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">TAN</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" formControlName="TAN">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Udyam registration</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control"
+                                                            formControlName="company_excise_registration">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Header</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <!-- <input type="file" class="form-control"
+                                                            formControlName="company_header" (click)="uploadFile($event, 'header')"> -->
+                                                        <input type="file" class="form-control"
+                                                            formControlName="company_header">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Footer</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <!-- <input type="file" class="form-control"
+                                                            formControlName="company_footer" (click)="uploadFile($event, 'footer')"> -->
+                                                        <input type="file" class="form-control"
+                                                            formControlName="company_footer">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 px-3 mt-3">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Note</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <textarea rows="1" class="form-control"
+                                                            formControlName="company_note"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </li>
+                        </ul>
+                    </form>
+                    <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                        <div class="px-3">
+                            <ng-container *ngIf="index != 0" currentTab !='general-info'>
+                                <button style="margin: 10px;" class="save-button prn px-3" [disabled]="buttonLoader"
+                                    (click)="setCurrentTab(index-1)">
+                                    <span class="white" *ngIf="!buttonLoader">Previous
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="!isEdit && index != 2 ">
+                                <button style="margin: 10px;" class="save-button prn px-3" [disabled]="buttonLoader"
+                                    (click)="setCurrentTab(index+1)">
+                                    <span class="white" *ngIf="!buttonLoader">Next
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="isEdit && index != 2 ">
+                                <button style="margin: 10px;" class="save-button prn px-3" [disabled]="buttonLoader"
+                                    (click)="setCurrentTab(index+1)">
+                                    <span class="white" *ngIf="!buttonLoader">Next
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </ng-container>
+
+
+
+                            <button *ngIf="!isEdit && index == 2" class=" save-button px-4" (click)="addCompany()">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save
+                                    <svg>
+                                        <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                    </svg></span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+                            <button *ngIf="isEdit" class="save-button px-4" (click)="editCompany()">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update
+                                    <svg>
+                                        <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                    </svg>
+                                </span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+                        </div>
+
+                        <!-- <div class="" *ngIf=" currentTab =='tax-info'">
+                            <button *ngIf="!isEdit && index == 2" class=" save-button px-4" (click)="addCompany()">
+                                <img class="icon-display mb-1" src="./assets/icons/save1.svg" height="15px"
+                                    width="15px">
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save</span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+                            <button *ngIf="isEdit" class="save-button px-4" (click)="editCompany()">
+                                <img class="icon-display mb-1" src="./assets/icons/save1.svg" height="15px"
+                                    width="15px">
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update</span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- [disabled]="companyForm.invalid" -->

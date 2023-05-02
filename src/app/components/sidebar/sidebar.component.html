@@ -1,0 +1,669 @@
+<div class="bar collapse pb-5 show" id="collapseExample" [ngClass]="{ 'active': isOpen }">
+    <div *ngIf="this.enableNave.isFirst == false" [ngClass]="{'contentnav': enableNave}" id="sidebar"
+        class="collapse collapse-horizontal show">
+        <nav id="sidebar-nav navbar" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+            <!-- *ngIf="this.enableNave.isFirst == false" -->
+            <div *ngIf="this.enableNave.isFirst == true">
+
+            </div>
+            <div *ngIf="this.enableNave.isFirst == false" class="sidebar-header mt-4 mb-2 d-flex">
+                <div class="line"></div>
+                <div class="main-menu">
+                    <span>Main Menu</span>
+                </div>
+                <a class="border-0" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    <img src="./assets/icons/sidebar.svg" alt="" class="position-relative" height="30px" width="30px">
+                </a>
+            </div>
+
+
+            <ul *ngIf="this.enableNave.isFirst == false" class=" list-unstyled components pb-2 nav navbar-nav">
+                <li class="accordion-item">
+                    <!-- <a class="nav-link d-flex collapse-link" data-bs-toggle="collapse" href="#collapseExample1"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <img src="./assets/icons/master1.svg" alt="" class="" height="35px" width="35px">
+                        <span class="col">Master</span>
+                    </a>
+                    <ul class="navbar-nav sub-module collapse" id="collapseExample1">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Organization
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <ul class="accordion-body list-unstyled" id="org">
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-branch" routerLinkActive="active"
+                                                    class="nav-link p-0">Branch</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-department"
+                                                    routerLinkActive="active" class="nav-link p-0">Department</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-designation"
+                                                    routerLinkActive="active" class="nav-link p-0">Designation</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-employee-grade"
+                                                    routerLinkActive="active" class="nav-link p-0">Employee Grade</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-employee"
+                                                    routerLinkActive="active" class="nav-link p-0">Employee</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="la">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#la-collapse" aria-expanded="true" aria-controls="la-collapse">
+                                        Leave
+                                    </button>
+                                </h2>
+                                <div id="la-collapse" class="accordion-collapse collapse" aria-labelledby="la"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <ul class="accordion-body list-unstyled" id="org">
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-leave-type"
+                                                    routerLinkActive="active" class="nav-link p-0">Leave Type</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-shift-type"
+                                                    routerLinkActive="active" class="nav-link p-0">Shift Type</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-holiday-list"
+                                                    routerLinkActive="active" class="nav-link p-0">Holiday</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="Payroll">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#Payroll-collapse" aria-expanded="true"
+                                        aria-controls="Payroll-collapse">
+                                        Payroll
+                                    </button>
+                                </h2>
+                                <div id="Payroll-collapse" class="accordion-collapse collapse" aria-labelledby="Payroll"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <ul class="accordion-body list-unstyled" id="org">
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-salary-comp"
+                                                    routerLinkActive="active" class="nav-link p-0">Salary Component</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-package"
+                                                    routerLinkActive="active" class="nav-link p-0">Package</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="Manifest">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#Manifest-collapse" aria-expanded="true"
+                                        aria-controls="Manifest-collapse">
+                                        Manifest
+                                    </button>
+                                </h2>
+                                <div id="Manifest-collapse" class="accordion-collapse collapse"
+                                    aria-labelledby="Manifest" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <ul class="accordion-body list-unstyled" id="org">
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-rig-manifest"
+                                                    routerLinkActive="active" class="nav-link p-0">Rig</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-manifest-passenger"
+                                                    routerLinkActive="active" class="nav-link p-0">Passenger</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-booking"
+                                                    routerLinkActive="active" class="nav-link p-0">Bookings</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-roster" routerLinkActive="active"
+                                                    class="nav-link p-0">Roster</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="extra">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#extra-collapse" aria-expanded="true"
+                                        aria-controls="extra-collapse">
+                                        Extra
+                                    </button>
+                                </h2>
+                                <div id="extra-collapse" class="accordion-collapse collapse" aria-labelledby="extra"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <ul class="accordion-body list-unstyled" id="org">
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-alert" routerLinkActive="active"
+                                                    class="nav-link p-0">Alerts</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/masters/manage-template"
+                                                    routerLinkActive="active" class="nav-link p-0">Templates</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul> -->
+
+
+                    <!-- <h2 class="accordion-header" id="master" (click)="toggle()">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#master-collapse" aria-expanded="true" aria-controls="master-collapse">
+                                <img src="./assets/icons/master1.svg" alt="" class="" height="35px" width="35px">
+                                <span class="col">Master</span>
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="master"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="accordion" id="accordionExample1">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="organization">
+                                            <button
+                                                *ngIf="permission.department || permission.designation || permission.employee"
+                                                class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-parent="#accordionExample1"
+                                                data-bs-target="#submenu-1" aria-expanded="false"
+                                                aria-controls="submenu-1">
+                                                <p class="mb-0"> Organization</p>
+                                            </button>
+                                        </h2>
+                                        <div id="submenu-1" class="accordion-collapse collapse"
+                                            aria-labelledby="organization" data-bs-parent="#accordionExample1">
+                                            <div class="accordion-body m-0">
+                                                <ul class="list-unstyled ps-4" id="org">
+                                                    <li *ngIf="this.permission.department" class="nav-item">
+                                                        <a routerLink="/masters/manage-department"
+                                                            routerLinkActive="active"
+                                                            class="nav-link p-0">Department</a>
+                                                    </li>
+                                                    <li *ngIf=" this.permission.designation" class="nav-item">
+                                                        <a routerLink="/masters/manage-designation"
+                                                            routerLinkActive="active"
+                                                            class="nav-link p-0">Designation</a>
+                                                    </li>
+                                                    <li *ngIf="permission.employee" class="nav-item">
+                                                        <a routerLink="/masters/manage-employee"
+                                                            routerLinkActive="active" class="nav-link p-0">Employee</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="accordion-item">
+                                        <h2 class="accordion-header" id="leave">
+                                            <button
+                                                *ngIf="permission.leave_type || permission.shift_type || permission.holiday"
+                                                class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-parent="#accordionExample1"
+                                                data-bs-target="#submenu-2" aria-expanded="false"
+                                                aria-controls="submenu-2"> Leave </button>
+                                        </h2>
+                                        <div id="submenu-2" class="accordion-collapse collapse" aria-labelledby="leave"
+                                            data-bs-parent="#accordionExample1">
+                                            <div class="accordion-body m-0">
+                                                <ul class="list-unstyled ps-4" id="org">
+                                                    <li *ngIf="permission.leave_type" class="nav-item">
+                                                        <a routerLink="/masters/manage-leave-type"
+                                                            routerLinkActive="active" class="nav-link p-0">Leave
+                                                            Type</a>
+                                                    </li>
+                                                    <li *ngIf="permission.shift_type" class="nav-item">
+                                                        <a routerLink="/masters/manage-shift-type"
+                                                            routerLinkActive="active" class="nav-link p-0">Shift
+                                                            Type</a>
+                                                    </li>
+                                                    <li *ngIf="permission.holiday" class="nav-item">
+                                                        <a routerLink="/masters/manage-holiday-list"
+                                                            routerLinkActive="active" class="nav-link p-0">Holiday</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="payroll">
+                            <button
+                                *ngIf="permission.salary_component || permission.salary_structure || permission.loan"
+                                class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-parent="#accordionExample1" data-bs-target="#submenu-3" aria-expanded="false"
+                                aria-controls="submenu-3"> Payroll </button>
+                        </h2>
+                        <div id="submenu-3" class="accordion-collapse collapse" aria-labelledby="payroll"
+                            data-bs-parent="#accordionExample1">
+                            <div class="accordion-body m-0">
+                                <div class="accordion-item">
+                                    <ul class="list-unstyled ps-4" id="org">
+                                        <!-- <li *ngIf="permission.salary_component" class="nav-item">
+                                                            <a routerLink="/masters/manage-salary-comp"
+                                                                routerLinkActive="active" class="nav-link p-0">Salary
+                                                                Component</a>
+                                                        </li> -->
+                                        <li *ngIf="permission.salary_structure" class="nav-item">
+                                            <a routerLink="/masters/manage-package" routerLinkActive="active"
+                                                class="nav-link p-0">Package</a>
+                                        </li>
+                                        <!-- this two component was not working that's why i commint -->
+                                        <!-- <li class="nav-item">
+                                                            <a routerLink="/payroll/manage-employee-payroll" routerLinkActive="active"
+                                                                class="nav-link p-0">Employees</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a routerLink="/payroll/process-payroll" routerLinkActive="active"
+                                                                class="nav-link p-0">Process Payroll</a>
+                                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="manifest">
+                            <button
+                                *ngIf="permission.rig || permission.passenger || permission.booking || permission.roster"
+                                class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-parent="#accordionExample1" data-bs-target="#submenu-4" aria-expanded="false"
+                                aria-controls="submenu-4"> Manifest </button>
+                        </h2>
+                        <div id="submenu-4" class="accordion-collapse collapse" aria-labelledby="Manifest"
+                            data-bs-parent="#accordionExample1">
+                            <div class="accordion-body m-0">
+                                <ul class="list-unstyled ps-4" id="org">
+                                    <li *ngIf="permission.rig" class="nav-item">
+                                        <a routerLink="/masters/manage-rig-manifest" routerLinkActive="active"
+                                            class="nav-link p-0">Rig</a>
+                                    </li>
+                                    <li *ngIf="permission.passenger" class="nav-item">
+                                        <a routerLink="/masters/manage-manifest-passenger" routerLinkActive="active"
+                                            class="nav-link p-0">Passenger</a>
+                                    </li>
+                                    <li *ngIf="permission.booking" class="nav-item">
+                                        <a routerLink="/masters/manage-booking" routerLinkActive="active"
+                                            class="nav-link p-0">Bookings</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a routerLink="/masters/manage-crew" routerLinkActive="active"
+                                            class="nav-link p-0">Crew</a>
+                                    </li>
+                                    <li *ngIf="permission.roster" class="nav-item">
+                                        <a routerLink="/masters/manage-roster" routerLinkActive="active"
+                                            class="nav-link p-0">Roster</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a routerLink="/masters/manage-yearly-roster" routerLinkActive="active"
+                                            class="nav-link p-0">Yearly
+                                            Roster</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+</div>
+</div>
+</div>
+</li>
+<li class="accordion-item">
+    <div class="accordion-header ms-4 me-3" id="leave">
+        <a class="rounded accordion-button main-button nav-link d-flex collapse-link collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#leave-collapse" aria-expanded="false"
+            aria-controls="leave-collapse">
+            <img src="./assets/icons/leave1.svg" alt="" class="" height="35px" width="35px">
+            <span class="col">Leaves</span>
+        </a>
+    </div>
+    <div id="leave-collapse" class="accordion-collapse collapse mt-3" aria-labelledby="leave"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <div class="accordion-item mt-2">
+                <h2 class="accordion-header" id="lea">
+                    <button class="accordion-button sub-button pe-2 collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#lea-collapse" aria-expanded="false" aria-controls="lea-collapse">
+                        Leave
+                    </button>
+                </h2>
+                <div id="lea-collapse" class="accordion-collapse collapse" aria-labelledby="lea"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul class="list-unstyled" id="">
+                            <li *ngIf="permission.leave_request" class="nav-item">
+                                <a href="" routerLink="/leave-management/manage-leave-request" routerLinkActive="active"
+                                    class="nav-link p-0">Leave Request</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" routerLink="/leave-management/manage-leave-track" routerLinkActive="active"
+                                    class="nav-link p-0">Leave Track </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" routerLink="/leave-management/manage-leave-type" routerLinkActive="active"
+                                    class="nav-link p-0">Leave Type</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" data-bs-toggle="collapse" href="#ltc" role="button" aria-expanded="false"
+                                    aria-controls="collapseExample" class="nav-link p-0">Leave Type Configuration</a>
+                                <ul class="list-unstyled collapse ps-3" id="ltc">
+                                    <li class="nav-item">
+                                        <a href="" routerLink="/leave-management/manage-approval"
+                                            routerLinkActive="active" class="nav-link p-0">Approval</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" routerLink="/leave-management/manage-leave-notification"
+                                            routerLinkActive="active" class="nav-link p-0">Notification</a>
+                                    </li>
+                                </ul>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header ms-4 me-3" id="attendance">
+                                        <img src="./assets/icons/attendance-1.svg" alt="" class="" height="35px"
+                                            width="35px">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            <p class="mb-0">Attendance</p>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="attendance" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <div class="accordion-item">
+                                                <ul class="list-unstyled ps-3" id="">
+                                                    <li class="nav-item" *ngIf="permission?.attendence">
+                                                        <a routerLink="/attendance/manage-mark-attendance"
+                                                            routerLinkActive="active" class="nav-link p-0">Mark
+                                                            Attendance</a>
+                                                    </li>
+                                                    <li class="nav-item" *ngIf="permission?.uploade_attendence">
+                                                        <a routerLink="/attendance/manage-upload-attendance"
+                                                            routerLinkActive="active" class="nav-link p-0">Upload
+                                                            Attendance</a>
+                                                    </li>
+                                                    <!-- holiday list should not here -->
+                                                    <li class="nav-item" *ngIf="permission?.leave_type">
+                                                        <a routerLink="/attendance/manage-holiday-list"
+                                                            routerLinkActive="active" class="nav-link p-0">Holiday
+                                                            List</a>
+                                                    </li>
+                                                    <!-- <li class="nav-item" *ngIf="permission?.shift_type">
+                                            <a routerLink="/attendance/manage-shift" routerLinkActive="active"
+                                                class="nav-link p-0">Shift Timings</a>
+                                        </li>
+                                        <li class="nav-item" *ngIf="permission?.attendance_setting">
+                                            <a routerLink="/attendance/attendance-setting" routerLinkActive="active"
+                                                class="nav-link p-0">Attendance Setting</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a routerLink="/attendance/manage-attendance-notification"
+                                                routerLinkActive="active" class="nav-link p-0">Attendance
+                                                Notification</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a routerLink="/attendance/manage-present-employee"
+                                                routerLinkActive="active" class="nav-link p-0">Always Present
+                                                Employee</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a routerLink="/attendance/late-coming" routerLinkActive="active"
+                                                class="nav-link p-0">Late Coming/ Early Going</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a routerLink="/attendance/overtime-notification" routerLinkActive="active"
+                                                class="nav-link p-0">Overtime
+                                                Notification</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a routerLink="/attendance/overtime-configuration" routerLinkActive="active"
+                                                class="nav-link p-0">Overtime
+                                                Configuration</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a routerLink="/attendance/attendance-configuration"
+                                                routerLinkActive="active" class="nav-link p-0">Configuration</a>
+                                        </li> -->
+                                                    <li class="nav-item">
+                                                        <a routerLink="/attendance/manage-regularization"
+                                                            routerLinkActive="active"
+                                                            class="nav-link p-0">Regularization</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a routerLink="/attendance/regularization-request"
+                                                            routerLinkActive="active"
+                                                            class="nav-link p-0">Regularization Request</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header ms-4 me-3" id="headingThree">
+                                        <img src="./assets/icons/leave-1.svg" alt="" class="" height="35px"
+                                            width="35px">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            <p class="mb-0">Leaves</p>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <ul class="list-unstyled ps-3" id="">
+                                                <li *ngIf="permission?.leave_request" class="nav-item">
+                                                    <a routerLink="/leave-management/manage-leave-request"
+                                                        routerLinkActive="active" class="nav-link p-0">Leave
+                                                        Application</a>
+                                                </li>
+                                                <li class="nav-item" *ngIf="permission?.leave_track">
+                                                    <a routerLink="/leave-management/manage-leave-track"
+                                                        routerLinkActive="active" class="nav-link p-0">Apply Leave </a>
+                                                </li>
+                                                <!-- <li class="nav-item" *ngIf="permission?.leave_type">
+                                        <a routerLink="/leave-management/manage-leave-type" routerLinkActive="active"
+                                            class="nav-link p-0">Leave Type</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a data-bs-toggle="collapse" href="#ltc" role="button" aria-expanded="false"
+                                            aria-controls="collapseExample" class="nav-link p-0">Leave Type
+                                            Configuration</a>
+                                        <ul class="list-unstyled collapse ps-3" id="ltc">
+                                            <li class="nav-item">
+                                                <a routerLink="/leave-management/manage-approval"
+                                                    routerLinkActive="active" class="nav-link p-0">Approval</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" routerLink="/leave-management/configuration"
+                                                    routerLinkActive="active" class="nav-link p-0">Configuration</a>
+                                            </li>
+                                        </ul>
+                </li> -->
+                                                <!-- <li class="nav-item">
+                                        <a routerLink="/leave-management/configuration" routerLinkActive="active"
+                                            class="nav-link p-0">Configuration</a>
+                                    </li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item">
+                                <div class="accordion-header ms-4 me-3" id="payrollmodule">
+                                    <a class="rounded accordion-button main-button nav-link d-flex collapse-link collapsed"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#payrollmodule-collapse"
+                                        aria-expanded="false" aria-controls="payrollmodule-collapse">
+                                        <img src="./assets/icons/payroll1.svg" alt="" class="" height="35px"
+                                            width="35px">
+                                        <span class="col">Payroll</span>
+                                    </a>
+                                </div>
+                                <div id="payrollmodule-collapse" class="accordion-collapse collapse mt-3"
+                                    aria-labelledby="payrollmodule" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="accordion-item mt-2">
+                                            <h2 class="accordion-header" id="pm">
+                                                <button class="accordion-button sub-button pe-2 collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#pm-collapse"
+                                                    aria-expanded="false" aria-controls="pm-collapse">
+                                                    Payroll
+                                                </button>
+                                            </h2>
+                                            <div id="pm-collapse" class="accordion-collapse collapse"
+                                                aria-labelledby="pm" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <ul class="list-unstyled" id="">
+                                                        <li class="nav-item">
+                                                            <a href="" routerLink="/payroll/manage-employee-payroll"
+                                                                routerLinkActive="active"
+                                                                class="nav-link p-0">Employees</a>
+                                                        </li>
+                                                        <!-- <li class="nav-item">
+                                                <a href="" routerLink="/payroll/pay-run" routerLinkActive="active"
+                                                    class="nav-link p-0">Pay Runs</a>
+                                            </li> -->
+                                                        <li class="nav-item">
+                                                            <a href="" routerLink="/payroll/process-payroll"
+                                                                routerLinkActive="active" class="nav-link p-0">Process
+                                                                Payroll</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="" routerLink="/payroll/loan"
+                                                                routerLinkActive="active" class="nav-link p-0">Loans</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="" routerLink="/payroll/manage-tax-deduction-group"
+                                                                routerLinkActive="active" class="nav-link p-0">Tax
+                                                                Deduction
+                                                                Group</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- <li class="nav-item">
+                    <a class="nav-link d-flex" data-bs-toggle="collapse" href="#collapseExample2" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                        <img src="./assets/icons/company1.svg" alt="" height="35px" width="35px">
+                        <span class="col">Company</span>
+                    </a>
+                    <ul class="navbar-nav sub-module collapse" id="collapseExample2">
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-department" class="nav-link">Department</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-branch" class="nav-link">Branch</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-domain" class="nav-link">Domain</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex" data-bs-toggle="collapse" href="#collapseExample3" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                        <img src="./assets/icons/attendance1.svg" alt="" height="35px" width="35px">
+                        <span class="col">Attendance</span>
+                    </a>
+                    <ul class="navbar-nav sub-module collapse" id="collapseExample3">
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-attendance" class="nav-link active">Attendance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-leave-type" class="nav-link">Leave Type</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-shift-type" class="nav-link">Shift</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex" data-bs-toggle="collapse" href="#collapseExample4" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                        <img src="./assets/icons/manifest1.svg" alt="" height="35px" width="35px">
+                        <span class="col">Manifest</span>
+                    </a>
+                    <ul class="navbar-nav sub-module collapse" id="collapseExample4">
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-manifest-passenger" class="nav-link active">Passanger Manifest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-rig-manifest" class="nav-link">Rig Manifest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-booking" class="nav-link">Bookings</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex">
+                        <img src="./assets/icons/recruit1.svg" alt="" height="35px" width="35px">
+                        <span class="col">Recruitment</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex" data-bs-toggle="collapse" href="#collapseExample5" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                        <img src="./assets/icons/payroll1.svg" alt="" height="35px" width="35px">
+                        <span class="col">Payroll</span>
+                    </a>
+                    <ul class="navbar-nav sub-module collapse" id="collapseExample5">
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-salary-comp" class="nav-link active">Salary Component</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-salary-structure" class="nav-link">Salary Structure</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" routerLink="/masters/manage-salary-grade" class="nav-link">Salary Grade</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex" routerLink="/masters/manage-alert">
+                        <img src="./assets/icons/alert1.svg" alt="" height="35px" width="35px">
+                        <span class="col">Alerts</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex" routerLink="/masters/manage-template">
+                        <img src="./assets/icons/template1.svg" alt="" height="35px" width="35px">
+                        <span class="col">Templates</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex" routerLink="/masters/manage-reports">
+                        <img src="./assets/icons/report1.svg" alt="" height="35px" width="35px">
+                        <span class="col">Reports</span>
+                    </a>
+                </li> -->
+
+                        </ul>
+                        </nav>
+                    </div>
+                </div>

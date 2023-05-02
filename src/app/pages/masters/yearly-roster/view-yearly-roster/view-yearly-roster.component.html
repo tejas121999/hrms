@@ -1,0 +1,89 @@
+<div cdkScrollable id="view-yearly-roster" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+
+        <div class="row px-3">
+            <div class="text-center col-10">
+                <h1 class="pb-3">View Yearly Roster</h1>
+            </div>
+
+            <div class="text-center col-2">
+                <button class="save-button px-3" (click)="export()">
+                    <span class="save-btn ms-2">Export</span>
+                </button>
+            </div>
+
+           
+            <!-- <div class="border-2pxblue"></div> -->
+
+          
+   
+            <table style="border: 1px solid black;margin: 0;padding: 0;">
+                <tr>
+                    <td style="width:20%;text-align: center;">
+                        <h2>
+                            {{datadisplay.gap}} On / {{datadisplay.gap}} Off
+                        </h2>
+
+                    </td>
+
+
+                    <td style="width:80%">
+
+
+                        <table style="border: 1px solid black;" class="table  table-striped">
+                            <thead class="table-dark">
+
+
+                                <tr style="text-align: center;background-color: black;color: white;">
+                                    <td colspan=""></td>
+                                    <td colspan="2">Main {{oncrewname}}</td>
+                                    <td colspan="2">Replacement {{offcrewname}}</td>
+                                </tr>
+
+                            </thead>
+                            <tbody *ngFor="let date of allfinelonoffcrewdata">
+                             
+                                <tr  style="text-align: center;" *ngIf="date.crewId == 1">
+                                    <td  colspan="2">
+                                        On
+                                    </td>
+                                    <td>
+                                        {{date.startDate |date}}
+                                    </td>
+
+                                    <td colspan="2">
+                                        {{date.endDate|date}}
+                                    </td>
+
+                                </tr>
+                                <tr  style="text-align: center;" *ngIf="date.crewId == 2">
+                                    <td   colspan="2">
+                                        Off
+                                    </td>
+                                    <td>
+                                        {{date.startDate |date}}
+                                    </td>
+
+                                    <td colspan="2">
+                                        {{date.endDate|date}}
+                                    </td>
+
+                                </tr>
+                          
+
+
+                        </table>
+
+                    </td>
+                </tr>
+
+
+
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,166 @@
+<!-- <div class="modal fade" id="add-attendance" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="text-end px-3 py-3">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div> -->
+<div cdkScrollable id="add-attendance" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-5">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1>Add Attendance Master</h1>
+            </div>
+        </div>
+        <div class="row mx-4">
+            <div class="px-4 py-3">
+                <div class="">
+                    <form action="" [formGroup]="attendanceForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">User</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" formControlName="employee_name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="attendanceForm.get('employee_name')?.invalid">
+                                        <span class="text-danger">{{getError(attendanceForm,'employee_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Attendance Date</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" formControlName="attendance_date"
+                                                    [owlDateTime]="date" [owlDateTimeTrigger]="date">
+                                                <owl-date-time pickerType="calendar" #date></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <img src="./assets/icons/calendar.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="attendanceForm.get('attendance_date')?.invalid">
+                                        <span class="text-danger">{{getError(attendanceForm,'attendance_date')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Status</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11 ps-2">
+                                                <ng-select [clearable]="false" formControlName="status">
+                                                    <ng-option>1</ng-option>
+                                                    <ng-option>2</ng-option>
+                                                    <ng-option>3</ng-option>
+                                                </ng-select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px"
+                                                    height="25px" class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="attendanceForm.get('status')?.invalid">
+                                        <span class="text-danger">{{getError(attendanceForm,'status')}}</span>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Shift</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11 ps-2">
+                                                <ng-select formControlName="shift">
+                                                    <ng-option>1</ng-option>
+                                                    <ng-option>2</ng-option>
+                                                    <ng-option>3</ng-option>
+                                                </ng-select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px"
+                                                    height="25px" class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="attendanceForm.get('shift')?.invalid">
+                                        <span class="text-danger">{{getError(attendanceForm,'shift')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Branch</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11 ps-2">
+                                                <ng-select formControlName="branch">
+                                                    <ng-option>IT</ng-option>
+                                                    <ng-option>Finance</ng-option>
+                                                    <ng-option>BA</ng-option>
+                                                </ng-select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px"
+                                                    height="25px" class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="attendanceForm.get('branch')?.invalid">
+                                        <span class="text-danger">{{getError(attendanceForm,'branch')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Department</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11 ps-2">
+                                                <ng-select formControlName="department">
+                                                    <ng-option>IT</ng-option>
+                                                    <ng-option>Finance</ng-option>
+                                                    <ng-option>BA</ng-option>
+                                                </ng-select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px"
+                                                    height="25px" class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="attendanceForm.get('department')?.invalid">
+                                        <span class="text-danger">{{getError(attendanceForm,'department')}}</span>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-5">
+                            <div class="px-3 cancel">
+                                <button class="cancel-button px-3">
+                                    <img class="icon-display mb-1" src="./assets/icons/cancel.svg" height="15px"
+                                        width="15px">
+                                    <span class="cancel-btn ms-2">Cancel</span>
+                                </button>
+                            </div>
+                            <div class="">
+                                <button class="add-button px-3" (click)="addAttendance()">
+                                    <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                        width="15px">
+                                    <span class="add-btn ms-2">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

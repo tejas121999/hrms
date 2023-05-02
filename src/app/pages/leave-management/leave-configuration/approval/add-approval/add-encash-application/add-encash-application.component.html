@@ -1,0 +1,64 @@
+<div cdkScrollable id="add-encash-application" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEditEncashApp? 'Edit': 'Add'}} Leave Encash Application</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="encashApplicationForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Department</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" [items]="departmentData"
+                                                    (change)="getManagerName()" [multiple]="true"
+                                                    bindLabel="department_name" bindValue="id"
+                                                    formControlName="department"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Require Application Of</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select class="ps-2" [multiple]="true" [readonly]="true"
+                                                    [items]="managerName" bindLabel="manager_name" bindValue=""
+                                                    formControlName="require_application">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button class="save-button px-3" *ngIf="!isEditEncashApp"
+                                    (click)="addEncashApplication()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white ms-2">Save</span>
+                                </button>
+                                <button class="save-button px-3" *ngIf="isEditEncashApp"
+                                    (click)="updateEncashApplication()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white ms-2">Update</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

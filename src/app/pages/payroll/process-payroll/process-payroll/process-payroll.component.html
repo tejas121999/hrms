@@ -1,0 +1,96 @@
+<div class="row pt-4 px-5">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1">Process Payroll</h1>
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<form action="" class="pb-5">
+    <fieldset class="uk-fieldset pl-4">
+        <div class="row add px-4 pt-4">
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Select Period</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" class="ps-2"></ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4 d-flex align-items-center">
+                <span class="me-5">
+                    <a class="add-button px-4">
+                        <span class="add-btn ms-2 text-white">Calculate Payable Days</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<div class="row mx-4">
+    <div class="view-table px-4 py-3">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Paid Days</th>
+                    <th scope="col">Earnings</th>
+                    <th scope="col">Deductions</th>
+                    <th scope="col">Benefits</th>
+                    <th scope="col">Reimbursements</th>
+                    <th scope="col">Net Pay</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td routerLink="/payroll/view-process-payroll">Pratiksha</td>
+                    <td>31</td>
+                    <td>₹90,000.00</td>
+                    <td>₹4,000.00</td>
+                    <td>₹00.00</td>
+                    <td>₹00.00</td>
+                    <td>₹86,000.00</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Monika</td>
+                    <td>31</td>
+                    <td>₹90,000.00</td>
+                    <td>₹4,000.00</td>
+                    <td>₹00.00</td>
+                    <td>₹00.00</td>
+                    <td>₹86,000.00</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kavita</td>
+                    <td>31</td>
+                    <td>₹90,000.00</td>
+                    <td>₹4,000.00</td>
+                    <td>₹00.00</td>
+                    <td>₹00.00</td>
+                    <td>₹86,000.00</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-center">
+                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>
+                <ng-select class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select> -->
+                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6">
+        <h1>Domain</h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center">
+        <span class="me-5">
+            <a class="add-button" routerLink="/masters/add-domain">
+                <img class="icon-display mb-1" src="./assets/icons/add.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Domain</span>
+            </a>
+        </span>
+        <span class="me-3">
+            <a href="" class="add-button" uk-button>
+                <img class="icon-display mb-1" src="./assets/icons/filter.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Filter</span>
+            </a>
+            <div uk-dropdown="mode: click" class="col-auto text-center">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <h5 class="m-0 fw-bold">Filters By</h5>
+                    <div class="py-2">
+                        <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                            <option selected>Assigned To</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                        <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                            <option selected>Created By</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                        <select class="form-select border-bottom border-0 my-2" aria-label="Default select example">
+                            <option selected>Tags</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                    </div>
+                    <div class="d-grid px-3">
+                        <a href="" class="add-button mb-3">Apply Filter</a>
+                        <a href="" class="clear-button">Clear Filter</a>
+                    </div>
+                </ul>
+            </div>
+        </span>
+    </div>
+</div>
+<div class="row mx-4 mb-5 pb-5">
+    <div class="bg-white shadow-sm rounded-3 px-4 py-5">
+        <form action="">
+            <fieldset class="uk-fieldset pl-4">
+                <div class="row">
+                    <div class="col-md-4 px-5 add pb-5">
+                        <label for="" class="form-label">Domain Name</label>
+                        <div class="row g-0 border-bottom-blue">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Domain Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accounting</td>
+                </tr>
+                <tr>
+                    <td>Administrator</td>
+                </tr>
+                <tr>
+                    <td>Factory</td>
+                </tr>
+                <tr>
+                    <td>Finance</td>
+                </tr>
+                <tr>
+                    <td>HR</td>
+                </tr>
+                <tr>
+                    <td>Manager</td>
+                </tr>
+                <tr>
+                    <td>Purchase</td>
+                </tr>
+                <tr>
+                    <td>Sales</td>
+                </tr>
+                <tr>
+                    <td>Store</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- <div class="col-md-12 text-end">
+    <pagination-controls previousLabel="Prev" nextLabel="Next"></pagination-controls>
+</div> -->

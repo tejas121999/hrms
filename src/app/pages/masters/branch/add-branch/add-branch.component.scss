@@ -1,0 +1,17 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+.page{
+    position: absolute;
+    left: 33%;
+    bottom: 12%;
+}
+.page .nextprev a{
+    font-size: 16px !important;
+}

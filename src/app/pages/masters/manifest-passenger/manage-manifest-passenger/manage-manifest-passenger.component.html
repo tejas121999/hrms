@@ -1,0 +1,91 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Passenger">Passenger</h1>
+    </div>
+    <div  *ngIf="permission.add_passenger" class="col-md-6 d-flex justify-content-end align-items-center pb-2">
+        <span class="me-5">
+            <a class="add-button" uk-toggle="target: #add-manifest-passenger" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Passenger</span>
+            </a>
+        </span>
+    </div>
+    <!-- <div class="border-2pxblue"></div> -->
+</div>
+<div class="row mx-4">
+    <div class="view-table px-4 py-3" *ngIf="passengerData?.length > 0 && !loader">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Purchasing</th>
+                    <th scope="col">Vendor Code</th>
+                    <th scope="col">Plant</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let passenger of passengerData | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count  };let i = index">
+                    <td (click)="openEdit(passenger)">{{passenger.type}}</td>
+                    <td (click)="openEdit(passenger)">{{passenger.purchasing}}</td>
+                    <td (click)="openEdit(passenger)">{{passenger.vendor_code}}</td>
+                    <td (click)="openEdit(passenger)">{{passenger.plant}}</td>
+                    <td class="cursor-pointer table-options">
+                        <button class="w-100 bg-white border-0">
+                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                        </button>
+                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                            <ul class="uk-nav uk-dropdown-nav">
+                                <li  *ngIf="permission.edit_passenger" class="">
+                                    <a class="uk-dropdown-close justify-content-center"
+                                        (click)="openEdit(passenger)">Edit</a>
+                                </li>
+                                <li  *ngIf="permission.delete_passenger" class="">
+                                    <a class="uk-dropdown-close justify-content-center"
+                                        (click)="deletePassenger(passenger)">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="row mt-4 mb-1">
+                <div class="d-flex justify-content-center">
+                    <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>  -->
+                <!-- <ng-select class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select> -->
+                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+                </div>
+            </div>
+            <div class="no-data" *ngIf="passengerData.length == 0 && !loader">
+                <div class="text-center">
+                    <div class="text-center">
+                        <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+                    </div>
+                    <h3 class="">No Data Yet...</h3>
+                    <span>Be the first one to add</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="no-data" *ngIf="passengerData.length == 0 && !loader">
+        <div class="text-center">
+            <div class="text-center">
+                <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+            </div>
+            <h3 class="">No Data Yet...</h3>
+            <span>Be the first one to add</span>
+        </div>
+    </div>
+    <app-loader *ngIf="loader"></app-loader>
+</div>
+<app-add-manifest-passenger [isEdit]="isEdit"></app-add-manifest-passenger>
+<!-- <div class="col-md-12 text-end">
+    <pagination-controls previousLabel="Prev" nextLabel="Next"></pagination-controls>
+</div> -->

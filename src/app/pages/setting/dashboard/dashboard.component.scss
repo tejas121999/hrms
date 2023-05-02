@@ -1,0 +1,256 @@
+.title {
+    font-weight: 600;
+}
+.card {
+    border-radius: 8px;
+}
+.card-title {
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+.dashboard-row {
+    --bs-gutter-x: 2rem;
+}
+.chart {
+    height: 220px;
+    width: 220px;
+    margin: 0 auto;
+}
+.turnover-chart {
+    width: 100%;
+    margin: 0 auto;
+}
+.progress-bar {
+    font-weight: 300;
+    font-size: 15px;
+}
+.progress-bar-annual {
+    background-color: #687BF1;
+}
+.progress-bar-casual {
+    background-color: #FCD300;
+}
+.progress-bar-sick {
+    background-color: #3EB859;
+}
+.progress-bar-privilage {
+    background-color: #EA3A99;
+}
+.progress {
+    height: 2rem;
+    width: 60%;
+}
+.card-count {
+    height: 100%;
+}
+.small-text {
+    font-size: 15px;
+}
+.leave-progress .progress-bar p {
+    color: #000000;
+    position: absolute;
+    right: 15px;
+}
+.pay-text {
+    color: #2196F3;
+    font-size: 18px;
+    text-decoration: underline;
+}
+.workformat-chart {
+    height: 80%;
+    width: 80%;
+    margin: 0 auto;
+}
+.form-control-data {
+    border: 0;
+}
+.turnover-chart canvas {
+    width: 90%;
+}
+.line-chart {
+    width: 80%;
+    height: 100%;
+}
+:host ::ng-deep {
+    .fc-h-event .fc-event-main {
+        color: red;
+        background-color: #d51010;
+        border-radius: 50%;
+    }
+    .fc-daygrid-day-number {
+        z-index: 99 !important;
+    }
+    .fc-h-event .fc-event-main {
+        color: #fa6e4e33;
+        background-color: #fa6e4e33;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin-top: -2px;
+    }
+    .fc-direction-ltr .fc-daygrid-event.fc-event-start {
+        margin-left: 16px;
+        background-color: transparent;
+        border: none
+    }
+    .fc-view-harness.fc-view-harness-active {
+        // height: 650px !important;
+        height: 380px !important;
+    }
+  
+    .fc .fc-scrollgrid-section table {
+        // width: -webkit-fill-available !important;
+        width: 100% !important;
+    }
+  
+    .fc-daygrid-body.fc-daygrid-body-unbalanced {
+        width: 100% !important;
+    }
+  
+    .fc-scrollgrid-sync-table {
+        width: 100% !important;
+        height: 310px !important;
+    }
+  
+    .fc-scroller.fc-scroller-liquid-absolute {
+        overflow: hidden !important;
+    }
+  
+    .fc .fc-toolbar-title {
+        color: #000;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18.3934px !important;
+        line-height: 28px;
+        text-align: center;
+        padding: 0 35px;
+    }
+  
+    .fc-button-primary:hover,
+    .fc-button-primary:focus {
+        border: none !important;
+        background-color: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+    }
+  
+    .fc-today-button {
+        display: none;
+    }
+  
+    .fc-today-button:hover {
+        background-color: #6273DD !important;
+        color: #fff !important;
+    }
+  
+    .fc-prev-button {
+        // transform: translate(165px, 0px);
+        border: none !important;
+        background-color: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+    }
+  
+    .fc-next-button {
+        // transform: translate(350px, 0px);
+        border: none !important;
+        background-color: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+    }
+  
+    .fc-col-header-cell-cushion {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13.6931px;
+        line-height: 21px;
+        color: #000000 !important;
+    }
+  
+    .fc .fc-toolbar {
+        display: block !important;
+    }
+  
+    .fc-toolbar-chunk {
+        width: 100%;
+  
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 59px;
+            left: 1.5%;
+            width: 90%;
+        }
+    }
+  
+    .fc-daygrid-day-number {
+        padding: 4px;
+        position: relative;
+        z-index: 4;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15.2575px;
+        line-height: 10px;
+        color: #000000;
+        // margin-right: 12px;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translate(0px, 25px);
+        pointer-events: none;
+        cursor: default;
+    }
+  
+    .fc-daygrid-event-harness .fc-event.fc-event-draggable {
+        height: 28px;
+        width: 28px;
+        // position: absolute;
+        border-radius: 50%;
+        transform: translate(-1px, -2px);
+        z-index: 0;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        // margin-right: 4px !important;
+        // margin-left: 4px !important;
+        text-align: center !important;
+        // opacity: 0.5;
+        border: none;
+    }
+  
+    .fc-daygrid-event-harness .fc-event.fc-event-draggable .fc-event-main {
+        display: none;
+        // font-weight: 400 !important;
+    }
+  
+    .fc-theme-standard .fc-scrollgrid,
+    .fc-theme-standard td,
+    .fc-theme-standard th {
+        border: none !important;
+        min-height: 65px;
+    }
+  
+    .fc .fc-scroller {
+        overflow: hidden !important;
+    }
+  
+    .fc .fc-daygrid-day.fc-day-today {
+        background-color: transparent !important;
+    }
+  
+    .fc-direction-ltr .fc-h-event:not(.fc-event-selected) .fc-event-resizer-end,
+    .fc-direction-rtl .fc-h-event:not(.fc-event-selected) .fc-event-resizer-start {
+        cursor: pointer !important;
+    }
+    .fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+      min-height: 1em !important;
+      position: relative;
+    }
+    .fc-scrollgrid-sync-table tbody tr {
+      height: 40px !important;
+    }
+    .fc .fc-button-primary:disabled {
+        display: none;
+    }
+  }

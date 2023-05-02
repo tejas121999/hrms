@@ -1,0 +1,224 @@
+<div cdkScrollable id="add-missing-notification" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEditMissing? "Edit": "Add"}} Missing Attendance Notification</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="px-4">
+                <div class="">
+                    <form action="" [formGroup]="missingNotificationForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-12 px-3 mt-3">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i>
+                                        Configuration
+                                        :</span>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Occurrence</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" [items]="Occurrence" bindLabel="value" bindValue="value"
+                                                    formControlName="Occurrence"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">When To Send</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input readonly class="form-control ml-2" formControlName="when_to_send"
+                                                    [owlDateTime]="send" [owlDateTimeTrigger]="send">
+                                                <owl-date-time pickerType="timer" #send></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="send">
+                                                    <img src="./assets/icons/timer.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">TimeZone</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" [items]="time_zone" bindLabel="GMT_Offset"
+                                                    bindValue="GMT_Offset" formControlName="TimeZone"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Starting From</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input readonly class="form-control ml-2"
+                                                    formControlName="starting_from" [owlDateTime]="endTimer"
+                                                    [owlDateTimeTrigger]="endTimer">
+                                                <owl-date-time pickerType="calendar" #endTimer></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="endTimer">
+                                                    <img src="./assets/icons/calendar.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Collect Attendance Data For</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" [items]="collectAttendanceFrom" bindLabel="value"
+                                                    bindValue="value"
+                                                    formControlName="collect_attendance_data_for"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input bg-white p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Description</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea rows="1" class="form-control"
+                                                    formControlName="Description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-3">
+                                    <span class="px-2"> Check Missing :</span>
+                                </div>
+                                <div class="col-md-2 mt-3 d-flex">
+                                    <label for="" class="ps-2">Check In</label>
+                                    <div class="form-check form-switch ms-3">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mt-3 d-flex">
+                                    <label for="" class="ps-2">Check Out</label>
+                                    <div class="form-check form-switch ms-3">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    </div>
+                                </div>
+                                <p class="my-3 px-4"><label>NOTE</label> : This Settings Will Be Applicable For All The
+                                    Employees</p>
+                                <div class="col-md-12 px-3 mt-4">
+                                    <span class="blue-dot px-2"><i class="fa fa-circle" aria-hidden="true"></i> Sending
+                                        Options
+                                        :</span>
+                                </div>
+                                <div class="col-md-12 options mt-3">
+                                    <ul class="p-3">
+                                        <li class="ms-3">For Email</li>
+                                        <div class="row add">
+                                            <div class="col-md-2 mt-3 d-flex">
+                                                <label for="" class="ps-2">Email</label>
+                                                <div class="form-check form-switch ms-3">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="flexSwitchCheckDefault">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 px-3 mt-3">
+                                                <div class="bg-input bg-white p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Subject</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <textarea class="form-control" rows="1"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-box mt-4 p-3 d-grid">
+                                            <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+                                            <span>Hi [First Name] [Last Name],</span>
+                                            <span>You may have missed attendance</span>
+                                            <span>Mark it immediately to avoid it being marked as Absent</span>
+                                        </div>
+                                        <p class="mt-3 mb-0"><label>NOTE</label> : Employees With Email In System Will
+                                            Get Email Notification</p>
+                                    </ul>
+                                    <ul class="p-3">
+                                        <li class="ms-3">For SMS</li>
+                                        <div class="row add">
+                                            <div class="col-md-2 mt-3 d-flex">
+                                                <label for="" class="ps-2">SMS</label>
+                                                <div class="form-check form-switch ms-3">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="flexSwitchCheckDefault">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-box mt-4 p-3 d-grid">
+                                            <span>Hi [First Name] [Last Name],</span>
+                                            <span>You may have missed attendance</span>
+                                            <span>Mark it immediately to avoid it being marked as Absent</span>
+                                        </div>
+                                        <p class="mt-3 mb-0"><label>NOTE</label> : Employees With Mobile No In System
+                                            Will Get SMS Notification. You Must Have SMS Credit For This Feature</p>
+                                    </ul>
+                                    <ul class="p-3">
+                                        <li class="ms-3">For App Notification</li>
+                                        <div class="row add">
+                                            <div class="col-md-2 mt-3 d-flex">
+                                                <label for="" class="ps-2">App Notification</label>
+                                                <div class="form-check form-switch ms-3">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="flexSwitchCheckDefault">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 px-3 mt-3">
+                                                <div class="bg-input bg-white p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Subject</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <textarea class="form-control" rows="1"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content-box mt-4 p-3 d-grid">
+                                            <span>Hi [First Name] [Last Name],</span>
+                                            <span>You may have missed attendance</span>
+                                            <span>Please check and correct</span>
+                                        </div>
+                                        <p class="mt-3 mb-0"><label>NOTE</label> : Employees With Registered Mobile
+                                            Devices With System Will Get App Notification</p>
+                                    </ul>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button class="save-button px-3" *ngIf="!isEditMissing"
+                                    (click)="addMissingNotification()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white ms-2">Save</span>
+                                </button>
+                                <button class="save-button px-3" *ngIf="isEditMissing" (click)="updateMissing()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="white ms-2">Edit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

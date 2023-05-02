@@ -1,0 +1,127 @@
+<div class="row pt-4 px-5">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2"> State Tax Slab </h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center pb-2">
+        <span class="me-5">
+            <a class="add-button px-4" uk-toggle="target: #add-state-tax" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add PT Slab </span>
+            </a>
+        </span>
+    </div>
+    <!-- <div class="border-2pxblue"></div> -->
+</div>
+<form action="" class="pb-5">
+    <fieldset class="uk-fieldset pl-4">
+        <div class="row add px-4 pt-4">
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Financial Year</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" [items]="year" bindLabel="year" bindValue="year"></ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">State</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" class="ps-2" [items]="state" bindLabel="state" bindValue="state"></ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Exempt Age Limit</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                        <input type="number" onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Annual CTC Upto</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                        <input type="number" onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-3 mt-4">
+                <div class="bg-input p-1 ">
+                    <label for="" class="form-label ps-2">Exemption For Physically Disable:</label>
+                    <div class="row g-0">
+                        <div class="form-check form-switch ms-2">
+                            <input class="form-check-input" type="checkbox"
+                                id="flexSwitchCheckDefault">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<div class="row mx-4">
+    <div class="view-table px-4 py-3">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Slab From</th>
+                    <th scope="col">Slab To</th>
+                    <th scope="col">Ammount</th>
+                    <th scope="col">Applicable Date</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Special Month</th>
+                    <th scope="col">Special Ammount</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>10001.00</td>
+                    <td>Unlimited</td>
+                    <td>200.00</td>
+                    <td>2014-01-01</td>
+                    <td>Female</td>
+                    <td>Feb</td>
+                    <td>300.00</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10001.00</td>
+                    <td>Unlimited</td>
+                    <td>200.00</td>
+                    <td>2014-01-01</td>
+                    <td>Male</td>
+                    <td>Feb</td>
+                    <td>300.00</td>
+                    <td>
+                        <a href=""><img src="./assets/icons/more2.svg" alt=""></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-center">
+                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>
+                <ng-select class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select> -->
+                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+<app-add-state-tax-slab></app-add-state-tax-slab>

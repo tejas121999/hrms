@@ -1,0 +1,25 @@
+table.data-table th {
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+table.data-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.border-bottom-blue {
+    background-color: #fff !important;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f8f8f8;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 12px !important;
+  }

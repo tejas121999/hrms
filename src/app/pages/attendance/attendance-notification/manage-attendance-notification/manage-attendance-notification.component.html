@@ -1,0 +1,200 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1">Attendance Notification</h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center pb-2 position-relative">
+        <!-- <span class="me-5">
+            <a class="add-button" uk-toggle="target: #add-notification" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Notification</span>
+            </a>
+        </span> -->
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<div class="row mb-3">
+    <div class="px-4 pt-3">
+        <div class="px-5">
+            <ul class="uk-tab justify-content-center mx-auto justify-content-between"
+                data-uk-tab="{connect:'#notification'}" uk-switcher="animation:uk-animation-fade">
+                <li class="uk-active">
+                    <a class="" href="#approve-noti">Attendance Approval Notification</a>
+                </li>
+                <li>
+                    <a class="" href="#absent-noti">Absent Notification</a>
+                </li>
+                <li>
+                    <a class="" href="#missing-noti">Missing Attendance Notification</a>
+                </li>
+            </ul>
+            <ul class="uk-flex-center uk-switcher uk-margin" id="notification">
+                <li class="uk-active" id="approve-noti">
+                    <div class="text-end both-button">
+                        <span class="me-5">
+                            <a class="add-button" uk-toggle="target: #add-approval-notification" type="button">
+                                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                                <span class="add-btn ms-2">Add Approval Notification</span>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="view-table px-4 py-3">
+                        <table class="data-table table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Department</th>
+                                    <th scope="col">Approval Notification To</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let data of approveData | paginate: { itemsPerPage: limit1, currentPage: currentPage, totalItems: count  };let i = index">
+                                    <td>{{data?.approval_notification?.department_name}}</td>
+                                    <td>{{data?.send_approval_notification_to}}</td>
+                                    <td class="cursor-pointer table-options">
+                                        <button class="w-100 bg-white border-0">
+                                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                        </button>
+                                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li class="">
+                                                    <a (click)="openApproval(data)"
+                                                        class="uk-dropdown-close justify-content-center">Edit</a>
+                                                </li>
+                                                <li class="">
+                                                    <a (click)="deleteApproval(data.id)"
+                                                        class="uk-dropdown-close justify-content-center">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row mt-4 mb-1">
+                            <div class="d-flex justify-content-center align-items-end">
+                                <pagination-controls (pageChange)="onPageChange_1($event)"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="uk-active" id="absent-noti">
+                    <div class="text-end both-button">
+                        <span class="me-5">
+                            <a class="add-button" uk-toggle="target: #add-absent-notification" type="button">
+                                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                                <span class="add-btn ms-2">Add Notification</span>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="view-table px-4 py-3">
+                        <table class="data-table table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Department</th>
+                                    <th scope="col">Absent Notification To</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let data of absentData | paginate: { itemsPerPage: limit2, currentPage: currentPage, totalItems: count  };let i = index">
+                                    <td>{{data.approval_notification.department_name}}</td>
+                                    <td>{{data.send_absent_notification_to}}</td>
+                                    <td class="cursor-pointer table-options">
+                                        <button class="w-100 bg-white border-0">
+                                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                        </button>
+                                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li class="">
+                                                    <a class="uk-dropdown-close justify-content-center"
+                                                        (click)="openAbsent(data)">Edit</a>
+                                                </li>
+                                                <li class="">
+                                                    <a class="uk-dropdown-close justify-content-center"
+                                                        (click)="deleteAbsent(data.id)">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row mt-4 mb-1">
+                            <div class="d-flex justify-content-center align-items-end">
+                                <pagination-controls (pageChange)="onPageChange_2($event)"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="uk-active" id="missing-noti">
+                    <div class="d-flex px-3">
+                        <div class="col-md-6 d-flex">
+                            <label for="">Send Missing Attendance Notification ?</label>
+                            <div class="form-check form-switch ms-3">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                        <div class="text-end col-md-6 both-button">
+                            <span class="me-5">
+                                <a class="add-button" uk-toggle="target: #add-missing-notification" type="button">
+                                    <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px"
+                                        width="15px">
+                                    <span class="add-btn ms-2">Add Notification</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="view-table px-4 py-3">
+                        <table class="data-table table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Occurrence</th>
+                                    <th scope="col">Sending Time</th>
+                                    <th scope="col">TimeZone</th>
+                                    <th scope="col">Attendance Data For</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let data of missingNotification | paginate: { itemsPerPage: limit3, currentPage: currentPage, totalItems: count  };let i = index">
+                                    <td>{{data.Occurrence}}</td>
+                                    <td>{{data.when_to_send}}</td>
+                                    <td>{{data.TimeZone}}</td>
+                                    <td>{{data.Occurrence}}</td>
+                                    <td class=" cursor-pointer table-options">
+                                        <button class="w-100 bg-white border-0">
+                                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                                        </button>
+                                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li class="">
+                                                    <a class="uk-dropdown-close justify-content-center"
+                                                        (click)="openMissingNotifi(data)">Edit</a>
+                                                </li>
+                                                <li class="">
+                                                    <a class="uk-dropdown-close justify-content-center"
+                                                        (click)="deleteMissingAttendence(data.is)">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row mt-4 mb-1">
+                            <div class="d-flex justify-content-center align-items-end">
+                                <pagination-controls (pageChange)="onPageChange_3($event)"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<app-approval-notification [isEditApproval]="isEditApproval"></app-approval-notification>
+<app-absent-notification [isEditAbsent]="isEditAbsent"></app-absent-notification>
+<app-missing-notification [isEditMissing]="isEditMissing"></app-missing-notification>

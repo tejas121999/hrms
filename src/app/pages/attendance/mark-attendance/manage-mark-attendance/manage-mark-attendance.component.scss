@@ -1,0 +1,20 @@
+.filter-btn {
+    background: transparent;
+    border: 0;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #F7F9FF;
+    color: #000;
+}
+.filter-btn, .calendar-wrap {
+    background: #ABB0F1;
+    box-shadow: 4px 4px 4px rgb(171 176 241 / 14%);
+    border-radius: 4px;
+}
+.filter-btn img {
+    height: 40px;
+    width: 29px;
+}
+.calendar-wrap {
+    padding: 10px 11px 6px 7px;
+}

@@ -1,0 +1,2019 @@
+<div id="add-employee" uk-modal class="uk-modal-container modal-scroll-form add-employee-modal"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body scrollbar">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? 'Edit':'Add'}} Employee</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class=" rounded-3 px-3 py-3">
+                <div class="">
+                    <!-- <section class="px-4 py-1">
+                        <ul id="progressbar" class="d-flex justify-content-center pt-4 mb-0">
+                            <li [ngClass]="step>=1 ? 'active' : 'inactive'"><b>01</b> General</li>
+                            <li [ngClass]="step>=2 ? 'active' : 'inactive'"><b>02</b> Personal</li>
+                            <li [ngClass]="step>=3 ? 'active' : 'inactive'"><b>03</b> Nominee</li>
+                            <li [ngClass]="step>=4 ? 'active' : 'inactive'"><b>04</b> Bank</li>
+                            <li [ngClass]="step>=5 ? 'active' : 'inactive'"><b>05</b> Insurance</li>
+                            <li [ngClass]="step==6 ? 'active' : 'inactive'"><b>06</b> Document</li>
+                        </ul>
+                    </section> -->
+                    <ul class="uk-tab justify-content-center mx-auto" uk-switcher="animation:uk-animation-fade">
+                        <li [ngClass]="{'uk-active' : active && index===0 || index === 0}">
+                            <a class="" [ngClass]="{'active' : active && index===0 || index === 0}" href="#general-info"
+                                (click)="setCurrentTab(0)">General</a>
+                        </li>
+                        <li [ngClass]="{'uk-active' : active && index===1 || index === 1}">
+                            <a [ngClass]="{'active' : active && index===1}" href="#personal-info"
+                                (click)="setCurrentTab(1)">Personal</a>
+                        </li>
+                        <li [ngClass]="{'uk-active' : active && index===2 || index === 2}">
+                            <a [ngClass]="{'active' : active && index===2} " href="#nominee-info"
+                                (click)="setCurrentTab(2)">Nominee</a>
+                        </li>
+                        <li [ngClass]="{'uk-active' : active && index===3 || index === 3}">
+                            <a [ngClass]="{'active' : active && index===3}" href="#bank-info"
+                                (click)="setCurrentTab(3)">Bank</a>
+                        </li>
+                        <li [ngClass]="{'uk-active' : active && index===4 || index === 4}">
+                            <a [ngClass]="{'active' : active && index===4}" href="#client-info"
+                                (click)="setCurrentTab(4)">Client Approval</a>
+                        </li>
+                        <li [ngClass]="{'uk-active' : active && index===5 || index === 5}">
+                            <a [ngClass]="{'active' : active && index===5}" href="#other-info"
+                                (click)="setCurrentTab(5)">Other</a>
+                        </li>
+                        <li [ngClass]="{'uk-active' : active && index===6 || index === 6}" *ngIf="isEdit">
+                            <a [ngClass]="{'active' : active && index===6}" href="#shift-info"
+                                (click)="setCurrentTab(6)">View Shift</a>
+                        </li>
+                        <li [ngClass]="{'uk-active' : active && index===7 || index === 7}" *ngIf="isEdit">
+                            <a [ngClass]="{'active' : active && index===7}" href="#leave-info"
+                                (click)="setCurrentTab(7)">View Leave</a>
+                        </li>
+                        <li [ngClass]="{'uk-active' : active && index===8 || index === 8}" *ngIf="isEdit">
+                            <a [ngClass]="{'active' : active && index===8}" href="#package-info"
+                                (click)="setCurrentTab(8)">View Package</a>
+                        </li>
+                    </ul>
+                    <!-- <div class="d-flex justify-content-center pt-4">
+                        <ul class="nav nav-tabs justify-content-center justify-content-between" id="ex2" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" [ngClass]="{'active' : active && index===0 || index === 0}"
+                                    href="#general-info" (click)="setCurrentTab(0)" data-bs-toggle="tab">General</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" [ngClass]="{'active' : active && index===1}" href="#personal-info"
+                                    (click)="setCurrentTab(1)" data-bs-toggle="tab">Personal</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" [ngClass]="{'active' : active && index===2} " href="#nominee-info"
+                                    (click)="setCurrentTab(2)" data-bs-toggle="tab">Nominee</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" [ngClass]="{'active' : active && index===3}" href="#bank-info"
+                                    (click)="setCurrentTab(3)" data-bs-toggle="tab">Bank</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" [ngClass]="{'active' : active && index===4}" href="#client-info"
+                                    (click)="setCurrentTab(4)" data-bs-toggle="tab">Client Approval</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" [ngClass]="{'active' : active && index===5}" href="#other-info"
+                                    (click)="setCurrentTab(5)" data-bs-toggle="tab">Other</a>
+                            </li>
+
+                            <li class="nav-item" *ngIf="isEdit" role="shift">
+                                <a class="nav-link" [ngClass]="{'active' : active && index===6}" href="#shift-info"
+                                    (click)="setCurrentTab(6)" data-bs-toggle="tab">View Shift</a>
+                            </li>
+                            <li class="nav-item" *ngIf="isEdit" role="presentation">
+                                <a class="nav-link" [ngClass]="{'active' : active && index===7}" href="#leave-info"
+                                    (click)="setCurrentTab(7)" data-bs-toggle="tab">View Leave</a>
+                            </li>
+                            <li class="nav-item" *ngIf="isEdit" role="presentation">
+                                <a class="nav-link" [ngClass]="{'active' : active && index===8}" href="#package-info"
+                                    (click)="setCurrentTab(8)" data-bs-toggle="tab">View Package</a>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <ul class="pb-3 uk-flex-center uk-switcher uk-margin mt-0">
+
+                        <!-- <div class="tab-content"> -->
+
+                        <!-- General -->
+                        <div class="tab-pane fade show active"
+                            [ngClass]="{' show active uk-active' : active && index===0 || index === 0} "
+                            id="general-info" role="tabpanel" aria-labelledby="general-info">
+                            <form action="" [formGroup]="generalForm">
+                                <fieldset class="uk-fieldset">
+                                    <div class="row add update-input">
+                                        <div class="col-md-1 mt-4 pe-0">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Title</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 ps-2">
+                                                        <ng-select [clearable]="false" [items]="title" bindLabel="title"
+                                                            bindValue="title" formControlName="title">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('title')?.invalid">
+                                                <span class="text-danger">{{getError(generalForm,'title')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">First Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="20" required spellcheck="false" type="text"
+                                                            class="form-control" formControlName="first_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('first_name')?.invalid">
+                                                <span class="text-danger">{{getError(generalForm,'first_name')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Middle Name</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="20" type="text" class="form-control"
+                                                            formControlName="middle_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('middle_name')?.invalid">
+                                                <span class="text-danger">{{getError(generalForm,'middle_name')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Last Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="20" type="text" formControlName="last_name"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('last_name')?.invalid">
+                                                <span class="text-danger">{{getError(generalForm,'last_name')}}</span>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Employee Id</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-11">
+                                                        <input style="text-transform: lowercase" readonly="true"
+                                                            [(ngModel)]="empCodeId" name="empCodeId" [maxlength]="10"
+                                                            type="text" class="form-control" formControlName="emp_id">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <i class="fa fa-refresh" (click)="getEmpCode()" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('emp_id')?.invalid">
+                                                <span class="text-danger">{{getError(generalForm,'emp_id')}}</span>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Employee Type</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" (change)="getEmp($event)"
+                                                            [items]="emp_type" bindLabel="type" bindValue="type"
+                                                            formControlName="emp_type">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('emp_type')?.invalid">
+                                                <span class="text-danger">{{getError(generalForm,'emp_type')}}</span>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="empType" class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Crew Type</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="crew_type"
+                                                            bindLabel="type" bindValue="type"
+                                                            formControlName="crew_type">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Employee Status</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="emp_status"
+                                                            bindLabel="type" formControlName="employee_status"
+                                                            bindValue="type">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="empType" class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Employee
+                                                    Classification</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="emp_classification"
+                                                            bindLabel="type" formControlName="employee_classification"
+                                                            bindValue="type">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Department</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" (change)="getManagerName()"
+                                                            [items]="departmentData" bindLabel="department_name"
+                                                            bindValue="id" formControlName="department_id">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('department_id')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(generalForm,'department_id')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Branch</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="branchData"
+                                                            bindLabel="branch_name" bindValue="id"
+                                                            formControlName="branch_id">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="!empType" class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Designation</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="designationData"
+                                                            bindLabel="job_title" formControlName="designation_id"
+                                                            bindValue="id">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Company Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="companyData"
+                                                            bindLabel="company_name" formControlName="company_id"
+                                                            bindValue="id">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('company_id')?.invalid">
+                                                <span class="text-danger">{{getError(generalForm,'company_id')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Company Type</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="company_type"
+                                                            bindLabel="type" bindValue="type"
+                                                            formControlName="company_type">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Date of Joining</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-11">
+                                                        <input readonly [min]="minDate" [max]="maxDate"
+                                                            formControlName="date_of_joining" class="form-control"
+                                                            [owlDateTime]="join" [owlDateTimeTrigger]="join">
+                                                        <owl-date-time pickerType="calendar" #join></owl-date-time>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <span [owlDateTimeTrigger]="join">
+                                                            <img src="./assets/icons/calendar.svg" alt="" width="18px"
+                                                                height="18px" class=""></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('date_of_joining')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(generalForm,'date_of_joining')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Work Location</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <div *ngIf="!empType">
+                                                            <input [maxlength]="20" [(ngModel)]="workLocations"
+                                                                name="workLocations" type="text" class="form-control"
+                                                                formControlName="working_location">
+                                                        </div>
+                                                        <div *ngIf="empType">
+                                                            <ng-select [clearable]="false" [(ngModel)]="workLocations"
+                                                                name="workLocations" [items]="work_location"
+                                                                bindLabel="name" bindValue="name" class="ps-2"
+                                                                formControlName="working_location">
+                                                            </ng-select>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('working_location')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(generalForm,'working_location')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Work Email Id</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="50" type="email" (change)="setEmail($event)"
+                                                            class="form-control" formControlName="work_emailId">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="workingEmail">
+                                                <span class="text-danger">Please Enter Official Email id</span>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('work_emailId')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(generalForm,'work_emailId')}}</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Manager Name</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="20" [readOnly]="true" type="text"
+                                                            class="form-control" formControlName="manager_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="generalForm.get('manager_name')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(generalForm,'manager_name')}}</span>
+                                                </div> -->
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Attendance Code</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="10" type="text" class="form-control"
+                                                            formControlName="attendance_code">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Probation Period (Month)</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="probation_period"
+                                                            bindLabel="name" bindValue="name"
+                                                            formControlName="probation_period">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Remark</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="100" rows="1" class="form-control"
+                                                            formControlName="remark">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('remark')?.invalid">
+                                                <span class="text-danger">{{getError(generalForm,'remark')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Employee Role</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="getRoleData"
+                                                            (change)="employeeRole($event)" bindLabel="roll_name"
+                                                            bindValue="id" formControlName="emp_role">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="generalForm.get('emp_role')?.invalid">
+                                                <span class="text-danger">{{getError(generalForm,'emp_role')}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                        <!-- Personal -->
+                        <div class="tab-pane fade " [ngClass]="{'show active uk-active' : active && index===1} "
+                            id="personal-info" role="tabpanel" aria-labelledby="personal-info">
+                            <form action="" [formGroup]="personalForm">
+                                <section class="py-3">
+                                    <fieldset class="uk-fieldset">
+                                        <div class="row add">
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Email</label>
+                                                    <span class="text-danger">*</span>
+
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="100" type="email"
+                                                                formControlName="personal_email" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="personalForm.get('personal_email')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(personalForm,'personal_email')}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Mobile No</label>
+                                                    <span class="text-danger">*</span>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input type="number"
+                                                                onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                                class="form-control" formControlName="mobile_no">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="personalForm.get('mobile_no')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(personalForm,'mobile_no')}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Date of Birth</label>
+                                                    <span class="text-danger">*</span>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-11">
+                                                            <input readonly formControlName="date_of_birth"
+                                                                class="form-control" [owlDateTime]="birth"
+                                                                [owlDateTimeTrigger]="birth" [max]="minimumDate">
+                                                            <owl-date-time pickerType="calendar" #birth>
+                                                            </owl-date-time>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <span [owlDateTimeTrigger]="birth">
+                                                                <img src="./assets/icons/calendar.svg" alt=""
+                                                                    width="18px" height="18px" class="">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="personalForm.get('date_of_birth')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(personalForm,'date_of_birth')}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Gender</label>
+                                                    <span class="text-danger">*</span>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12 px-2">
+                                                            <ng-select [clearable]="false" [items]="gender"
+                                                                bindLabel="type" bindValue="type"
+                                                                formControlName="gender">
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="personalForm.get('gender')?.invalid">
+                                                    <span class="text-danger">{{getError(personalForm,'gender')}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Nationality</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="50" type="text" class="form-control"
+                                                                formControlName="nationality">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="personalForm.get('nationality')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(personalForm,'nationality')}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Religion</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="30" type="text" class="form-control"
+                                                                formControlName="religion">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="personalForm.get('religion')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(personalForm,'religion')}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Marital Status</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12 px-2">
+                                                            <ng-select [clearable]="false" [items]="marital_status"
+                                                                bindLabel="status" bindValue="status"
+                                                                formControlName="marital_status">
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Blood Group</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12 px-2">
+                                                            <ng-select [clearable]="false" [items]="blood_groop"
+                                                                bindLabel="type" bindValue="type"
+                                                                formControlName="blood_group">
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Highest
+                                                        Qualification</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="50" type="text" class="form-control"
+                                                                formControlName="highest_qualification">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Languages</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="100" type="text" class="form-control"
+                                                                formControlName="languages">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Work Experience</label>
+                                                    <span class="text-danger">*</span>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12 px-2">
+                                                            <ng-select [clearable]="false" [items]="worke_experience"
+                                                                bindLabel="type" bindValue="type"
+                                                                formControlName="work_experience">
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="personalForm.get('work_experience')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(personalForm,'work_experience')}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">No of Dependents</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input
+                                                                onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                                type="number" class="form-control"
+                                                                formControlName="no_of_dependency">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Safety Shoe Size</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input
+                                                                onKeyPress="if(this.value.length==2){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                                type="number" class="form-control"
+                                                                formControlName="safty_shoe_size">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Nearest Domestic
+                                                        Airport</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="100" type="text" class="form-control"
+                                                                formControlName="nearest_domestic_airport">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Nearest Intl
+                                                        Airport</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="100" type="text" class="form-control"
+                                                                formControlName="nearest_internatinal_airport">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </section>
+                                <div class="card-border">
+                                    <div class="rounded-3 py-3">
+                                        <fieldset class="uk-fieldset">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <span class="ps-3 text-dark"><b>01</b> Communication
+                                                        Address</span>
+                                                </div>
+                                            </div>
+                                            <div class="row add">
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Communication
+                                                            Address</label>
+                                                        <span class="text-danger">*</span>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <textarea [maxlength]="200" rows="5"
+                                                                    class="form-control"
+                                                                    formControlName="comm_address"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="personalForm.get('comm_address')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(personalForm,'comm_address')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="row">
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">Country</label>
+                                                                <span class="text-danger">*</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12 px-2">
+                                                                        <ng-select [clearable]="false"
+                                                                            [items]="Countries" bindLabel="name"
+                                                                            bindValue="name"
+                                                                            (change)="getcountryid($event)"
+                                                                            formControlName="comm_country">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('comm_country')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'comm_country')}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">State</label>
+                                                                <span class="text-danger">*</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12 px-2">
+                                                                        <ng-select [clearable]="false" [items]="state"
+                                                                            bindLabel="name" bindValue="name"
+                                                                            (change)="getstateid($event)"
+                                                                            formControlName="comm_state">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('comm_state')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'comm_state')}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">District</label>
+                                                                <span class="text-danger">*</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <input [maxlength]="20" type="text"
+                                                                            class="form-control"
+                                                                            formControlName="comm_destrict">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('comm_destrict')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'comm_destrict')}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">City</label>
+                                                                <span class="text-danger">*</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12 px-2">
+                                                                        <ng-select [clearable]="false" [items]="city"
+                                                                            bindLabel="name" bindValue="name"
+                                                                            (change)="getstateid($event)"
+                                                                            formControlName="comm_city">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('comm_city')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'comm_city')}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">PinCode</label>
+                                                                <span class="text-danger">*</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <input type="number"
+                                                                            onKeyPress="if(this.value.length==6){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                                            class="form-control"
+                                                                            formControlName="comm_zip">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('comm_zip')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'comm_zip')}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="card-border border-top-0 my-3">
+                                    <div class=" rounded-3 py-3">
+                                        <fieldset class="uk-fieldset">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <span class="ps-3 text-dark"><b>02</b> Permanent Address</span>
+                                                </div>
+                                                <div class="col-md-6 text-end">
+                                                    <input type="checkbox" class="form-check-input me-3"
+                                                        formControlName="Same_as_Temporary" id="exampleCheck1">
+                                                    <label class="form-check-label" for="exampleCheck1">Same as
+                                                        Communication</label>
+                                                </div>
+                                            </div>
+                                            <div class="row add">
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Permanent
+                                                            Address</label>
+                                                        <span class="text-danger">*</span>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <textarea [maxlength]="200" rows="5"
+                                                                    class="form-control"
+                                                                    formControlName="permanent_address"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="personalForm.get('permanent_address')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(personalForm,'permanent_address')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="row">
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">Country</label>
+                                                                <span class="text-danger">*</span>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12 px-2">
+                                                                        <ng-select [clearable]="false"
+                                                                            [items]="pCountries" bindLabel="name"
+                                                                            bindValue="name"
+                                                                            (change)="pgetcountryid($event)"
+                                                                            formControlName="country">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('country')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'country')}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">State</label>
+                                                                <span class="text-danger">*</span>
+
+
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12 px-2">
+                                                                        <ng-select [clearable]="false" [items]="pstate"
+                                                                            bindLabel="name" bindValue="name"
+                                                                            (change)="pgetstateid($event)"
+                                                                            formControlName="state">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('state')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'state')}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">District</label>
+                                                                <span class="text-danger">*</span>
+
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <input [maxlength]="30" type="text"
+                                                                            class="form-control"
+                                                                            formControlName="district">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('district')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'district')}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">City</label>
+                                                                <span class="text-danger">*</span>
+
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12 px-2">
+                                                                        <ng-select [clearable]="false" [items]="pcity"
+                                                                            bindLabel="name" bindValue="name"
+                                                                            (change)="pgetstateid($event)"
+                                                                            formControlName="city">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('city')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'city')}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">PinCode</label>
+                                                                <span class="text-danger">*</span>
+
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <input type="number"
+                                                                            onKeyPress="if(this.value.length==6){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                                            class="form-control"
+                                                                            formControlName="zipcode">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                                *ngIf="personalForm.get('zipcode')?.invalid">
+                                                                <span
+                                                                    class="text-danger">{{getError(personalForm,'zipcode')}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="card-border border-top-0">
+                                    <div class=" rounded-3 py-3">
+                                        <fieldset class="uk-fieldset">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <span class="ps-3 text-dark"><b>03</b> Temporary Address</span>
+                                                </div>
+                                                <div class="col-md-6 text-end">
+                                                    <input type="checkbox" class="form-check-input me-3"
+                                                        id="exampleCheck1" formControlName="Same_as_Permanent">
+                                                    <label class="form-check-label" for="exampleCheck1">Same as
+                                                        Permanent</label>
+                                                </div>
+                                            </div>
+                                            <div class="row add">
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Temporary
+                                                            Address</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <textarea [maxlength]="200" rows="5"
+                                                                    class="form-control"
+                                                                    formControlName="temporary_address"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="personalForm.get('temporary_address')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(personalForm,'temporary_address')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="row">
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">Country</label>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12 px-2">
+                                                                        <ng-select [clearable]="false"
+                                                                            [items]="tCountries"
+                                                                            (change)="tgetcountryid($event)"
+                                                                            bindLabel="name" bindValue="name"
+                                                                            formControlName="temp_country">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">State</label>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12 px-2">
+                                                                        <ng-select [clearable]="false" [items]="tstate"
+                                                                            bindLabel="name" bindValue="name"
+                                                                            (change)="tgetstateid($event)"
+                                                                            formControlName="temp_state">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">District</label>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <input [maxlength]="30" type="text"
+                                                                            class="form-control"
+                                                                            formControlName="temp_destrict">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">City</label>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12 px-2">
+                                                                        <ng-select [clearable]="false" [items]="tcity"
+                                                                            bindLabel="name" bindValue="name"
+                                                                            (change)="tgetstateid($event)"
+                                                                            formControlName="temp_city">
+                                                                        </ng-select>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 px-3 mt-4">
+                                                            <div class="bg-input p-1 border-bottom-blue">
+                                                                <label for="" class="form-label ps-2">PinCode</label>
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-12">
+                                                                        <input type="number"
+                                                                            onKeyPress="if(this.value.length==6){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                                            class="form-control"
+                                                                            formControlName="temp_zip">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Nominee -->
+                        <div class="tab-pane fade" [ngClass]="{'show active uk-active' : active && index===2} "
+                            id="nominee-info" role="tabpanel" aria-labelledby="nominee-info">
+                            <form action="" [formGroup]="nomineeForm">
+                                <fieldset class="uk-fieldset">
+                                    <div class="row add">
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Nominee Name</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="150" type="text" class="form-control"
+                                                            formControlName="nominee_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="nomineeForm.get('nominee_name')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(nomineeForm,'nominee_name')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Relation with Employee</label>
+                                                <!-- <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="30" type="text" class="form-control"
+                                                            formControlName="relation_with_employee">
+                                                    </div>
+                                                </div> -->
+
+                                                <div class="row g-0">
+                                                    <div class="col-md-12 px-2">
+                                                        <ng-select [clearable]="false" [items]="relation"
+                                                            bindLabel="name" bindValue="name"
+                                                            formControlName="relation_with_employee">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Nominee Email</label>
+
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="50" type="email" class="form-control"
+                                                            formControlName="nominee_email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="nomineeForm.get('nominee_email')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(nomineeForm,'nominee_email')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Nominee Mobile No</label>
+
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="number"
+                                                            onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                            class="form-control" formControlName="nominee_mobile_no">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="nomineeForm.get('nominee_mobile_no')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(nomineeForm,'nominee_mobile_no')}}</span>
+                                                </div> -->
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Nominee Address</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <textarea wrap="off" rows="1"
+                                                            class="form-control form-input-scroll"
+                                                            formControlName="nominee_address"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Nominee Telephone No.</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="number"
+                                                            onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                            class="form-control" formControlName="nominee_telephone_no">
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="nomineeForm.get('nominee_telephone_no')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(nomineeForm,'nominee_telephone_no')}}</span>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Upload Nominee Form</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <!-- <input type="file" class="form-control" (change)="uploadFile($event, 'nominee')"> -->
+                                                        <input type="file" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <!-- <input type="checkbox" class="form-check-input me-3"
+                                            formControlName="make_this_as_emergency" id="exampleCheck1"> -->
+                                            <!-- <label class="form-check-label" for="exampleCheck1">Mark This As
+                                            Emergency</label>  -->
+                                            <span>
+                                                <button class="save-button" href="" data-bs-toggle="collapse"
+                                                    href="#emergency" role="button" aria-expanded="false"
+                                                    aria-controls="collapseExample">Add Emergency
+                                                    Details</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="collapse" id="emergency">
+                                        <div class="row add">
+                                            <div class="col-md-12 pt-4">
+                                                <span class="ps-3"><b>01</b> Emergency Information</span>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Name</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="50" type="text" class="form-control"
+                                                                formControlName="emergency_name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="nomineeForm.get('emergency_name')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(nomineeForm,'emergency_name')}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Relation with
+                                                        Employee</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12 px-2">
+                                                            <ng-select [clearable]="false" [items]="relation"
+                                                                bindLabel="name" bindValue="name"
+                                                                formControlName="emergency_relation_employee">
+                                                            </ng-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Telephone No.</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input
+                                                                onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                                type="number" class="form-control"
+                                                                formControlName="emergency_telephone_no">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Mobile No</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input
+                                                                onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                                type="number" class="form-control"
+                                                                formControlName="emergency_cellphone_no">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Address</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="200" type="text" class="form-control"
+                                                                formControlName="emergency_address">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-3 mt-4">
+                                                <div class="bg-input p-1 border-bottom-blue">
+                                                    <label for="" class="form-label ps-2">Email</label>
+                                                    <div class="row g-0">
+                                                        <div class="col-md-12">
+                                                            <input [maxlength]="50" type="text" class="form-control"
+                                                                formControlName="emergency_Email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                    *ngIf="nomineeForm.get('emergency_Email')?.invalid">
+                                                    <span
+                                                        class="text-danger">{{getError(nomineeForm,'emergency_Email')}}</span>
+                                                </div>
+                                            </div>
+                                            <div style="display: none;" class="col-md-3 px-3 mt-4">
+                                                <input type="checkbox" class="form-check-input me-3"
+                                                    formControlName="make_this_as_emergency" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Mark This As
+                                                    Nominee</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                        <!-- Bank -->
+                        <div class="tab-pane fade" [ngClass]="{'show active uk-active' : active && index===3} "
+                            id="bank-info" role="tabpanel" aria-labelledby="bank-info">
+                            <form action="" [formGroup]="bankDetailsInfoForm">
+                                <fieldset class="uk-fieldset">
+                                    <div class="row add">
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Bank Name</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="150" type="text" class="form-control"
+                                                            formControlName="bank_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                *ngIf="bankDetailsInfoForm.get('bank_name')?.invalid">
+                                                <span
+                                                    class="text-danger">{{getError(bankDetailsInfoForm,'bank_name')}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Address</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <textarea wrap="off" rows="1"
+                                                            class="form-control form-input-scroll"
+                                                            formControlName="address"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-3 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">IFSC Code</label>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control" formControlName="IFSC_code">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="bankDetailsInfoForm.get('IFSC_code')?.invalid">
+                                        <span
+                                        class="text-danger">{{getError(bankDetailsInfoForm,'IFSC_code')}}</span>
+                                    </div>
+                                </div> -->
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Branch</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input [maxlength]="50" type="text" class="form-control"
+                                                            formControlName="branch">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Account No</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input
+                                                            onKeyPress="if(this.value.length==20){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                            type="number" [(ngModel)]="accountNumber"
+                                                            name="accountNumber" class="form-control"
+                                                            formControlName="account_no">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+                        </div>
+
+                        <!-- Client Approval -->
+                        <div class="tab-pane fade" [ngClass]="{'show active uk-active' : active && index===4} "
+                            id="client-info" role="tabpanel" aria-labelledby="client-info">
+                            <form action="">
+                                <fieldset class="uk-fieldset">
+                                    <div class="row add align-items-center">
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">CV Approval</label>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">CV Upload</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <!-- <input type="file" class="form-control" (change)="uploadFile($event, 'cv')"> -->
+                                                        <input type="file" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <input type="checkbox" class="form-check-input me-3" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Smartcard
+                                                Approval</label>
+                                        </div>
+                                        <div class="col-md-3 px-3 mt-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Smartcard Upload</label>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <!-- <input type="file" class="form-control" (change)="uploadFile($event, 'smartcard')"> -->
+                                                        <input type="file" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                        <!-- Document -->
+                        <div class="tab-pane fade" [ngClass]="{'show active uk-active' : active && index===5} "
+                            id="other-info" role="tabpanel" aria-labelledby="other-info">
+                            <form action="" [formGroup]="otherInfoForm">
+                                <fieldset class="uk-fieldset">
+                                    <div class="row mt-3">
+                                        <div class="card-border">
+                                            <div class="row">
+                                                <div class="col-md-12 pt-4">
+                                                    <span class="ps-3"><b>01</b> PAN Card Information</span>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4 pb-2">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">PAN Card No</label>
+                                                        <span class="text-danger">*</span>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input [maxlength]="10" type="text" class="form-control"
+                                                                    formControlName="pan_no">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="otherInfoForm.get('pan_no')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(otherInfoForm,'pan_no')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4 pb-2">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Upload Pan
+                                                            Card</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <!-- <input type="file" class="form-control" (change)="uploadFile($event, 'pan')"> -->
+                                                                <input type="file" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-border border-top-0 mt-3">
+                                            <div class="row mb-2">
+                                                <div class="col-md-12 pt-4">
+                                                    <span class="ps-3"><b>02</b> Aadhar Card Information</span>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Aadhar Card No</label>
+                                                        <span class="text-danger">*</span>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input [maxlength]="12"
+                                                                    onKeyPress="if(this.value.length==12){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                                    type="number" class="form-control"
+                                                                    formControlName="aadhar_no">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="otherInfoForm.get('aadhar_no')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(otherInfoForm,'aadhar_no')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Upload Aadhar
+                                                            Card</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <!-- <input type="file" (change)="uploadFile($event, 'aadhar')" class="form-control"> -->
+                                                                <input type="file" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-border border-top-0 mt-3">
+                                            <div class="row">
+                                                <div class="col-md-12 pt-4">
+                                                    <span class="ps-3"><b>03</b> Passport Information</span>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Passport No</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input [maxlength]="20" type="text" class="form-control"
+                                                                    formControlName="passport_no">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="otherInfoForm.get('passport_no')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(otherInfoForm,'passport_no')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Restriction (on
+                                                            Passport)</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input [maxlength]="50" type="text" class="form-control"
+                                                                    formControlName="restriction_passport">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Date of Issue</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-11">
+                                                                <input [min]="" readonly formControlName="date_of_issue"
+                                                                    class="form-control" [owlDateTime]="issue"
+                                                                    [owlDateTimeTrigger]="issue">
+                                                                <owl-date-time pickerType="calendar" #issue>
+                                                                </owl-date-time>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <span [owlDateTimeTrigger]="issue">
+                                                                    <img src="./assets/icons/calendar.svg" alt=""
+                                                                        width="18px" height="18px" class="">
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="otherInfoForm.get('date_of_issue')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(otherInfoForm,'date_of_issue')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Date of Expiry</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-11">
+                                                                <input readonly [min]="" reado
+                                                                    formControlName="date_of_expiry"
+                                                                    class="form-control" [owlDateTime]="expiry"
+                                                                    [owlDateTimeTrigger]="expiry">
+                                                                <owl-date-time pickerType="calendar" #expiry>
+                                                                </owl-date-time>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <span [owlDateTimeTrigger]="expiry">
+                                                                    <img src="./assets/icons/calendar.svg" alt=""
+                                                                        width="18px" height="18px" class="">
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Place of Issue</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input [maxlength]="50" type="text" class="form-control"
+                                                                    formControlName="place_of_issue">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Place of Birth</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input [maxlength]="50" type="text" class="form-control"
+                                                                    formControlName="place_of_birth">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Passport Type</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12 px-2">
+                                                                <ng-select [clearable]="false"
+                                                                    formControlName="passport_type"
+                                                                    [items]="passport_type" bindLabel="type"
+                                                                    bindValue="type">
+                                                                </ng-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="otherInfoForm.get('passport_type')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(otherInfoForm,'passport_type')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Upload
+                                                            Passport</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <!-- <input type="file" class="form-control" (change)="uploadFile($event, 'passport')"> -->
+                                                                <input type="file" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4 pb-2">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Issued By</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input [maxlength]="50" type="text" class="form-control"
+                                                                    formControlName="issued_by">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="otherInfoForm.get('issued_by')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(otherInfoForm,'issued_by')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <input type="checkbox" class="form-check-input me-3 mt-4"
+                                                        id="exampleCheck1">
+                                                    <label class="form-check-label mt-3" for="exampleCheck1">Smartcard
+                                                        Issued</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-border border-top-0 mb-2 mt-3">
+                                            <div class="row mb-2">
+                                                <div class="col-md-12 pt-4">
+                                                    <span class="ps-3"><b>04</b> CDC Information</span>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">CDC No</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <input [maxlength]="50" type="text" class="form-control"
+                                                                    formControlName="cdc_no">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                                        *ngIf="otherInfoForm.get('cdc_no')?.invalid">
+                                                        <span
+                                                            class="text-danger">{{getError(otherInfoForm,'cdc_no')}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Date of Issue</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-11">
+                                                                <input readonly [min]=""
+                                                                    formControlName="cdc_date_of_issue"
+                                                                    class="form-control" [owlDateTime]="issuecdc"
+                                                                    [owlDateTimeTrigger]="issuecdc">
+                                                                <owl-date-time pickerType="calendar" #issuecdc>
+                                                                </owl-date-time>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <span [owlDateTimeTrigger]="issuecdc">
+                                                                    <img src="./assets/icons/calendar.svg" alt=""
+                                                                        width="18px" height="18px" class="">
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="" class="form-label ps-2">Date of Expiry</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-11">
+                                                                <input [min]="" readonly
+                                                                    formControlName="cdc_date_of_expiry"
+                                                                    class="form-control" [owlDateTime]="expirycdc"
+                                                                    [owlDateTimeTrigger]="expirycdc">
+                                                                <owl-date-time pickerType="calendar" #expirycdc>
+                                                                </owl-date-time>
+                                                            </div>
+                                                            <div class="col-md-1">
+                                                                <span [owlDateTimeTrigger]="expirycdc">
+                                                                    <img src="./assets/icons/calendar.svg" alt=""
+                                                                        width="18px" height="18px" class="">
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 px-3 mt-4">
+                                                    <div class="bg-input p-1 border-bottom-blue">
+                                                        <label for="file" class="form-label ps-2">Upload CDC</label>
+                                                        <div class="row g-0">
+                                                            <div class="col-md-12">
+                                                                <!-- <input type="file" class="form-control inputfile" (change)="uploadFile($event, 'cdc')"> -->
+                                                                <input type="file" class="form-control inputfile">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                        <!-- shift -->
+                        <div class="tab-pane fade" *ngIf="isEdit"
+                            [ngClass]="{'show active uk-active' : active && index===6 } " id="shift-info"
+                            role="tabpanel" aria-labelledby="shift">
+                            <!-- <div class="row px-3">
+                                <div class="col-md-12 text-center">
+                                    <h1 class="pb-3">View Shift</h1>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="px-4">
+                                    <div class="py-3">
+                                        <table class="data-table table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Shift Name</th>
+                                                    <th scope="col">Start Time</th>
+                                                    <th scope="col">End Time</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{employeeShift?.shift_name}}</td>
+                                                    <td>{{employeeShift?.start_time| date: 'h:mm a'}}</td>
+                                                    <td>{{employeeShift?.end_time | date: 'h:mm a'}}</td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- <div class="no-data" *ngIf="employeeShift.length == 0 ">
+                                            <div class="text-center">
+                                                <div class="text-center">
+                                                    <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+                                                </div>
+                                                <h3 class="">No Data Yet...</h3>
+                                                <span>Be the first one to add</span>
+                                            </div>
+                                        </div> -->
+                                        <!-- <button class="save-button px-3" (click)="assignLeave()">
+                                        Assign
+                                    </button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- leave -->
+                        <div class="tab-pane fade" *ngIf="isEdit"
+                            [ngClass]="{'show active uk-active' : active && index===7 } " id="leave-info"
+                            role="tabpanel" aria-labelledby="leave">
+                            <!-- <div class="row px-3">
+                                <div class="col-md-12 text-center">
+                                    <h1 class="pb-3">View Leave</h1>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="px-4">
+                                    <div class="py-3">
+                                        <table class="data-table table">
+                                            <thead>
+                                                <tr *ngIf="leaveData.length !== 0 ">
+                                                    <th scope="col">Leave Name</th>
+                                                    <th scope="col">Number Of Days</th>
+                                                    <th scope="col">Description</th>
+                                                    <!-- <th></th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr
+                                                    *ngFor="let data of leaveData | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count  };let i = index">
+                                                    <td>{{data.leave_name}}</td>
+                                                    <td>{{data.no_of_days}}</td>
+                                                    <td>{{data.data.LT_3}}</td>
+                                                    <!-- <td>
+                                                        <button class="save-button px-3"
+                                                            (click)="deleteAssignLEave(data.leaveOfEmp_id)">
+                                                            Delete
+                                                        </button>
+                                                    </td> -->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="no-data" *ngIf="leaveData.length == 0 ">
+                                            <div class="text-center">
+                                                <div class="text-center">
+                                                    <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+                                                </div>
+                                                <h3 class="">No Data Yet...</h3>
+                                                <span>Be the first one to add</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- package -->
+                        <div class="tab-pane fade" *ngIf="isEdit"
+                            [ngClass]="{'show active uk-active' : active && index === 8 } " id="package-info"
+                            role="tabpanel" aria-labelledby="package">
+                            <!-- <div class="row px-3">
+                                <div class="col-md-12 text-center">
+                                    <h1 class="pb-3">View Package</h1>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="px-4">
+                                    <div class="py-3">
+                                        <table class="data-table table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Package Name</th>
+                                                    <th scope="col">Annual CTC</th>
+                                                    <th scope="col">Package Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{employeePAckageData?.package_name}}</td>
+                                                    <td>{{employeePAckageData?.annual_ctc}}</td>
+                                                    <td>{{employeePAckageData?.package_type}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- <button class="save-button px-3" (click)="assignLeave()">
+                                        Assign
+                                    </button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- </div> -->
+                    </ul>
+                    <div class="col-md-6 px-3 mt-4">
+                        <input type="checkbox" [checked]="creat_user" (change)="createUser($event)"
+                            class="form-check-input me-3" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Do you want to make this employee as
+                            user
+                            ?</label>
+                    </div>
+                </div>
+                <section>
+                    <section class=" rounded-bottom col-md-12 d-flex justify-content-center text-end px-4 pt-4 pb-3">
+                        <!-- <div class="py-2 px-4"> -->
+
+                        <!-- <span class="mx-2">
+                            <button class="btn btn-light" (click)="prev()" [disabled]="disablePrev">
+                                <img src="./assets/icons/chevron-prev1.svg" alt="" width="10px" height="10px">
+
+                            </button>
+                        </span>
+                        <span class="mx-2">
+                            <button class="btn btn-light" (click)="next()" [disabled]="disableNext">
+                                <img src="./assets/icons/chevron-next.svg" alt="" width="10px" height="10px">
+                            </button>
+                        </span> -->
+                        <!-- <button class="bg-white border-0 text-decoration-underline me-3" (click)="prev()">Previous</button>
+                        <button class="bg-white border-0 text-decoration-underline me-3" (click)="next()">Next</button> -->
+                        <!-- <pagination-controls previousLabel="Prev" nextLabel="Next"></pagination-controls> -->
+                        <!-- </div> -->
+
+                        <div class="px-3">
+
+                            <ng-container *ngIf="index != 0 && !buttonLoader" currentTab !='general-info'>
+
+                                <button style="margin: 10px;" class="save-button prn px-3 border-0"
+                                    [disabled]="buttonLoader" (click)="setCurrentTab(index-1)">
+                                    <span class="white">Previous
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </ng-container>
+                            <ng-container *ngIf="!isEdit && index != 5 && !buttonLoader">
+                                <button style="margin: 10px;" class="save-button prn px-3 border-0"
+                                    [disabled]="buttonLoader" (click)="setCurrentTab(index+1)">
+                                    <span class="white">Next</span>
+
+                                    <span class="white">Next
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="isEdit && index != 8 && !buttonLoader">
+                                <button style="margin: 10px;" class="save-button prn px-3" [disabled]="buttonLoader"
+                                    (click)="setCurrentTab(index+1)">
+                                    <span class="white">Next
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </ng-container>
+
+                            <button style="margin:10px" *ngIf="!isEdit && index==5" class="save-button px-3"
+                                [disabled]="buttondisable" (click)="addEmployee()">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Save
+                                    <svg>
+                                        <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                    </svg>
+                                </span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Saving</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+
+                            <button *ngIf="isEdit" class="save-button px-3" (click)="editUser()">
+                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                <span class="white" *ngIf="!buttonLoader" style="margin-left: 10px;">Update
+                                    <svg>
+                                        <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                    </svg>
+                                </span>
+                                <span class="white" *ngIf="buttonLoader" style="margin-left: 10px;">Updating</span>
+                                <span class="mt-1 ml-2 float-right" *ngIf="buttonLoader" uk-spinner></span>
+                            </button>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>

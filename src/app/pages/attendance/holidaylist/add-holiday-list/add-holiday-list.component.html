@@ -1,0 +1,131 @@
+<div cdkScrollable id="add-holiday" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-2">{{ !isEdit ?'Add':'Edit'}} Holiday List</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="rounded-3 px-4">
+                <div class="">
+                    <form action="" [formGroup]="holidayListForms">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Holiday Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input style="text-transform:capitalize" formControlName="holiday_name"
+                                                    [maxlength]="50" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="holidayListForms.get('holiday_name')?.invalid">
+                                        <span class="text-danger">{{getError(holidayListForms,'holiday_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Date</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input class="form-control ml-2" [readOnly]="true"
+                                                    formControlName="holiday_date" [owlDateTime]="date"
+                                                    [owlDateTimeTrigger]="date">
+                                                <owl-date-time pickerType="calendar" #date></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="date">
+                                                    <img src="./assets/icons/calendar.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="holidayListForms.get('holiday_date')?.invalid">
+                                        <span class="text-danger">{{getError(holidayListForms,'holiday_date')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Assign To</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ng-select-scroll ps-2" (change)="selectDepartment($event)"
+                                                    (clear)="removeAllDept()" (remove)="onRemoveDep($event)"
+                                                    [items]="depnameId" [multiple]="true"
+                                                    formControlName="holiday_assign" bindLabel="department_name"
+                                                    bindValue="id">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="holidayListForms.get('holiday_assign')?.invalid">
+                                        <span class="text-danger">{{getError(holidayListForms,'holiday_assign')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Applicable To</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ng-select-scroll ps-2" (change)="selectEmployee($event)"
+                                                    (remove)="onRemoveEmp($event)" (clear)="removeAllEmp()"
+                                                    [items]="empnameId" formControlName="holiday_applicable"
+                                                    bindLabel="first_name" [multiple]="true " bindValue="id">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-3">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Optional </label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" class="ps-2" [readonly]="isEdit" [items]="option"
+                                                    bindValue="id" bindLabel="optionname"
+                                                    formControlName="holiday_options"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div *ngIf="!isEdit" class="">
+                                <button (click)="addHolidayList()" class="save-button px-3">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="save-btn ms-2">Save
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                            <div *ngIf="isEdit" class="">
+                                <button (click)="EditHolidayList()" class="save-button px-3">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="save-btn ms-2">Update
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Bookings">Bookings</h1>
+    </div>
+    <div *ngIf="permission.add_booking" class="col-md-6 d-flex justify-content-end align-items-center pb-2">
+        <span class="me-5">
+            <a class="add-button px-4" uk-toggle="target: #add-booking" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Booking</span>
+            </a>
+        </span>
+    </div>
+    <!-- <div class="border-2pxblue"></div> -->
+</div>
+<div *ngIf="!loader" class="row mx-4">
+    <div class="view-table px-4 py-3" *ngIf="bookingData.length > 0 && !loader">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr (click)="openEdit(data)"
+                    *ngFor="let data of bookingData | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count };let i = index">
+                    <td>{{data.name}}</td>
+                    <td>{{data.description}}</td>
+                    <td>{{data.code}}</td>
+                    <td>{{data.booking_date | date: 'dd-MM-yyyy'}}</td>
+                    <td class="cursor-pointer table-options">
+                        <button class="w-100 bg-white border-0">
+                            <img style="size: 4px;" src="./assets/icons/more2.svg" alt="">
+                        </button>
+                        <div uk-dropdown="mode: click;pos: bottom-right" class="dd-min-width">
+                            <ul class="uk-nav uk-dropdown-nav">
+                                <li *ngIf="permission.edit_booking" class="">
+                                    <a class="uk-dropdown-close justify-content-center"
+                                        (click)="openEdit(data)">Edit</a>
+                                </li>
+                                <li *ngIf="permission.delete_booking" class="">
+                                    <a class="uk-dropdown-close justify-content-center"
+                                        (click)="deleteBookingy(data)">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-center align-items-end">
+                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span>  -->
+                <!-- <ng-select class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select> -->
+                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+    <div class="no-data" *ngIf="bookingData.length == 0 && !loader">
+        <div class="text-center">
+            <div class="text-center">
+                <img src="./assets/images/no-data-1.png" alt="" class="mx-auto">
+            </div>
+            <h3 class="">No Data Yet...</h3>
+            <span>Be the first one to add</span>
+        </div>
+    </div>
+    <app-loader *ngIf="loader"></app-loader>
+</div>
+<app-add-booking [isEdit]="isEdit"></app-add-booking>
+<!-- <div class="col-md-12 text-end">
+    <pagination-controls previousLabel="Prev" nextLabel="Next"></pagination-controls>
+</div> -->

@@ -1,0 +1,23 @@
+.view-h1::before {
+    bottom: -12px !important;
+}
+
+.data-table input[type=text],
+.num input {
+    width: 50px;
+    text-align: center;
+}
+
+.text-dark {
+    font-size: 14px;
+}
+
+.cap-input {
+    border: 2px solid #0A2472 !important;
+    border-radius: 2px ;
+    width: 100px !important;
+}
+.cap-label{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}

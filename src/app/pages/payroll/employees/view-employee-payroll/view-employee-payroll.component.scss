@@ -1,0 +1,60 @@
+h3 {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+    color: #002160;
+}
+
+h2 {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 30px;
+    color: #002160;
+}
+
+.view-h1::before {
+    content: "";
+    display: inline-block;
+    max-width: 20rem;
+    width: 18.5%;
+    position: relative;
+    border-bottom: 3px solid #3D5DD1;
+    position: absolute;
+    bottom: -4px;
+    left: 9.3%;
+    transform: translateX(-50%);
+}
+
+tr:last-child {
+    border-bottom: 2px solid #fff !important;
+}
+
+.earn {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.earn i {
+    color: #3D5DD1;
+}
+
+.card-border span {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.card-border a {
+    font-size: 20px;
+    font-weight: 500;
+}
+.card-border a i{
+    font-size: 14px;
+}
+.card-border .fw-lighter{
+    font-size: 16px;
+}

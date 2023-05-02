@@ -1,0 +1,60 @@
+<div class="login">
+    <div class="row g-0">
+        <div class="col-md-6 login-img">
+            <img src="./assets/images/login.jpg" alt="" height="980px" width="915px">
+        </div>
+        <div   class="col-md-6">
+            <div class="card">
+                <a href="#" class="mb-4 text-center">
+                    <img src="./assets/images/logo.png" alt="" class="img-fluid" width="125px">
+                    <img src="./assets/images/norscot1.png" alt="" class="img-fluid" width="190px">
+                </a>
+                <div  class="">
+                    <form *ngIf="!loader" [formGroup]="loginForm">
+                        <div class="row add justify-content-center">
+                            <div class="col-md-10 col-12 mt-5">
+                                <div class="bg-input p-1 border-bottom-blue">
+                                    <label for="" class="form-label ps-2">Username</label>
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <input style="text-transform:none" type="text" class="form-control" formControlName="work_email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div  class="col-md-10 col-12 mt-5">
+                                <div class="bg-input p-1 border-bottom-blue">
+                                    <label for="" class="form-label ps-2">Password</label>
+                                    <div class="row g-0">
+                                        <div class="col-md-11">
+                                            <input style="text-transform:none" [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a (click)="toggleeyebtn()"><img style="width:20px" [src]="!showPassword ? './assets/icons/eye.svg' : './assets/icons/show.svg'"  alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 text-center mt-5">
+                            <button class="login-btn col-md-5 col-6 py-2" [disabled]="loader || loginForm.invalid"
+                                (click)="login()">
+                                <span class="color-white" *ngIf="!loader">Login</span>
+                                <span  class="color-white" *ngIf="loader">Loging-in</span>
+                                <div class="mt-1 float-right" *ngIf="loader" uk-spinner></div>
+                            </button>
+                        </div>
+                    </form>
+                      <app-loader  *ngIf="loader"></app-loader>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

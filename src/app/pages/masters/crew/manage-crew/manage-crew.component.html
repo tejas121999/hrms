@@ -1,0 +1,42 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Roster">Crew</h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center pb-2">
+        <span>
+            <a class="add-button px-4" uk-toggle="target: #add-crew" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Crew</span>
+            </a>
+        </span>
+    </div>
+</div>
+<div class="row mx-4">
+    <div class="view-table px-4 py-3">
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Crew Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let crew of getCrewData | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count  };let i = index">
+                    <td>{{crew.crew_name}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row mt-4 mb-1">
+            <div class="d-flex justify-content-center">
+                <!-- <span for="" class="me-2 mt-2"  style="font-weight: 300;">Items Per Page :</span> 
+                <ng-select class="form-control-pagination">
+                    <ng-option>1</ng-option>
+                    <ng-option>2</ng-option>
+                    <ng-option>3</ng-option>
+                </ng-select> -->
+                <pagination-controls class=" mt-2" (pageChange)="onPageChange($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+<app-add-crew [isEdit]="isEdit"></app-add-crew>

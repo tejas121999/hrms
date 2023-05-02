@@ -1,0 +1,123 @@
+<div cdkScrollable id="add-template" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">Templates</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row mx-4">
+            <div class="card-template py-4">
+                <div class="">
+                    <form action="" [formGroup]="addTemplateForm">
+                        <fieldset class="uk-fieldset mt-3 pl-4">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-6 px-3 add mb-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Template Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0">
+                                                    <div class="col-md-12">
+                                                        <input type="text" formControlName="template_name"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 add mb-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Template Type</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0 ps-2">
+                                                    <div class="col-md-12">
+                                                        <ng-select [clearable]="false" [items]="templateType"
+                                                            formControlName="template_type" bindLabel="type"
+                                                            bindValue="type">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 add mb-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Form Name</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0 ps-2">
+                                                    <div class="col-md-12">
+                                                        <ng-select [items]="form_name" [clearable]="false"
+                                                            (change)="getTemplateField($event)"
+                                                            formControlName="form_name" bindLabel="name"
+                                                            bindValue="name">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 px-3 add mb-4">
+                                            <div class="bg-input p-1 border-bottom-blue">
+                                                <label for="" class="form-label ps-2">Fields</label>
+                                                <span class="text-danger">*</span>
+                                                <div class="row g-0 ps-2">
+                                                    <div class="col-md-12">
+                                                        <ng-select [items]="fields_name" [clearable]="false"
+                                                            formControlName="fields" (change)="getfield($event)"
+                                                            bindLabel="field_name" bindValue="field_name">
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 add mb-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Template Description</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea rows="5" formcontrolname="template_description"
+                                                    class="form-control form-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="save-button add-btn prn px-3" (click)="templateDescription()"><span
+                                            class="white">Add
+                                            <svg>
+                                                <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                            </svg>
+                                        </span></button>
+                                </div>
+                                <div class="col-md-12 px-3 mt-4">
+                                    <div class="NgxEditor__Wrapper">
+                                        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                                        <!-- <ngx-editor [editor]="editor" formControlName="editorContent"> -->
+                                        <ngx-editor [disabled]="true" formControlName="template" [editor]="editor"
+                                            [placeholder]="'Type here...'"></ngx-editor>
+                                        <!-- </ngx-editor> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                    <div class="">
+                        <button class="save-button px-3" (click)="addTemplate()">
+                            <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px" width="15px">
+                            <span class="white" style="margin-left: 10px;">Save
+                                <svg>
+                                    <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

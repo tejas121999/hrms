@@ -1,0 +1,112 @@
+<!-- <div class="modal fade" id="add-holiday-list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="text-end px-3 py-3">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div> -->
+<div cdkScrollable id="add-holiday-list" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">{{isEdit ? "Edit": "Add"}} Holiday Master</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="rounded-3 px-4">
+                <div class="">
+                    <form action="" [formGroup]="holidaylistForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Holiday Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input [maxlength]="150" type="text" formControlName="holiday_name"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="holidaylistForm.get('holiday_name')?.invalid">
+                                        <span class="text-danger">{{getError(holidaylistForm,'holiday_name')}}</span>
+                                    </div>
+                                </div>
+                                <div style="display: none;" class="col-md-4 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Holiday Day</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number"
+                                                onKeyPress="if(this.value.length==2){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    formControlName="holiday_day" class="form-control">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="holidaylistForm.get('holiday_name')?.invalid">
+                                        <span class="text-danger">{{getError(holidaylistForm,'holiday_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 mt-5">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Date</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input required readonly class="form-control ml-2"
+                                                    formControlName="date" [owlDateTime]="date"
+                                                    [owlDateTimeTrigger]="date">
+                                                <owl-date-time pickerType="calendar" #date></owl-date-time>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="date">
+                                                    <img src="./assets/icons/calendar.svg" alt="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="holidaylistForm.get('date')?.invalid">
+                                        <span class="text-danger">{{getError(holidaylistForm,'date')}}</span>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button [disabled]="disablebtn" *ngIf="!isEdit" class="save-button px-3"
+                                    (click)="addHolidaylist()">
+                                    <!-- <svg>
+                                        <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                    </svg> -->
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <!-- <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px"
+                                        width="15px"> -->
+                                    <span class="save-btn ms-2">Save
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <button *ngIf="isEdit" class="save-button px-3" (click)="updateHoliday()">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="save-btn ms-2">Update
+                                        <svg>
+                                            <rect x="0" y="0" fill="none" width="100%" height="100%" rx="5" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

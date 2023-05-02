@@ -1,0 +1,48 @@
+<div class="row py-4 px-5 title-border">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1 pt-2">Template</h1>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center pb-2">
+        <span>
+            <a class="add-button" uk-toggle="target: #add-template" type="button">
+                <img class="icon-display mb-1" src="./assets/icons/plus.svg" height="15px" width="15px">
+                <span class="add-btn ms-2">Add Template</span>
+            </a>
+        </span>
+    </div>
+    <!-- <div class="border-2pxblue"></div> -->
+</div>
+<div class="row mx-4">
+    <div class="view-table px-4 py-3">
+        <form action="">
+            <fieldset class="uk-fieldset pl-4">
+                <div class="row">
+                    <div class="col-md-3 add pb-5">
+                        <label for="" class="form-label">Template Name</label>
+                        <div class="row g-0 border-bottom-blue">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <table class="data-table table">
+            <thead>
+                <tr>
+                    <th scope="col">Template Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of template">
+                    <td>{{data?.template_name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- <div class="col-md-12 text-end">
+    <pagination-controls previousLabel="Prev" nextLabel="Next"></pagination-controls>
+</div> -->
+<app-add-template></app-add-template>

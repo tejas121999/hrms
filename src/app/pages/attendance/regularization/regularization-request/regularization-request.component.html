@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-12">
+        <div class="row py-4 px-5 title-border">
+            <div class="col-12 p-0">
+                <h1 class="view-h1">Regularization Request</h1>
+            </div>
+        </div>
+        <div class="row px-5">
+            <div class="col-3">
+                <ng-select [clearable]="false" [items]="employee_name" bindLabel="name"
+                    bindValue="name" class="form-control ps-2">
+                </ng-select>
+            </div>
+            <div class="col-9 text-end">
+                <button class="bg-transparent border-0" type="button">
+                    <img src="./assets/icons/filter1.svg" height="30px" width="30px" alt="">
+                </button>
+                <div uk-dropdown="mode: click; pos: bottom-right" class="filter-dd">
+                    <ul class="list-unstyled p-2 text-start">
+                        <li><a class="border-0 bg-transparent">All</a></li>
+                        <li><a class="border-0 bg-transparent">Pending</a></li>
+                        <li><a class="border-0 bg-transparent">Decline</a></li>
+                        <li><a class="border-0 bg-transparent">Approved</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row px-4 pb-4">
+            <div class="col-md-12 px-4">
+                <div class="col-md-4 px-3">
+                    <!-- <div class="d-flex border-blue br-5">
+                        <img src="./assets/icons/search.svg" alt="" class="bg-search ps-3" height="35px" width="35px">
+                        <input class="form-control w-100 py-2" [(ngModel)]="search" type="text" name="search"
+                            placeholder="Search...">
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-4 px-4 mt-4" *ngFor="let data of manageRegularization | paginate: { itemsPerPage: limit, currentPage: currentPage, totalItems: count };let i = index">
+                        <div class="card leave-card pb-4">
+                            <div class="card-header border-0 bg-white py-1 pt-3 d-flex">
+                                <div class="me-2 mt-2">
+                                    <img src="./assets/icons/profile.svg" alt="" class="rounded-circle border-2pxblue">
+                                </div>
+                                <span class="d-grid mt-1">
+                                    <label class="user-name">{{data.emp_data?.first_name}} {{data.emp_data?.last_name}}</label>
+                                    <label for="" class="user-desig">{{data.department_name}}</label>
+                                </span>
+                                <div class="ms-auto pt-2">
+                                    <img src="./assets/icons/calendar.svg" alt="" class="me-2">
+                                    <span class="color-grey">Mar 20, 2023</span>
+                                </div>
+                            </div>
+                            <div class="border-line"></div>
+                            <div class="card-body py-1">
+                                <div class="d-flex align-items-center pb-3">
+                                    <div class="icon-wrap d-flex align-items-center justify-content-center me-2">
+                                        <img src="./assets/icons/calendar.svg" alt="">
+                                    </div>
+                                    <p class="m-0">{{data?.date | date: 'dd/MM/yyyy'}}</p>
+                                </div>
+                                <div class="d-flex align-items-center pb-3">
+                                    <div class="icon-wrap d-flex align-items-center justify-content-center me-2">
+                                        <img src="./assets/icons/doc.svg" alt="">
+                                    </div>
+                                    <p class="m-0">{{data.reason}}</p>
+                                </div>
+                            </div>
+                            <div class="card-footer border-0 bg-white d-flex">
+                                <div class="col-md-6 text-center">
+                                    <button (click)="approve()" class="approved-btn">Approve</button>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <div class="col-md-6 text-center">
+                                        <button  (click)="decline()" class="decline-btn">Decline</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

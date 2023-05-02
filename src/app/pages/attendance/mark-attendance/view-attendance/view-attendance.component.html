@@ -1,0 +1,91 @@
+<div cdkScrollable id="view-attendance" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-4">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">View Attendance</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+
+        <app-loader *ngIf="loader"></app-loader>
+
+
+        <div *ngIf="!loader" class="row pt-4 px-4 mb-5">
+            <div class="row counts mb-4 px-3 py-2">
+                <div class="col-md-12">
+                    <h2>This Month Overview</h2>
+                </div>
+                <!-- <div class="col-md-12"> -->
+                <div class="d-flex counts overcount" style="width:1036px">
+                    <div *ngFor="let item of messageEvent">
+                        <p [ngStyle]="{'background':item.color}" class="mx-auto">{{item.count}}</p>
+                        <span class="text-capitalize">{{item.title}}</span>
+                    </div>
+                </div>
+            </div>
+            <div #data class="col-md-7 py-3 calendar">
+                <h4 style="text-align: center; font-weight: 540;">{{viewName}}</h4>
+
+                <full-calendar *ngIf="calendarOptions" #fullcalendar  [options]="calendarOptions">
+                    <ng-template #eventContent let-arg>
+                        <b>{{ arg.event.title }}</b> - {{ arg.event.start.getDate() }}
+                    </ng-template>
+                </full-calendar>
+            </div>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="col-md-5 ps-5">
+                <div  class="reason p-4">
+                    <h6 class="present text-capitalize">{{displayDateDetails?.title}}</h6>
+                    <div class="">
+                        <div *ngIf="displayDateDetails?.date" class="d-flex justify-content-start align-items-center mb-4">
+                            <div class="pe-4">
+                                <img src="./assets/icons/grey_calendar.svg" height="35px" width="35px" alt="" class="">
+                            </div>
+                            <span>{{displayDateDetails?.date}}</span>
+                        </div>
+                        <div *ngIf="displayDateDetails?.leavetype" class="d-flex justify-content-start align-items-center mb-4">
+                            <div class="pe-4">
+                                <img src="./assets/icons/grey_upload.svg" height="35px" width="35px" alt="" class="">
+                            </div>
+                            <span *ngIf="displayDateDetails?.leavetype "  >{{displayDateDetails?.leavetype}}</span>
+
+
+                          </div>
+
+                          <div *ngIf="displayDateDetails?.leavesName" class="d-flex justify-content-start align-items-center mb-4">
+                            <div class="pe-4">
+                                <img src="./assets/icons/grey_upload.svg" height="35px" width="35px" alt="" class="">
+                            </div>
+                            <span *ngIf="displayDateDetails?.leavesName "  >{{displayDateDetails?.leavesName}}</span>
+
+
+                          </div>
+
+
+                        <div *ngIf="displayDateDetails?.inTime " class="d-flex justify-content-start align-items-center mb-4">
+                            <div class="pe-4">
+                                <img src="./assets/icons/grey_time.svg" height="35px" width="35px" alt="" class="">
+                            </div>
+                            <span>{{displayDateDetails.inTime |date:'shortTime'}}</span>
+                        </div>
+                        <div *ngIf="displayDateDetails?.outTime" class="d-flex justify-content-start align-items-center mb-4">
+                            <div class="pe-4">
+                                <img src="./assets/icons/grey_time.svg" height="35px" width="35px" alt="" class="">
+                            </div>
+                            <span>{{displayDateDetails.outTime |date:'shortTime'}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div *ngFor="let item of messageEvent" class="reason mb-4">
+                    <div [ngStyle]="{'background':item.color,'border-left':'7px solid' + item.borderColor}" class="wow">
+                    </div>
+                    <span style=" color:black;
+              z-index: 1;"> {{item.title}} - {{item.count}}</span>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

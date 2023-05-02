@@ -1,0 +1,119 @@
+<div cdkScrollable id="add-loan-type" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">Add Loan Master</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <div class="rounded-3 px-4">
+                <div class="">
+                    <form action="" [formGroup]="loanForm">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Loan Name</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="text" [maxlength]="50" formControlName="loan_name"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="loanForm.get('loan_name')?.invalid">
+                                        <span class="text-danger">{{getError(loanForm,'loan_name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Rate of Interest</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number"
+                                                onKeyPress="if(this.value.length==5){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    formControlName="rate_of_interest" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="loanForm.get('rate_of_interest')?.invalid">
+                                        <span class="text-danger">{{getError(loanForm,'rate_of_interest')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Max. Loan Amount</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number"
+                                                onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    formControlName="max_loan_amount" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="loanForm.get('max_loan_amount')?.invalid">
+                                        <span class="text-danger">{{getError(loanForm,'max_loan_amount')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Tenure of Year / Month</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input type="number" formControlName="duration"
+                                                onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} "
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="loanForm.get('duration')?.invalid">
+                                    <span class="text-danger">{{getError(loanForm,'duration')}}</span>
+                                </div>
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Select Month / Year</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [clearable]="false" [items]="numberMonth" formControlName="duration_type"
+                                                    bindValue="name" bindLabel="name">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="loanForm.get('duration_type')?.invalid">
+                                    <span class="text-danger">{{getError(loanForm,'duration_type')}}</span>
+                                </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div *ngIf="!isEdit" class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button (click)="addLoan()" class="save-button px-3">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="save-btn ms-2">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div *ngIf="isEdit" class="col-md-12 d-flex justify-content-center text-end mt-4">
+                            <div class="">
+                                <button (click)="updateLoan()" class="save-button px-3">
+                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                    <span class="save-btn ms-2">Update</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+<section class="bg-white box-shadow px-4 py-3">
+    <form  action="">
+        <fieldset class="uk-fieldset">
+            <div class="row add">
+                <div class="col-md-12 px-5 mt-2 text-center">
+                    <img src="./assets/icons/sc.svg" alt=""><br>
+                    <button class="upload-box upload-color mt-2">Upload Photo</button>
+                </div>
+            </div>
+            <div class="row add">
+                <div class="col-md-1 mt-5 pe-0">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Title</label>
+                        <div class="row g-0">
+                            <div class="col-md-9">
+                                <ng-select [clearable]="false" formControlName="title">
+                                    <ng-option>Ms.</ng-option>
+                                    <ng-option>Mr.</ng-option>
+                                    <ng-option>Mrs.</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-3 p-0">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">First Name</label>
+                        <span class="text-danger">*</span>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" formControlName="first_name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Middle Name</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" formControlName="middle_name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Last Name</label>
+                        <span class="text-danger">*</span>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="text" formControlName="last_name" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Employee Id</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" formControlName="emp_id">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Employee Type</label>
+                        <span class="text-danger">*</span>
+                        <div class="row g-0">
+                            <div class="col-md-11">
+                                <ng-select [clearable]="false" formControlName="emp_type">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Company Name</label>
+                        <div class="row g-0">
+                            <div class="col-md-11">
+                                <ng-select [clearable]="false" formControlName="company_id">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Work Location</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" formControlName="working_location">
+                            </div>
+                        </div>
+                        <!-- <div class="row g-0">
+                            <div class="col-md-11">
+                                <ng-select formControlName="company_id">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Work Email Id</label>
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" formControlName="work_emailId">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Date of Joining</label>
+                        <span class="text-danger">*</span>
+                        <div class="row g-0">
+                            <div class="col-md-11">
+                                <input [min]="" formControlName="date_of_joining" class="form-control"
+                                    [owlDateTime]="join" [owlDateTimeTrigger]="join">
+                                <owl-date-time pickerType="calendar" #join></owl-date-time>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/calendar.svg" alt="" width="20px" height="20px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Designation</label>
+                        <div class="row g-0">
+                            <div class="col-md-11">
+                                <ng-select [clearable]="false" formControlName="designation_id">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Department</label>
+                        <div class="row g-0">
+                            <div class="col-md-11">
+                                <ng-select [clearable]="false" formControlName="department_id">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-3 mt-5">
+                    <div class="bg-input p-1 border-bottom-blue">
+                        <label for="" class="form-label ps-2">Branch</label>
+                        <div class="row g-0">
+                            <div class="col-md-11">
+                                <ng-select [clearable]="false" formControlName="branch_id">
+                                    <ng-option>1</ng-option>
+                                    <ng-option>2</ng-option>
+                                    <ng-option>3</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-md-1">
+                                <img src="./assets/icons/arrow-dropdown.svg" alt="" width="25px" height="25px" class="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</section>

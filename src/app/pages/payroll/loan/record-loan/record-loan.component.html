@@ -1,0 +1,203 @@
+<div cdkScrollable id="record-loan" class="uk-modal-container modal-scroll-form"
+    uk-modal="esc-close:false;bg-close:false">
+    <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+        <button class="uk-modal-close-default" type="button" (click)="reset()" uk-close></button>
+        <div class="row px-3">
+            <div class="text-center  col-12 title-border card-title-border">
+                <h1 class="pb-3">Record Loan</h1>
+            </div>
+            <!-- <div class="border-2pxblue"></div> -->
+        </div>
+        <div class="row">
+            <form action="" [formGroup]="EmpLoanForm">
+                <div class="px-4">
+                    <div class="">
+                        <fieldset class="uk-fieldset pl-4">
+                            <div class="row add">
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Loan Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select  [items]="loan_data" [(ngModel)]="loan_id" [clearable]="false"
+                                                    name="loan_id" bindLabel="loan_name" bindValue="id"
+                                                    formControlName="loan_name" (change)="filledLoadData()"></ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="EmpLoanForm.get('loan_name')?.invalid">
+                                    <span class="text-danger">{{getError(EmpLoanForm,'loan_name')}}</span>
+                                </div>
+
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Rate Of Interest</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input formControlName="rate_of_interest" readonly
+                                                    [(ngModel)]="rateofinterest" name="rateofinterest" type="text"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Employee Name</label>
+                                        <span class="text-danger">*</span>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <ng-select [items]="emp_data" [(ngModel)]="emp_id" [clearable]="false"
+                                                    name="loan_id" bindLabel="first_name" bindValue="id"
+                                                    formControlName="loan_employee_name" (change)="filledEmpData()">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                    *ngIf="EmpLoanForm.get('loan_employee_name')?.invalid">
+                                    <span class="text-danger">{{getError(EmpLoanForm,'loan_employee_name')}}</span>
+                                </div>
+
+                                </div>
+
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Loan of Amount</label>
+
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <input readonly [(ngModel)]="loanamount" formControlName="loan_amount"
+                                                    name="loanamount" onKeyPress="if(this.value.length==20){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Disbursement Date</label>
+
+                                        <div class="row g-0">
+                                            <div class="col-md-11">
+                                                <input readonly class="form-control" formControlName="disbursment_date"
+                                                    [owlDateTime]="date" [(ngModel)]="disbursementDate"
+                                                    name="disbursementDate" [owlDateTimeTrigger]="date">
+                                                <owl-date-time pickerType="calendar" #date></owl-date-time>
+                                            </div>
+                                            <!-- <div class="col-md-1">
+                                                <span [owlDateTimeTrigger]="date">
+                                                    <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                        height="20px" class="">
+                                                </span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-4 px-3 mt-4">
+                                    <div class="bg-input p-1 border-bottom-blue">
+                                        <label for="" class="form-label ps-2">Address</label>
+                                        <div class="row g-0">
+                                            <div class="col-md-12">
+                                                <textarea readonly formControlName="employee_address"
+                                                    [(ngModel)]="address" name="address" rows="1"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 px-3 mt-5">
+                                    <input formControlName="exempt" type="checkbox" class="form-check-input me-3"
+                                        id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Exempt this loan from
+                                        perquisite calculation</label><br>
+                                    <span class="ms-4">According to Rule 3(A) employees availing medical loan or any
+                                        loan below ₹20,000 can be exempted from perquisite calculation</span>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row pb-4 pt-5 px-4">
+                    <div class="col-md-6 p-0">
+                        <h3 class="view-h1 mb-0">Repayments</h3>
+                    </div>
+                    <!-- <div class="border-2pxblue mt-2"></div> -->
+                </div>
+                <div class="row">
+                    <div class="px-4">
+                        <div class="">
+                            <fieldset class="uk-fieldset pl-4">
+                                <div class="row add">
+                                    <div class="col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Start Date</label>
+                                            <span class="text-danger">*</span>
+                                            <div class="row g-0">
+                                                <div class="col-md-11">
+                                                    <input formControlName="loan_start_date" class="form-control"
+                                                        [owlDateTime]="startDate" [owlDateTimeTrigger]="startDate">
+                                                    <owl-date-time pickerType="calendar" #startDate></owl-date-time>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <span [owlDateTimeTrigger]="startDate">
+                                                        <img src="./assets/icons/calendar.svg" alt="" width="20px"
+                                                            height="20px" class="">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="EmpLoanForm.get('loan_start_date')?.invalid">
+                                        <span class="text-danger">{{getError(EmpLoanForm,'loan_start_date')}}</span>
+                                    </div>
+
+                                    </div>
+                                    <div class="col-md-4 px-3 mt-4">
+                                        <div class="bg-input p-1 border-bottom-blue">
+                                            <label for="" class="form-label ps-2">Installment Amount</label>
+                                            <span class="text-danger">*</span>
+                                            <div class="row g-0">
+                                                <div class="col-md-12">
+                                                    <input  onKeyPress="if(this.value.length==10){ return false}else{return event.charCode>=48 && event.charCode <=57 ;} " formControlName="instalment_amount" type="number"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-animation-fade row justify-content-center px-3 pt-2"
+                                        *ngIf="EmpLoanForm.get('instalment_amount')?.invalid">
+                                        <span class="text-danger">{{getError(EmpLoanForm,'instalment_amount')}}</span>
+                                    </div>
+
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center text-end mt-5">
+                    <div *ngIf="!isEdit" class="">
+                        <button (click)="addEmployeeloan()" class="save-button px-3">
+                            <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px" width="15px">
+                            <span class="white" style="margin-left: 10px;">Save</span>
+                        </button>
+                    </div>
+
+                    <div *ngIf="isEdit" class="">
+                        <button (click)="editUser()" class="save-button px-3">
+                            <img class="icon-display mb-1" src="./assets/icons/save-btn.svg" height="15px" width="15px">
+                            <span class="white" style="margin-left: 10px;">Update</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="row pt-4 px-5">
+    <div class="col-md-6 p-0">
+        <h1 class="view-h1">Attendance Notification</h1>
+    </div>
+    <!-- <div class="border-2pxblue mt-2"></div> -->
+</div>
+<form action="" [formGroup]="attendenceForm">
+    <fieldset>
+        <div class="row add px-4">
+            <div class="col-md-12 mt-4">
+                <span class="att-notify px-3"><i class="fa fa-circle" aria-hidden="true"></i> Attendance Approval</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Require Approval Of</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" [items]="user_data" bindLabel="first_name" formControlName="require_approvel_of"
+                                bindValue="id">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Send Approval Notification To</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" [items]="user_data" bindLabel="first_name"
+                                formControlName="send_approvel_notification_to" bindValue="id">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-4">
+                <span class="att-notify px-3"><i class="fa fa-circle" aria-hidden="true"></i> Attendance
+                    Notification</span>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Send Missing Attendance Notifi To</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" [items]="user_data" bindLabel="first_name"
+                                formControlName="missing_attendence_notify_to" bindValue="id">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Activate employee absent notification</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [items]="active_emp_absent_notification" bindLabel="data"
+                                formControlName="active_emp_absent_notification" bindValue="value">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-4 mt-4">
+                <div class="bg-input bg-white p-1 border-bottom-blue">
+                    <label for="" class="form-label ps-2">Notification Applies To</label>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <ng-select [clearable]="false" [items]="user_data" bindLabel="first_name"
+                                formControlName="notification_applies_to" bindValue="id">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div *ngIf="!attendenceData" class=" text-center" style="margin-top: 40px;">
+        <button class="save-button px-3" (click)="saveNotification()">
+            <span class="white">Saving</span>
+        </button>
+    </div>
+    <div *ngIf="attendenceData" class=" text-center" style="margin-top: 40px;">
+        <button class="save-button px-3" (click)="updateNotification()">
+            <span class="white">Update</span>
+        </button>
+    </div>
+</form>
